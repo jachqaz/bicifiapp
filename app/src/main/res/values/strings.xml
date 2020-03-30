@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">bicifiapp</string>
+    <string name="lbl_reach_25">Si logras menos de 25%</string>
+    <string name="lbl_question_finances">Interrogante Financiero... Nivel Bicifi 1</string>
+    <string name="lbl_reach_25_50">Entre 25% y 50%</string>
+    <string name="lbl_dreamer">Soñador Financiero... Nivel Bicifi 2</string>
+    <string name="lbl_reach_50_75">Entre 50% y 75%</string>
+    <string name="lbl_executor">Ejecutor Financiero... Nivel Bicifi 3</string>
+    <string name="lbl_reach_75">Más del 75%</string>
+    <string name="lbl_leader">Lider Financiero... Nivel Bicifi 4</string>
+    <string name="lbl_what_is_test">Que es Bicifi?</string>
+    <string name="lbl_description_test">
+        Test de salud financiera \n
+        \n Le ayudaremos a mejorar sus finanzas  \n
+        \n Acceder a base de conocimiento  \n
+        \n No estará solo en su propio reto  \n
+        \n Mejorará su autonomía financiera
+    </string>
+    <string name="lbl_challenge">RETO</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lbl_description_challenge">Subir Nivel de Autonomia Financiera</string>
+    <string name="lbl_percentage">% Puntaje</string>
+    <string name="lbl_less_anciety">Reducir nivel Ansiedad Financiera</string>
+    <string name="lbl_points">Puntaje $mocion</string>
+    <string name="lbl_buy_membership">Comprando su membresia activara beneficios para lograr reto</string>
+    <string name="lbl_Fremium">9 Días Gratis</string>
+    <string name="lbl_fremium">9 Días Gratis</string>
+    <string name="lbl_buy">Comprar</string>
 </resources>

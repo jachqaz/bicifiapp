@@ -1,17 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.bicifiapp"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        applicationId ApplicationId.id
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,15 +24,49 @@ android {
         }
     }
 
+    viewBinding {
+        enabled = true
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    api SupportLibraries.appcompat
+    api SupportLibraries.constraintLayout
+
+    implementation SupportLibraries.design
+    implementation SupportLibraries.appcompat
+    implementation Libraries.recyclerview
+
+    implementation Libraries.kotlin
+    implementation Libraries.ktx
+    implementation Libraries.fragmentKtx
+
+    implementation Libraries.glide
+    implementation Libraries.legacySupport
+    implementation Libraries.appCompat
+    implementation Libraries.constraintLayout
+    kapt Libraries.glideCompile
+
+    implementation Libraries.koinAndroid
+    implementation Libraries.koinViewModel
+
+    implementation Firebase.firebaseAnalytics
+    implementation Firebase.firebaseInAppMessaging
+    implementation Firebase.firebasePerf
+    implementation Firebase.crashlytics
+    implementation Libraries.timber
+
+    implementation Libraries.lifecycle
+    implementation Libraries.lifecycleExtensions
+    kapt Libraries.lifecycleCompiler
+
+    implementation ExternalLibraries.onboarder
+
+    implementation TestLibraries.junit
+    testImplementation Testing.junit
+    androidTestImplementation Testing.runner
+    androidTestImplementation Testing.expresso
 }

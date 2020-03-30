@@ -1,2 +1,3 @@
 rootProject.name='bicifiapp'
 include ':app'
+include ':buildSrc'
