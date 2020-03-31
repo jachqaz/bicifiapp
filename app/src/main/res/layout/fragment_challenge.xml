@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.ChallengeFragment">
 
     <TextView
         android:id="@+id/lblChallenge"
         style="@style/SuperTitles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="36dp"
         android:text="@string/lbl_challenge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,12 +21,12 @@
         android:id="@+id/lblChallengeDescription"
         style="@style/Titles"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:text="@string/lbl_description_challenge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imvUpLevel"
-        tools:text="@string/lbl_description_challenge" />
+        app:layout_constraintTop_toBottomOf="@+id/imvUpLevel" />
 
     <TextView
         android:id="@+id/lblLessAnciety"
@@ -70,7 +70,7 @@
         android:id="@+id/imvUpLevel"
         android:layout_width="70dp"
         android:layout_height="77dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/ic_trending"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,11 +88,11 @@
 
     <TextView
         android:id="@+id/textView"
-        style="@style/SubTitles"
+        style="@style/Titles"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
         android:text="@string/lbl_buy_membership"

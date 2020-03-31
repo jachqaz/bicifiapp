@@ -40,6 +40,8 @@ object Versions {
     const val onboarder = "1.0.4"
     const val fragmentKtx = "1.2.3"
     const val constraintLayout = "1.1.3"
+    const val facebook = "[4,5)"
+    const val google = "17.0.0"
 
     const val legacySupport = "1.0.0"
     const val compileSdk = 29
@@ -63,13 +65,16 @@ object Libraries {
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
     const val lifecycle = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val constraintLayout =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
 }
 
 object ExternalLibraries {
     const val onboarder = "com.codemybrainsout.onboarding:onboarder:${Versions.onboarder}"
+    const val google = "com.google.android.gms:play-services-auth:${Versions.google}"
+    const val facebookAuth = "com.facebook.android:facebook-android-sdk:${Versions.facebook}"
 }
 
 object SupportLibraries {

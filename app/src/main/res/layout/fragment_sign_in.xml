@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.SignInFragment">
+
+    <ImageView
+        android:id="@+id/imvLogo"
+        android:layout_width="0dp"
+        android:layout_height="313dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/lbl_logo"
+        android:src="@drawable/bici_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signInGoogle"
+        android:layout_width="@dimen/empty_size"
+        android:layout_height="@dimen/dimen_size_40"
+        android:layout_marginStart="@dimen/default_size"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="@dimen/default_size"
+        android:background="@color/background_color_google_sign_in"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imvLogo">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_size_36"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:contentDescription="@string/lbl_logo_google"
+            android:padding="@dimen/very_small_size"
+            android:src="@drawable/ic_google"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="9"
+            android:gravity="center"
+            android:text="@string/continue_with_google"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/signInFacebook"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:paddingTop="@dimen/dimen_size_14"
+        android:paddingBottom="@dimen/dimen_size_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInGoogle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signInTwitter"
+        android:layout_width="@dimen/empty_size"
+        android:layout_height="@dimen/dimen_size_40"
+        android:layout_marginStart="@dimen/default_size"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/default_size"
+        android:background="@color/background_color_twitter_sign_in"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInFacebook">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_size_36"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:contentDescription="@string/lbl_logo_google"
+            android:padding="@dimen/very_small_size"
+            android:src="@drawable/ic_twitter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="9"
+            android:gravity="center"
+            android:text="@string/continue_with_twitter"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">bicifiapp</string>
+    <string name="app_name">Bicifi</string>
     <string name="lbl_reach_25">Si logras menos de 25%</string>
     <string name="lbl_question_finances">Interrogante Financiero... Nivel Bicifi 1</string>
     <string name="lbl_reach_25_50">Entre 25% y 50%</string>
@@ -17,15 +17,18 @@
         \n Mejorará su autonomía financiera
     </string>
     <string name="lbl_challenge">RETO</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lbl_description_challenge">Subir Nivel de Autonomia Financiera</string>
     <string name="lbl_percentage">% Puntaje</string>
     <string name="lbl_less_anciety">Reducir nivel Ansiedad Financiera</string>
     <string name="lbl_points">Puntaje $mocion</string>
-    <string name="lbl_buy_membership">Comprando su membresia activara beneficios para lograr reto</string>
+    <string name="lbl_buy_membership">Comprando su membresia activara beneficios para lograr retos</string>
     <string name="lbl_Fremium">9 Días Gratis</string>
     <string name="lbl_fremium">9 Días Gratis</string>
     <string name="lbl_buy">Comprar</string>
+    <string name="continue_with_google">Continuar con Google</string>
+    <string name="continue_with_twitter">Continuar con Twitter</string>
+    <string name="lbl_logo">Logo Bicifi</string>
+    <string name="lbl_logo_google">Logo Google</string>
+    <string name="auth_success_social_failed">Autenticación fallida</string>
+    <string name="auth_success_social_network">Autenticación exitosa</string>
 </resources>

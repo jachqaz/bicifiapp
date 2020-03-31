@@ -22,6 +22,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            buildConfigField "String", "GOOGLE_GCP_KEY", "\"681179643172-cpvpj24dcb20mb1d3bi98088m4snelkt.apps.googleusercontent.com\""
+            resValue "string", "FACEBOOK_APP_ID", "\"520603308886525\""
+        }
     }
 
     viewBinding {
@@ -42,17 +46,20 @@ dependencies {
 
     implementation Libraries.kotlin
     implementation Libraries.ktx
-    implementation Libraries.fragmentKtx
 
     implementation Libraries.glide
     implementation Libraries.legacySupport
     implementation Libraries.appCompat
     implementation Libraries.constraintLayout
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt Libraries.glideCompile
 
     implementation Libraries.koinAndroid
     implementation Libraries.koinViewModel
 
+    implementation Firebase.firebaseAuth
     implementation Firebase.firebaseAnalytics
     implementation Firebase.firebaseInAppMessaging
     implementation Firebase.firebasePerf
@@ -64,6 +71,8 @@ dependencies {
     kapt Libraries.lifecycleCompiler
 
     implementation ExternalLibraries.onboarder
+    implementation ExternalLibraries.google
+    implementation ExternalLibraries.facebookAuth
 
     implementation TestLibraries.junit
     testImplementation Testing.junit

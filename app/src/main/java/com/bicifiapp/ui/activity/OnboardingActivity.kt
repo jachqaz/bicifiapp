@@ -1,5 +1,6 @@
 package com.bicifiapp.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import com.bicifiapp.R
 import com.codemybrainsout.onboarder.AhoyOnboarderActivity
@@ -23,7 +24,9 @@ class OnboardingActivity : AhoyOnboarderActivity() {
     }
 
     override fun onFinishButtonPressed() {
-
+        val intent = Intent(this, ChallengeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun createCards() {
