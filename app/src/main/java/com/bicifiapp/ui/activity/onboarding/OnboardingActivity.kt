@@ -1,11 +1,11 @@
-package com.bicifiapp.ui.activity
+package com.bicifiapp.ui.activity.onboarding
 
 import android.content.Intent
 import android.os.Bundle
 import com.bicifiapp.R
+import com.bicifiapp.ui.activity.challenge.ChallengeActivity
 import com.codemybrainsout.onboarder.AhoyOnboarderActivity
 import com.codemybrainsout.onboarder.AhoyOnboarderCard
-import com.codemybrainsout.onboarder.AhoyOnboarderFragment
 import java.util.*
 
 class OnboardingActivity : AhoyOnboarderActivity() {

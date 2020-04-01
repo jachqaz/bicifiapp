@@ -31,4 +31,8 @@
     <string name="lbl_logo_google">Logo Google</string>
     <string name="auth_success_social_failed">Autenticación fallida</string>
     <string name="auth_success_social_network">Autenticación exitosa</string>
+    <string name="fb_login_protocol_scheme">fb520603308886525</string>
+    <string name="lbl_title_app">"Puntaje de Autonomia Financiera "</string>
+    <string name="lbl_subtitle_app">Retese usted mismo, duerma tranquilo ...</string>
+    <string name="lbl_privacy_policy">Para continuar, tu estas de acuerdo con los términos de uso de Bicifi y confirmas que tu has leído la política de privacidad de Bicifi</string>
 </resources>

@@ -4,6 +4,7 @@ object ApplicationId {
 
 private object Modules {
     const val app = ":app"
+    const val notificationssettings = ":notificationssettings"
 }
 
 object Releases {
@@ -42,12 +43,21 @@ object Versions {
     const val constraintLayout = "1.1.3"
     const val facebook = "[4,5)"
     const val google = "17.0.0"
+    const val firestoreKtx = "21.4.2"
+    const val androidTools = "3.6.1"
+    const val googleServices = "4.3.3"
 
     const val legacySupport = "1.0.0"
     const val compileSdk = 29
     const val buildToolsVersion = "29.0.2"
     const val minSdk = 21
     const val targetSdk = 29
+}
+
+object Classpath {
+    const val androidTools = "com.android.tools.build:gradle:${Versions.androidTools}"
+    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
 }
 
 object Libraries {
@@ -112,4 +122,5 @@ object Firebase {
         "com.google.firebase:firebase-inappmessaging-display:${Versions.firebaseInAppMessage}"
     const val firebasePerf = "com.google.firebase:firebase-perf:${Versions.firebasePerf}"
     const val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
+    const val firestoreKtx = "com.google.firebase:firebase-firestore-ktx:${Versions.firestoreKtx}"
 }

@@ -1,14 +1,16 @@
-package com.bicifiapp.ui.fragments
+package com.bicifiapp.ui.fragments.signin
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.bicifiapp.BuildConfig
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentSignInBinding
-import com.bicifiapp.ui.activity.SignInActivity
+import com.bicifiapp.ui.activity.signin.SignInActivity
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -21,10 +23,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.*
 import timber.log.Timber
 
+
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private var _binding: FragmentSignInBinding? = null
-    private var callback: (() -> Unit)? = null
     private val binding get() = _binding!!
     private lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -38,9 +40,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentSignInBinding.bind(view)
         initValues()
         initListener()
-        _binding = FragmentSignInBinding.bind(view)
+        initViewsProperties()
     }
 
     override fun onDestroyView() {
@@ -71,6 +74,12 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         }
     }
 
+    private fun initViewsProperties() {
+        val txtPrivacy = SpannableString(getString(R.string.lbl_privacy_policy))
+        txtPrivacy.setSpan(UnderlineSpan(), 0, txtPrivacy.length, 0)
+        binding.lblPrivacyPolicy.text = txtPrivacy
+    }
+
     private fun initListener() {
         binding.signInGoogle.setOnClickListener {
             signInGoogle()
@@ -94,7 +103,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private fun signInGoogle() {
         val signInIntent = mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN_GOOGLE)
+        startActivityForResult(
+            signInIntent,
+            RC_SIGN_IN_GOOGLE
+        )
     }
 
     private fun initValues() {
@@ -114,7 +126,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private fun initFacebookValues() {
         binding.signInFacebook.fragment = this
-        binding.signInFacebook.setReadPermissions(EMAIL_READ_PERMISSION, PROFILE_READ_PERMISSION)
+        binding.signInFacebook.setReadPermissions(
+            EMAIL_READ_PERMISSION,
+            PROFILE_READ_PERMISSION
+        )
 
         binding.signInFacebook.registerCallback(
             callbackManager,
@@ -172,7 +187,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
         @JvmStatic
         fun getInstance(callback: (() -> Unit)? = null): SignInFragment {
-            this.callback = callback
+            Companion.callback = callback
             return SignInFragment()
         }
 

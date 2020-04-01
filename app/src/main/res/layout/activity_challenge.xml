@@ -4,6 +4,6 @@
     android:id="@+id/challengeActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.ChallengeActivity">
+    tools:context=".ui.activity.challenge.ChallengeActivity">
 
 </FrameLayout>
