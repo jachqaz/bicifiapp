@@ -26,6 +26,11 @@ import timber.log.Timber
 
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
+    enum class OPTIONS {
+        SIGNIN,
+        PRIVACY_POLICY
+    }
+
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
     private lateinit var mGoogleSignInClient: GoogleSignInClient
@@ -81,6 +86,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     }
 
     private fun initListener() {
+        binding.lblPrivacyPolicy.setOnClickListener {
+            callback?.invoke(OPTIONS.PRIVACY_POLICY)
+        }
+
         binding.signInGoogle.setOnClickListener {
             signInGoogle()
         }
@@ -161,7 +170,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private fun authSuccess() {
         showSnackBar(R.string.auth_success_social_network, R.color.success_snackbar)
-        callback?.invoke()
+        callback?.invoke(OPTIONS.SIGNIN)
     }
 
     private fun authFailed() {
@@ -183,10 +192,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         private const val TWITTER_PROVIDER = "twitter.com"
         private const val EMAIL_READ_PERMISSION = "email"
         private const val PROFILE_READ_PERMISSION = "public_profile"
-        private var callback: (() -> Unit)? = null
+        private var callback: ((OPTIONS) -> Unit)? = null
 
         @JvmStatic
-        fun getInstance(callback: (() -> Unit)? = null): SignInFragment {
+        fun getInstance(callback: ((OPTIONS) -> Unit)? = null): SignInFragment {
             Companion.callback = callback
             return SignInFragment()
         }

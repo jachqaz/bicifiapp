@@ -16,6 +16,7 @@ class ChallengeActivity : AppCompatActivity() {
         setFragment(ChallengeFragment.getInstance {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
+            finish()
         })
     }
 
