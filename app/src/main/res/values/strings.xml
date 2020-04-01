@@ -31,4 +31,40 @@
     <string name="lbl_logo_google">Logo Google</string>
     <string name="auth_success_social_failed">Autenticación fallida</string>
     <string name="auth_success_social_network">Autenticación exitosa</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_conditions">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum justo diam, hendrerit ut justo ac, dapibus venenatis nunc.
+        Vivamus egestas scelerisque aliquet. Donec pulvinar egestas lacus, auctor lacinia est elementum convallis. Donec et placerat mi, ac posuere odio.
+        Aliquam erat volutpat. In ipsum sapien, fermentum vitae faucibus nec, semper sed tellus. Nunc dictum, ante eu euismod venenatis, magna arcu dictum
+        ligula, in feugiat purus sapien a ante. Donec diam libero, pellentesque vitae iaculis ac, consectetur tincidunt metus. In condimentum mollis elementum. \n
+
+        Ut non nulla ante. Sed at malesuada odio. In hac habitasse platea dictumst. Aenean in semper dui. Phasellus lacinia pulvinar lorem eget bibendum.
+        Morbi placerat vitae justo id bibendum. Ut ornare sodales leo, nec placerat nisl dignissim eu. Etiam vitae ullamcorper dui.
+        In hac habitasse platea dictumst. Donec maximus placerat justo non efficitur. Donec egestas tincidunt nisl sed congue.
+        Praesent a ante fermentum, elementum massa vitae, pretium erat. Duis laoreet commodo massa, et fringilla sapien blandit non.
+        Pellentesque vulputate ultricies lectus, at tincidunt augue bibendum a. Vivamus ullamcorper mauris ligula, id accumsan nibh tristique sit amet. \n
+
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec lacinia diam placerat libero hendrerit, id
+        finibus augue gravida. Quisque posuere turpis at magna gravida lobortis. Nunc hendrerit risus ut ante porta, at vestibulum nisi vestibulum.
+        Curabitur lacinia ut turpis sed aliquam. Etiam maximus est odio, vitae hendrerit justo eleifend non. Proin sed nulla dolor.\n
+
+        Sed rutrum nisi diam, sit amet aliquam neque tincidunt sed. Aenean efficitur justo et fringilla auctor. Etiam sit amet varius erat.
+        Morbi at leo a dolor venenatis scelerisque non ut diam. Praesent non semper diam, vitae blandit elit. Suspendisse orci justo, facilisis
+        sit amet augue non, vulputate fringilla leo. Pellentesque tempus eros at egestas ornare. Cras rhoncus auctor nibh. Fusce porttitor leo
+        eget neque dignissim pretium. Nullam egestas dictum eleifend.\n
+
+        Mauris pellentesque ut augue ut placerat. Curabitur blandit leo vel orci fringilla, et tempor massa dignissim. Donec pellentesque tortor vitae
+        nunc porta bibendum. Duis tempus ullamcorper odio, ac vestibulum arcu suscipit ut. Proin sem purus, viverra eu sem nec, laoreet vehicula ante.
+        Aliquam elit justo, molestie vitae varius interdum, gravida vitae ante. Nam consequat ultricies libero vitae lobortis. Etiam eget gravida libero.
+        Nunc nec rhoncus magna. Integer sit amet mauris dui. In lacinia cursus arcu. Mauris convallis lorem at sapien imperdiet mattis. Donec eget consectetur
+        ante, ac congue metus. Integer ac condimentum justo.</string>
+    <string name="title_terms_conditions">Términos y condiiones</string>
+    <string name="accept">Aceptar</string>
+    <string name="title_notification_pass">Permiso de Notificaciones</string>
+    <string name="textNotification">Mauris pellentesque ut augue ut placerat. Curabitur blandit leo vel orci fringilla, et tempor massa dignissim. Donec pellentesque tortor vitae
+        nunc porta bibendum. Duis tempus ullamcorper odio, ac vestibulum arcu suscipit ut. Proin sem purus, viverra eu sem nec, laoreet vehicula ante.
+        Aliquam elit justo, molestie vitae varius interdum, gravida vitae ante. Nam consequat ultricies libero vitae lobortis. Etiam eget gravida libero.
+        Nunc nec rhoncus magna. Integer sit amet mauris dui. </string>
+    <string name="cancel">Cancelar</string>
 </resources>
