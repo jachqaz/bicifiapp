@@ -19,8 +19,8 @@ class OnboardingActivity : AhoyOnboarderActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         createCards()
-        setGradientBackground()
         setFinishButtonTitle(R.string.lbl_challenge)
+        setColorBackground(R.color.white)
     }
 
     override fun onFinishButtonPressed() {
@@ -75,18 +75,20 @@ class OnboardingActivity : AhoyOnboarderActivity() {
         when (icon) {
             0 -> AhoyOnboarderCard(title, description).also {
                 it.backgroundColor = R.color.black_transparent
-                it.titleColor = R.color.white
-                it.descriptionColor = R.color.grey_200
+                it.titleColor = R.color.black
+                it.descriptionColor = R.color.grey_600
                 it.titleTextSize = dpToPixels(TITLE_TEXT_SIZE, this)
                 it.descriptionTextSize = dpToPixels(DESCRIPTION_TEXT_SIZE_2, this)
             }
             else -> {
                 AhoyOnboarderCard(title, description, icon).also {
                     it.backgroundColor = R.color.black_transparent
-                    it.titleColor = R.color.white
-                    it.descriptionColor = R.color.grey_200
+                    it.titleColor = R.color.black
+                    it.descriptionColor = R.color.grey_600
                     it.titleTextSize = dpToPixels(TITLE_TEXT_SIZE, this)
                     it.descriptionTextSize = dpToPixels(DESCRIPTION_TEXT_SIZE, this)
+                    it.iconHeight = 750
+                    it.iconWidth = 750
                 }
             }
         }

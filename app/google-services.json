@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "681179643172",
+    "firebase_url": "https://bicifi-dev.firebaseio.com",
+    "project_id": "bicifi-dev",
+    "storage_bucket": "bicifi-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681179643172:android:22a935f8af4aad32eb07b1",
+        "android_client_info": {
+          "package_name": "com.bicifiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681179643172-9bjr2lo55jqaq1ierjptud9vpcsft2qn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bicifiapp",
+            "certificate_hash": "80b6782d16b2afbb70779af325caf99dadf8df6f"
+          }
+        },
+        {
+          "client_id": "681179643172-cpvpj24dcb20mb1d3bi98088m4snelkt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXP05mDK3I2Y-IrBtCwqOfpXcM5_CyYH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681179643172-cpvpj24dcb20mb1d3bi98088m4snelkt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
