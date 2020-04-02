@@ -71,4 +71,13 @@
         Aliquam elit justo, molestie vitae varius interdum, gravida vitae ante. Nam consequat ultricies libero vitae lobortis. Etiam eget gravida libero.
         Nunc nec rhoncus magna. Integer sit amet mauris dui. </string>
     <string name="cancel">Cancelar</string>
+    <string name="title_profile">Perfil</string>
+    <string name="start_test">Inicio test de autonomia financiera</string>
+    <string name="tip_profile">TIP: Más servicios y beneficios nos permite interactuar y saber donde vive.</string>
+    <string name="textNotificationPass">Acepta notificaciones y tips vía email.</string>
+    <string name="textLocationPass">Acepta reportar la ubicación de su dispositivo.</string>
+    <string name="birthday">Fecha de nacimiento</string>
+    <string name="family_rol">Rol familiar</string>
+    <string name="education_level">Nivel de educación</string>
+    <string name="year_experience">Años de experiencia</string>
 </resources>
