@@ -12,11 +12,11 @@ class DataSourceFirestore : DataSource {
         Firebase.firestore
     }
 
-    override suspend fun save(notificationEntity: NotificationEntity): Boolean =
+    override suspend fun save(perfilEntity: PerfilEntity): Boolean =
         suspendCoroutine { continuation ->
-            db.collection("users").document(notificationEntity.id)
+            db.collection("users").document(perfilEntity.id)
                 .set(
-                    notificationEntity
+                    perfilEntity
                 ).addOnSuccessListener {
                     continuation.resume(true)
                 }.addOnFailureListener {
@@ -24,11 +24,11 @@ class DataSourceFirestore : DataSource {
                 }
         }
 
-    override suspend fun getNotifications(): List<NotificationEntity> =
+    override suspend fun getPerfils(): List<PerfilEntity> =
         suspendCoroutine { continuation ->
             db.collection("users").get(
             ).addOnSuccessListener {
-                continuation.resume(it.toObjects(NotificationEntity::class.java))
+                continuation.resume(it.toObjects(PerfilEntity::class.java))
             }.addOnFailureListener {
                 continuation.resumeWithException(it)
             }

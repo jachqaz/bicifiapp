@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.NotificationPassFragment">
+    tools:context=".ui.fragments.profile.ProfileFragment">
 
     <ImageView
         android:id="@+id/imvLogo"
@@ -44,12 +44,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-         <!--   <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
--->
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/profileBirthday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -59,15 +58,15 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textColor="@color/colorAccent"
-                    />
-         <!--   </android.support.design.widget.TextInputLayout>-->
+                    android:focusable="false"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-           <!-- <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">-->
+                android:layout_marginTop="8dp">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/familyRol"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -77,14 +76,14 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textColor="@color/colorAccent" />
-          <!--  </android.support.design.widget.TextInputLayout>-->
+            </com.google.android.material.textfield.TextInputLayout>
 
-           <!-- <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">-->
+                android:layout_marginTop="8dp">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/educationLevel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,14 +93,14 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textColor="@color/colorAccent" />
-           <!-- </android.support.design.widget.TextInputLayout>-->
+            </com.google.android.material.textfield.TextInputLayout>
 
-          <!--  <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">-->
+                android:layout_marginTop="8dp">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/yearExperience"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -111,7 +110,7 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     android:textColor="@color/colorAccent" />
-           <!-- </android.support.design.widget.TextInputLayout>-->
+            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -156,21 +155,35 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textNotificationPass" />
 
+                <ImageView
+                    android:id="@+id/imgTipLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_lightbulb_outline_green"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textLocationPass"/>
+
+                <TextView
+                    android:id="@+id/textTips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="@string/tip_profile"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toRightOf="@+id/imgTipLight"
+                    app:layout_constraintTop_toBottomOf="@+id/textLocationPass"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:background="@drawable/tooltip"
+                    android:padding="3dp"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/textTips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/tip_profile"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/btnAccept"
+        android:id="@+id/btnStartTest"
         style="@style/ButtonMain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -1,14 +1,24 @@
 package com.bicifiapp.notificationssettings.repository.datasources
 
-import com.bicifiapp.notificationssettings.repository.Notification
+import com.bicifiapp.notificationssettings.repository.Perfil
 
-data class NotificationEntity(
+data class PerfilEntity(
     val id: String,
-    val accept: Boolean
+    val birthDay: String,
+    val familyRol: String,
+    val educationLevel: String,
+    val yearExperience: Int,
+    val acceptNotification: Boolean,
+    val acceptLocation: Boolean
 ) {
-    fun toNotification() =
-        Notification(
+    fun toPerfil() =
+        Perfil(
             id,
-            accept
+            birthDay,
+            familyRol,
+            educationLevel,
+            yearExperience,
+            acceptNotification,
+            acceptLocation
         )
 }

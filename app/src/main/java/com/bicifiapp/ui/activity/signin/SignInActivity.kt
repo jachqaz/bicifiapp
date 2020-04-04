@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bicifiapp.R
+import com.bicifiapp.ui.fragments.profile.ProfileFragment
 import com.bicifiapp.ui.fragments.TermConditionFragment
 import com.bicifiapp.ui.fragments.signin.SignInFragment
 import timber.log.Timber
@@ -21,6 +22,7 @@ class SignInActivity : AppCompatActivity() {
             when (options) {
                 SignInFragment.OPTIONS.PRIVACY_POLICY ->
                     setFragment(TermConditionFragment.newInstance())
+                SignInFragment.OPTIONS.SIGNIN -> setFragment(ProfileFragment.newInstance())
                 else -> Timber.i("Autenticado")
             }
         }
