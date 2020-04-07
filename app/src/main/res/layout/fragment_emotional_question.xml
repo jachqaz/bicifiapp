@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.questions.EmotionalQuestionFragment">
+
+    <TextView
+        android:id="@+id/titleQtEmotional"
+        style="@style/Titles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/title_question_emotinal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50121653" />
+
+    <TextView
+        android:id="@+id/lblLastQtEmotional"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_description_last_question_emotional"
+        app:layout_constraintRight_toRightOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/titleQtEmotional" />
+
+    <TextView
+        android:id="@+id/textdateLastQtEmotional"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 20/mayo/2020 8:45 am"
+        app:layout_constraintLeft_toLeftOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/titleQtEmotional" />
+
+    <ImageView
+        android:id="@+id/imgSmileLastQtEmotional"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/smile_pokerface"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblLastQtEmotional"/>
+
+    <TextView
+        android:id="@+id/textDescriptionQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Tiene un presupuesto de ingresos y egresos que revisa solo (soltero) o con su familia (casado o con partner) comparando cuanto realmente gano (ganaron) y gasto (gastaron) por lo menos una vez cada trimestre ?"
+        app:layout_constraintTop_toBottomOf="@+id/imgSmileLastQtEmotional"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/btnEmotionalVeryDissatisfied"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:background="@color/redLight"
+        android:text="@string/i_am_defeated"
+        style="@style/ButtonQestionEmotional"
+        android:drawableBottom="@drawable/ic_sentiment_very_dissatisfied_white_36dp"
+        app:layout_constraintRight_toLeftOf="@id/btnEmotionalDissatisfied"
+        app:layout_constraintTop_toBottomOf="@+id/textDescriptionQuestion" />
+
+    <TextView
+        android:id="@+id/btnEmotionalDissatisfied"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:background="@color/greyLight"
+        android:text="@string/i_am_soso"
+        style="@style/ButtonQestionEmotional"
+        android:drawableBottom="@drawable/ic_sentiment_dissatisfied_white_36dp"
+        app:layout_constraintRight_toRightOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textDescriptionQuestion" />
+
+    <TextView
+        android:id="@+id/btnEmotionalSatisfied"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/i_am_almost_fine"
+        style="@style/ButtonQestionEmotional"
+        android:drawableBottom="@drawable/ic_sentiment_satisfied_white_36dp"
+        app:layout_constraintLeft_toLeftOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textDescriptionQuestion" />
+
+    <TextView
+        android:id="@+id/btnEmotionalVerySatisfied"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:background="@color/greenLight"
+        android:text="@string/i_am_fine"
+        style="@style/ButtonQestionEmotional"
+        android:drawableBottom="@drawable/ic_sentiment_very_satisfied_white_36dp"
+        app:layout_constraintLeft_toRightOf="@id/btnEmotionalSatisfied"
+        app:layout_constraintTop_toBottomOf="@+id/textDescriptionQuestion" />
+
+    <TextView
+        android:id="@+id/lblSentimentVerySatisfied"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_sentiment_vey_satisfied"
+        android:background="@color/greenLight"
+        style="@style/ButtonAnswerEmotional"
+        android:layout_marginTop="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEmotionalVerySatisfied" />
+
+    <TextView
+        android:id="@+id/lblSentimentSatisfied"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_sentiment_satisfied"
+        android:background="@color/greyLight"
+        style="@style/ButtonAnswerEmotional"
+        android:layout_marginTop="5dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSentimentVerySatisfied" />
+
+    <TextView
+        android:id="@+id/lblSentimentDissatisfied"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_sentiment_dissatisfied"
+        android:layout_marginTop="5dp"
+        style="@style/ButtonAnswerEmotional"
+        android:background="@color/colorPrimary"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSentimentSatisfied" />
+
+    <TextView
+        android:id="@+id/lblSentimentVeryDissatisfied"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_sentiment_very_dissatisfied"
+        android:layout_marginTop="5dp"
+        style="@style/ButtonAnswerEmotional"
+        android:background="@color/redLight"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSentimentDissatisfied" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

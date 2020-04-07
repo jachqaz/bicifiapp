@@ -7,4 +7,8 @@
     <color name="background_color_twitter_sign_in">#00acee</color>
     <color name="error_snackbar">#c65656</color>
     <color name="success_snackbar">#51ac4c</color>
+    <color name="greenLight">#7cb342</color>
+    <color name="greenDark">#4b830d</color>
+    <color name="redLight">#f44336</color>
+    <color name="greyLight">#828282</color>
 </resources>

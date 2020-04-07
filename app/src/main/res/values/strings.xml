@@ -80,4 +80,18 @@
     <string name="family_rol">Rol familiar</string>
     <string name="education_level">Nivel de educación</string>
     <string name="year_experience">Años de experiencia</string>
+    <string name="question">Pregunta</string>
+    <string name="lbl_description_last_question">Última respuesta</string>
+    <string name="no">NO</string>
+    <string name="yes">SI</string>
+    <string name="title_question_emotinal">Pregunta Estra Latido $mocional</string>
+    <string name="lbl_description_last_question_emotional">Último latido $mocional</string>
+    <string name="lbl_sentiment_vey_satisfied">Sin estres</string>
+    <string name="lbl_sentiment_satisfied">No me estreso, pero me falta</string>
+    <string name="lbl_sentiment_dissatisfied">Me esfuerzo pero igual me pone ansioso/a</string>
+    <string name="lbl_sentiment_very_dissatisfied">Trato de ni pensar pues me estresa el tema</string>
+    <string name="i_am_fine">Estoy bien</string>
+    <string name="i_am_defeated">defeated</string>
+    <string name="i_am_soso">Ahí voy</string>
+    <string name="i_am_almost_fine">Casi bien</string>
 </resources>
