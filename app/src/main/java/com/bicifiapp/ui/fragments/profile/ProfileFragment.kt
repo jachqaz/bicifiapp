@@ -1,26 +1,41 @@
 package com.bicifiapp.ui.fragments.profile
 
-import android.app.DatePickerDialog
-import android.content.pm.PackageManager
-import android.os.Bundle
-import android.view.View
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
+import android.content.Intent
+import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
+import co.devhack.androidextensions.components.liveDataObserve
+import co.devhack.androidextensions.ui.dialogDate
+import co.devhack.base.State
+import co.devhack.presentation.BaseFragment
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentProfileBinding
-import com.bicifiapp.ui.fragments.signin.DatePickerFragment
+import com.bicifiapp.extensions.userId
+import com.bicifiapp.notificationssettings.repository.Profile
+import com.bicifiapp.ui.activity.questions.QuestionActivity
+import com.bicifiapp.ui.dialogs.DialogLoading
+import com.bicifiapp.ui.dialogs.showAnimLoading
+import com.bicifiapp.ui.fragments.signin.SignInFragmentDirections
+import com.bicifiapp.ui.viewmodels.profile.ProfileViewModel
+import org.koin.android.ext.android.inject
 
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
+    private val profileViewModel by inject<ProfileViewModel>()
+
+    private lateinit var dialogLoading: DialogLoading
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    private val MY_PERMISSIONS_LOCATION: Int = 100
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentProfileBinding.bind(view)
+    override fun hideProgress() {
+        dialogLoading.dismiss()
+    }
+
+    override fun initView() {
+        _binding = FragmentProfileBinding.bind(view!!)
         initListeners()
+        initAdapterRolFamily()
+        initAdapterEducationLevel()
+        initLiveData()
     }
 
     override fun onDestroyView() {
@@ -28,82 +43,104 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onDestroyView()
     }
 
+    override fun showProgress() {
+        dialogLoading = showAnimLoading()
+    }
+
     private fun initListeners() {
-        // set fragment date picker
-        binding.profileBirthday.setOnClickListener {
-            val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                val selectedDate = dayOfMonth.toString() + " / " + (month + 1) + " / " + year
-                binding.profileBirthday.setText(selectedDate)
-            })
+        binding.profileBirthday.dialogDate(activity!!)
 
-            newFragment.show(activity?.supportFragmentManager!!, "datePicker")
-        }
-
-        // verify and get permission location android if switch is checked
         binding.switchLocalPass.setOnClickListener {
-            if (binding.switchLocalPass.isChecked) {
-                if (ContextCompat.checkSelfPermission(activity!!, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // Permission is not granted
-                    // Should we show an explanation?
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(activity!!,android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-                        // Show an explanation to the user *asynchronously* -- don't block
-                        // this thread waiting for the user's response! After the user
-                        // sees the explanation, try again to request the permission.
-                    } else {
-                        ActivityCompat.requestPermissions(activity!!,
-                            arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                            MY_PERMISSIONS_LOCATION)
-                    }
-                }
-            }
+            requestPermissionEvent()
         }
 
-        // get data from send firebase when user accep buttom start text
         binding.btnStartTest.setOnClickListener {
-            val birthday = binding.profileBirthday.text.toString()
-            val familyRol = binding.familyRol.text.toString()
-            val educationLevel = binding.educationLevel.text.toString()
-            val yearExperience = binding.yearExperience.text.toString()
-            var notificationPass = false
-            var locationPass = false
-            if (binding.switchLocalPass.isChecked) {
-                locationPass = true
-            }
-            if (binding.switchNotificationPass.isChecked) {
-                notificationPass = true
-            }
-            System.out.println("birthday: " + birthday + "\n" + "familyRol: " + familyRol + "\n" + "educationLevel: " + educationLevel + "\n" + "yearExperience: " + yearExperience + "\n"
-            + "notificationPass: " + notificationPass + "\n" + "locationPass: " + locationPass)
+            saveProfileData()
+        }
+    }
 
+    private fun initAdapterEducationLevel() {
+        ArrayAdapter.createFromResource(
+            activity!!,
+            R.array.education_level_array,
+            android.R.layout.simple_spinner_dropdown_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.educationLevel.adapter = adapter
+            binding.educationLevel.setSelection(0)
+        }
+    }
 
+    private fun initAdapterRolFamily() {
+        ArrayAdapter.createFromResource(
+            activity!!,
+            R.array.rol_family_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.familyRol.adapter = adapter
+            binding.familyRol.setSelection(0)
+        }
+    }
+
+    private fun requestPermissionEvent() {
+        if (binding.switchLocalPass.isChecked) {
+            requestPermissions(
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                CODE_REQUEST_PERMISSION_LOCATION
+            ) {
+
+            }
+        }
+    }
+
+    private fun saveProfileData() {
+        val birthday = binding.profileBirthday.text.toString()
+        val familyRol = binding.familyRol.selectedItem.toString()
+        val educationLevel = binding.educationLevel.selectedItem.toString()
+        val yearExperience = binding.yearExperience.text.toString().toInt()
+        val acceptNotification = binding.switchNotificationPass.isChecked
+        val acceptLocation = binding.switchLocalPass.isChecked
+
+        profileViewModel.saveProfile(
+            Profile(
+                userId(),
+                birthday,
+                familyRol,
+                educationLevel,
+                yearExperience,
+                acceptNotification,
+                acceptLocation
+            )
+        )
+    }
+
+    private fun initLiveData() {
+        liveDataObserve(profileViewModel.saveProfileLiveData, ::onSaveProfileStateChange)
+    }
+
+    private fun onSaveProfileStateChange(state: State?) =
+        when (state) {
+            is State.Failed -> {
+                hideProgress()
+                handleFailure(state.failure)
+            }
+            State.Loading -> showProgress()
+            State.Empty -> hideProgress()
+            is State.Success -> {
+                successful()
+                hideProgress()
+            }
+            null -> hideProgress()
+        }
+
+    private fun successful() {
+        Intent(activity!!, QuestionActivity::class.java).also {
+            startActivity(it)
         }
     }
 
     companion object {
-        @JvmStatic
-        fun newInstance() = ProfileFragment()
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>, grantResults: IntArray) {
-        when (requestCode) {
-            MY_PERMISSIONS_LOCATION -> {
-                // If request is cancelled, the result arrays are empty.
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return
-            }
-
-            // Add other 'when' lines to check for other
-            // permissions this app might request.
-            else -> {
-                // Ignore all other requests.
-            }
-        }
+        const val CODE_REQUEST_PERMISSION_LOCATION: Int = 100
     }
 }

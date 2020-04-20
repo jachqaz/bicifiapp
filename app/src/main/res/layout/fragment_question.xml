@@ -11,7 +11,7 @@
         style="@style/Titles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="52dp"
         android:text="@string/question"
         app:layout_constraintRight_toRightOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,10 +21,11 @@
         style="@style/Titles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text=" # 1 / 12"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintLeft_toLeftOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@sample/sampledata.json/questionNumber" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -37,6 +38,7 @@
         android:id="@+id/lblLastQt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/lbl_description_last_question"
         app:layout_constraintRight_toRightOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/titleQt" />
@@ -45,33 +47,24 @@
         android:id="@+id/textdateLastQt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" 3/mayo/2020 7:34 pm"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintLeft_toLeftOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/titleQt" />
+        app:layout_constraintTop_toBottomOf="@+id/titleQt"
+        tools:text="@sample/sampledata.json/lastVisited" />
 
     <TextView
         android:id="@+id/textDescriptionQuestion"
+        style="@style/SubTitles"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="67dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:layout_marginRight="15dp"
-        android:text="Tiene un presupuesto de ingresos y egresos que revisa solo (soltero) o con su
-        familia (casado o con partner) comparando cuanto realmente gano (ganaron) y gasto (gastaron) por lo menos una vez cada trimestre ?"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textdateLastQt" />
-
-    <Button
-        android:id="@+id/btnQuestionNO"
-        style="@style/ButtonQestion"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_margin="20dp"
-        android:background="@drawable/circle_button_red"
-        android:text="@string/no"
-        app:layout_constraintRight_toRightOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textDescriptionQuestion" />
+        app:layout_constraintTop_toBottomOf="@+id/textdateLastQt"
+        tools:text="@sample/sampledata.json/question" />
 
     <Button
         android:id="@+id/btnQuestionYES"
@@ -79,42 +72,57 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
         android:background="@drawable/circle_button_green"
         android:text="@string/yes"
         app:layout_constraintLeft_toLeftOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textDescriptionQuestion" />
 
+    <Button
+        android:id="@+id/btnQuestionNO"
+        style="@style/ButtonQestion"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/circle_button_red"
+        android:text="@string/no"
+        app:layout_constraintRight_toRightOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textDescriptionQuestion" />
+
     <TextView
         android:id="@+id/lblExtraInformation"
+        style="@style/SubTitles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="< Explicación extra base de conocimiento"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/lbl_explain_database_knowledge"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnQuestionYES" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:visibility="gone"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/greyMoreLight"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblExtraInformation">
 
-        <ScrollView
+        <TextView
+            android:id="@+id/textExtraDescription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textExtraDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/terms_conditions" />
-        </ScrollView>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            tools:text="@sample/sampledata.json/baseKnowledge" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

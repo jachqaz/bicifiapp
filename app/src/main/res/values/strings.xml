@@ -71,27 +71,47 @@
         Aliquam elit justo, molestie vitae varius interdum, gravida vitae ante. Nam consequat ultricies libero vitae lobortis. Etiam eget gravida libero.
         Nunc nec rhoncus magna. Integer sit amet mauris dui. </string>
     <string name="cancel">Cancelar</string>
-    <string name="title_profile">Perfil</string>
-    <string name="start_test">Inicio test de autonomia financiera</string>
-    <string name="tip_profile">TIP: Más servicios y beneficios nos permite interactuar y saber donde vive.</string>
+    <string name="title_profile">Perfil y Permisos</string>
+    <string name="start_test">Iniciar prueba de autonomia financiera</string>
+    <string name="tip_profile">TIP: Más servicios y beneficios si nos permite interactuar y saber donde vive.</string>
     <string name="textNotificationPass">Acepta notificaciones y tips vía email.</string>
     <string name="textLocationPass">Acepta reportar la ubicación de su dispositivo.</string>
     <string name="birthday">Fecha de nacimiento</string>
     <string name="family_rol">Rol familiar</string>
     <string name="education_level">Nivel de educación</string>
     <string name="year_experience">Años de experiencia</string>
-    <string name="question">Pregunta</string>
+    <string name="question">PREGUNTA #</string>
     <string name="lbl_description_last_question">Última respuesta</string>
     <string name="no">NO</string>
     <string name="yes">SI</string>
-    <string name="title_question_emotinal">Pregunta Estra Latido $mocional</string>
+    <string name="title_question_emotional">Pregunta Extra Latido $mocional</string>
     <string name="lbl_description_last_question_emotional">Último latido $mocional</string>
     <string name="lbl_sentiment_vey_satisfied">Sin estres</string>
     <string name="lbl_sentiment_satisfied">No me estreso, pero me falta</string>
     <string name="lbl_sentiment_dissatisfied">Me esfuerzo pero igual me pone ansioso/a</string>
     <string name="lbl_sentiment_very_dissatisfied">Trato de ni pensar pues me estresa el tema</string>
-    <string name="i_am_fine">Estoy bien</string>
-    <string name="i_am_defeated">defeated</string>
+    <string name="i_am_fine">Bien</string>
+    <string name="i_am_defeated">Derrotado</string>
     <string name="i_am_soso">Ahí voy</string>
     <string name="i_am_almost_fine">Casi bien</string>
+    <string name="lbl_image_tip">Tip</string>
+    <string name="lbl_first_time">Primera Vez</string>
+    <string name="lbl_explain_database_knowledge">Explicación extra base de conocimiento</string>
+    <string name="lbl_question_emotional">Independientemente de su puntaje en el test de autonomia financiera. Como se siente usted respecto de la forma como administra su dinero y como se siente cuando piensa acerca de su futuro economico.</string>
+
+    <string-array name="rol_family_array">
+        <item>Selecciona tu rol familiar</item>
+        <item>Divorciado/a</item>
+        <item>Partner</item>
+        <item>Casado/a</item>
+        <item>Soltero/a</item>
+    </string-array>
+
+    <string-array name="education_level_array">
+        <item>Selecciona tu nivel de educación</item>
+        <item>Bachiller</item>
+        <item>Universidad</item>
+        <item>Maestría</item>
+        <item>Doctorado</item>
+    </string-array>
 </resources>

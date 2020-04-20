@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/signInFragment">
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.bicifiapp.ui.fragments.signin.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/nextTermConditionAction"
+            app:destination="@id/termConditionFragment" />
+        <action
+            android:id="@+id/nextProfileAction"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termConditionFragment"
+        android:name="com.bicifiapp.ui.fragments.termandcondition.TermConditionFragment"
+        android:label="fragment_term_condition"
+        tools:layout="@layout/fragment_term_condition" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.bicifiapp.ui.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

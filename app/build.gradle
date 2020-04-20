@@ -5,6 +5,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
 apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion Versions.compileSdk
@@ -26,6 +27,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
+            buildConfigField "String", "BASE_URL_ZENDESK", '"https://bicifi.zendesk.com/api/v2/help_center/"'
             buildConfigField "String", "GOOGLE_GCP_KEY", "\"681179643172-cpvpj24dcb20mb1d3bi98088m4snelkt.apps.googleusercontent.com\""
             resValue "string", "FACEBOOK_APP_ID", "\"520603308886525\""
         }
@@ -41,6 +43,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(Modules.notificationssettings)
+    implementation project(Modules.questions)
 
     api SupportLibraries.appcompat
     api SupportLibraries.constraintLayout
@@ -51,18 +54,22 @@ dependencies {
 
     implementation Libraries.kotlin
     implementation Libraries.ktx
+    implementation Libraries.lifecycle
+    implementation Libraries.livedataExtensions
 
     implementation Libraries.glide
     implementation Libraries.legacySupport
     implementation Libraries.appCompat
     implementation Libraries.constraintLayout
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt Libraries.glideCompile
 
     implementation Libraries.koinAndroid
     implementation Libraries.koinViewModel
+
+    implementation Libraries.navigationFragment
+    implementation Libraries.navigationKtx
 
     implementation Firebase.firebaseAuth
     implementation Firebase.firebaseAnalytics
@@ -79,8 +86,22 @@ dependencies {
     implementation ExternalLibraries.google
     implementation ExternalLibraries.facebookAuth
 
+    implementation ExternalLibraries.frameworkAndroidExtensions
+    implementation ExternalLibraries.frameworkPresentation
+    implementation ExternalLibraries.frameworkBase
+
+    implementation Libraries.koinAndroid
+    implementation Libraries.koinViewModel
+
+    implementation ExternalLibraries.lottie
+
+    implementation ExternalLibraries.retrofit
+    implementation ExternalLibraries.moshiConverter
+    implementation ExternalLibraries.loggingInterceptor
+
     implementation TestLibraries.junit
     testImplementation Testing.junit
     androidTestImplementation Testing.runner
     androidTestImplementation Testing.expresso
+
 }

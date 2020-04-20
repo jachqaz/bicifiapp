@@ -7,9 +7,11 @@ import android.text.style.UnderlineSpan
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bicifiapp.BuildConfig
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentSignInBinding
+import com.bicifiapp.extensions.animSlideLeftToRight
 import com.bicifiapp.ui.activity.signin.SignInActivity
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -25,11 +27,6 @@ import timber.log.Timber
 
 
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
-
-    enum class OPTIONS {
-        SIGNIN,
-        PRIVACY_POLICY
-    }
 
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
@@ -87,7 +84,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private fun initListener() {
         binding.lblPrivacyPolicy.setOnClickListener {
-            callback?.invoke(OPTIONS.PRIVACY_POLICY)
+            findNavController().navigate(
+                SignInFragmentDirections.nextTermConditionAction(),
+                animSlideLeftToRight()
+            )
         }
 
         binding.signInGoogle.setOnClickListener {
@@ -170,7 +170,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private fun authSuccess() {
         showSnackBar(R.string.auth_success_social_network, R.color.success_snackbar)
-        callback?.invoke(OPTIONS.SIGNIN)
+        findNavController().navigate(
+            SignInFragmentDirections.nextProfileAction(),
+            animSlideLeftToRight()
+        )
     }
 
     private fun authFailed() {
@@ -192,11 +195,9 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         private const val TWITTER_PROVIDER = "twitter.com"
         private const val EMAIL_READ_PERMISSION = "email"
         private const val PROFILE_READ_PERMISSION = "public_profile"
-        private var callback: ((OPTIONS) -> Unit)? = null
 
         @JvmStatic
-        fun getInstance(callback: ((OPTIONS) -> Unit)? = null): SignInFragment {
-            Companion.callback = callback
+        fun getInstance(): SignInFragment {
             return SignInFragment()
         }
 

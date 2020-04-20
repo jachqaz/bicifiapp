@@ -6,31 +6,25 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class DataSourceFirestore : DataSource {
+class DataSourceFirestore : DataSourceNotificationSettings {
+
+    private companion object {
+        const val USERS_COLLECTION = "users"
+    }
 
     private val db by lazy {
         Firebase.firestore
     }
 
-    override suspend fun save(perfilEntity: PerfilEntity): Boolean =
+    override suspend fun save(profileEntity: ProfileEntity): Boolean =
         suspendCoroutine { continuation ->
-            db.collection("users").document(perfilEntity.id)
+            db.collection(USERS_COLLECTION).document(profileEntity.userId)
                 .set(
-                    perfilEntity
+                    profileEntity
                 ).addOnSuccessListener {
                     continuation.resume(true)
                 }.addOnFailureListener {
                     continuation.resumeWithException(it)
                 }
-        }
-
-    override suspend fun getPerfils(): List<PerfilEntity> =
-        suspendCoroutine { continuation ->
-            db.collection("users").get(
-            ).addOnSuccessListener {
-                continuation.resume(it.toObjects(PerfilEntity::class.java))
-            }.addOnFailureListener {
-                continuation.resumeWithException(it)
-            }
         }
 }
