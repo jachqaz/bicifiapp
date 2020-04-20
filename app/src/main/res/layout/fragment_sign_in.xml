@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imvLogo"
         android:layout_width="0dp"
-        android:layout_height="313dp"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/lbl_logo"
         android:src="@drawable/bici_logo"
         app:layout_constraintEnd_toEndOf="parent"

@@ -87,7 +87,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
 
         val currentQuestion = questions[currentQuestionIndex]
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
+        transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
         transaction.replace(
             R.id.questionFrame, QuestionFragment.newInstance(
                 currentQuestion.id,

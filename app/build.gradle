@@ -23,6 +23,9 @@ android {
 
     buildTypes {
         release {
+            buildConfigField "String", "BASE_URL_ZENDESK", '"https://bicifi.zendesk.com/api/v2/help_center/"'
+            buildConfigField "String", "GOOGLE_GCP_KEY", "\"681179643172-cpvpj24dcb20mb1d3bi98088m4snelkt.apps.googleusercontent.com\""
+            resValue "string", "FACEBOOK_APP_ID", "\"520603308886525\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
