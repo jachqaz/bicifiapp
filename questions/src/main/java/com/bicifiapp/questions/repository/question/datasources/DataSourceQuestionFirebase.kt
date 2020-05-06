@@ -6,7 +6,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class DataSourceQuestionFirestore : DataSourceQuestion {
+class DataSourceQuestionFirebase : DataSourceQuestion {
 
     private companion object {
         const val QUESTION_COLLECTION = "questions"

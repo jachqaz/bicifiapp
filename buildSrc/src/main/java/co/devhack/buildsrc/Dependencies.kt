@@ -6,6 +6,7 @@ private object Modules {
     const val app = ":app"
     const val notificationssettings = ":notificationssettings"
     const val questions = ":questions"
+    const val statistics = ":statistics"
 }
 
 object Releases {
@@ -47,7 +48,7 @@ object Versions {
     const val google = "17.0.0"
     const val firestoreKtx = "21.4.2"
     const val firebaseFunctions = "19.0.2"
-    const val functionsKtx  = "19.0.2"
+    const val functionsKtx = "19.0.2"
     const val androidTools = "3.6.1"
     const val googleServices = "4.3.3"
     const val lottieVersion = "3.4.0"
@@ -64,6 +65,8 @@ object Versions {
     const val frameworkBase = "0.9.1"
     const val presentation = "0.9.2"
     const val androidExtensions = "0.9.2"
+
+    const val mPAndroidChart = "2.2.4"
 }
 
 object Classpath {
@@ -109,7 +112,9 @@ object ExternalLibraries {
     const val lottie = "com.airbnb.android:lottie:${Versions.lottieVersion}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
-    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+    const val loggingInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+    const val mPAndroidChart = "com.github.PhilJay:MPAndroidChart:v${Versions.mPAndroidChart}"
 }
 
 object SupportLibraries {
@@ -144,6 +149,7 @@ object Firebase {
     const val firebasePerf = "com.google.firebase:firebase-perf:${Versions.firebasePerf}"
     const val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
     const val firestoreKtx = "com.google.firebase:firebase-firestore-ktx:${Versions.firestoreKtx}"
-    const val firebaseFunctions = "com.google.firebase:firebase-functions:${Versions.firebaseFunctions}"
+    const val firebaseFunctions =
+        "com.google.firebase:firebase-functions:${Versions.firebaseFunctions}"
     const val functionsKtx = "com.google.firebase:firebase-functions-ktx:${Versions.functionsKtx}"
 }

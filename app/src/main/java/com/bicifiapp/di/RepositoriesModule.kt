@@ -18,7 +18,7 @@ import com.bicifiapp.questions.repository.knowledge.network.ArticlesApi
 import com.bicifiapp.questions.repository.question.QuestionRepository
 import com.bicifiapp.questions.repository.question.QuestionRepositoryImp
 import com.bicifiapp.questions.repository.question.datasources.DataSourceQuestion
-import com.bicifiapp.questions.repository.question.datasources.DataSourceQuestionFirestore
+import com.bicifiapp.questions.repository.question.datasources.DataSourceQuestionFirebase
 import org.koin.dsl.module
 
 val profileRepositoryModule = module {
@@ -40,7 +40,7 @@ val questionRepositoryModule = module {
     }
 
     factory<DataSourceQuestion> {
-        DataSourceQuestionFirestore()
+        DataSourceQuestionFirebase()
     }
 
 }

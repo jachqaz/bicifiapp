@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Libraries.kotlin
+    api SupportLibraries.appcompat
+
+    implementation Firebase.firestoreKtx
+    implementation Firebase.firebaseFunctions
+    implementation Firebase.functionsKtx
+
+    implementation ExternalLibraries.frameworkAndroidExtensions
+    implementation ExternalLibraries.frameworkBase
+
+    implementation TestLibraries.junit
+    androidTestImplementation Testing.runner
+}

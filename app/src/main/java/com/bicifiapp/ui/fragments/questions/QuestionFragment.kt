@@ -38,7 +38,7 @@ class QuestionFragment : BaseFragment(R.layout.fragment_question) {
     }
 
     override fun initView() {
-        _binding = FragmentQuestionBinding.bind(view!!)
+        _binding = FragmentQuestionBinding.bind(view)
         initListeners()
         initLiveData()
         loadDataUI()

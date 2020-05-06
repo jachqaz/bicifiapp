@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navHome"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/lbl_home" />
+
+    <item
+        android:id="@+id/navEmotion"
+        android:icon="@drawable/ic_favorite_36dp"
+        android:title="@string/lbl_emotion" />
+
+    <item
+        android:id="@+id/navTrend"
+        android:icon="@drawable/ic_trending_36dp"
+        android:title="@string/lbl_trend" />
+
+    <item
+        android:id="@+id/navNotifications"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_notifications" />
+
+</menu>

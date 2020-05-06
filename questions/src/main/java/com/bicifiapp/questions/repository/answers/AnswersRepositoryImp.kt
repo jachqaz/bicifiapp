@@ -49,4 +49,16 @@ class AnswersRepositoryImp(
             Either.Left(e.toCustomExceptions())
         }
 
+    override suspend fun getLastUserLevel(userId: String): Either<Failure, LastUserLevelRecord> =
+        try {
+            when (networkHandler.isConnected) {
+                true -> Either.Right(
+                    dataSource.getLastUserLevel(userId).toLastUserLevelRecord()
+                )
+                else -> Either.Left(Failure.NetworkConnection)
+            }
+        } catch (e: Exception) {
+            Either.Left(e.toCustomExceptions())
+        }
+
 }

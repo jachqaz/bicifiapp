@@ -9,4 +9,6 @@ interface AnswersRepository {
 
     suspend fun calculateLevel(userId: String, answerId: String): Either<Failure, Int>
 
+    suspend fun getLastUserLevel(userId: String): Either<Failure, LastUserLevelRecord>
+
 }

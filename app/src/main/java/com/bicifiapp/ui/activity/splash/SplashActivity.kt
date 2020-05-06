@@ -7,7 +7,9 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.bicifiapp.R
 import com.bicifiapp.databinding.ActivitySplashBinding
+import com.bicifiapp.ui.activity.homescreen.HomeScreenActivity
 import com.bicifiapp.ui.activity.onboarding.OnboardingActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
 
@@ -29,13 +31,17 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                val intent = Intent(applicationContext, OnboardingActivity::class.java)
-                startActivity(intent)
+                FirebaseAuth.getInstance().currentUser?.let {
+                    val intent = Intent(applicationContext, OnboardingActivity::class.java)
+                    startActivity(intent)
+                } ?: kotlin.run {
+                    val intent = Intent(applicationContext, HomeScreenActivity::class.java)
+                    startActivity(intent)
+                }
                 finish()
             }
 
             override fun onAnimationStart(animation: Animation?) {
-
             }
 
         })

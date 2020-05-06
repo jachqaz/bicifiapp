@@ -7,4 +7,5 @@ import com.bicifiapp.questions.repository.question.Question
 interface QuestionRepository {
 
     suspend fun getAllQuestions(): Either<Failure, List<Question>>
+
 }
