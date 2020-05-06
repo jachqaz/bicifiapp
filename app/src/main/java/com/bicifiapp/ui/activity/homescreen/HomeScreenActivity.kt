@@ -1,32 +1,38 @@
 package com.bicifiapp.ui.activity.homescreen
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import co.devhack.presentation.BaseActivity
 import com.bicifiapp.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.bicifiapp.databinding.ActivityHomeScreenBinding
 
 class HomeScreenActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var binding: ActivityHomeScreenBinding
 
-        super.onCreate(savedInstanceState)
+    override fun initView() {
         setContentView(R.layout.activity_home_screen)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        binding = ActivityHomeScreenBinding.inflate(layoutInflater)
+        setupNavigation()
+    }
 
-        val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+    private fun setupNavigation() {
+        val host: NavHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
+
+        val navController = host.navController
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.homeScreenFragment, R.id.emotionalQuestionFragment, R.id.statisticsFragment
             )
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
     }
+
 }

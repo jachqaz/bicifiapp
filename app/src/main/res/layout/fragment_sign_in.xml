@@ -14,7 +14,8 @@
         android:src="@drawable/bici_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/signInGoogle"
@@ -28,7 +29,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblSubTitle">
+        app:layout_constraintTop_toBottomOf="@+id/lblSubTitle"
+        app:layout_constraintBottom_toTopOf="@+id/signInFacebook">
 
         <ImageView
             android:layout_width="@dimen/dimen_size_36"
@@ -62,7 +64,7 @@
     <com.facebook.login.widget.LoginButton
         android:id="@+id/signInFacebook"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen_size_40"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -72,7 +74,8 @@
         android:paddingBottom="@dimen/dimen_size_14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInGoogle" />
+        app:layout_constraintTop_toBottomOf="@+id/signInGoogle"
+        app:layout_constraintBottom_toTopOf="@+id/signInTwitter"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/signInTwitter"
@@ -85,7 +88,8 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInFacebook">
+        app:layout_constraintTop_toBottomOf="@+id/signInFacebook"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2">
 
         <ImageView
             android:layout_width="@dimen/dimen_size_36"
@@ -116,6 +120,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50121653" />
+
     <TextView
         android:id="@+id/lblTitle"
         style="@style/Titles"
@@ -124,7 +135,8 @@
         android:text="@string/lbl_title_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imvLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline"
+        app:layout_constraintBottom_toTopOf="@+id/lblSubTitle"/>
 
     <TextView
         android:id="@+id/lblSubTitle"
@@ -135,7 +147,15 @@
         android:text="@string/lbl_subtitle_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/lblTitle"
+        app:layout_constraintBottom_toTopOf="@+id/signInGoogle"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80" />
 
     <TextView
         android:id="@+id/lblPrivacyPolicy"

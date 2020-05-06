@@ -98,6 +98,7 @@
     <string name="lbl_first_time">Primera Vez</string>
     <string name="lbl_explain_database_knowledge">Explicación extra base de conocimiento</string>
     <string name="lbl_question_emotional">Independientemente de su puntaje en el test de autonomia financiera. Como se siente usted respecto de la forma como administra su dinero y como se siente cuando piensa acerca de su futuro economico.</string>
+    <string name="image_onboarding">image onboarding</string>
 
     <string-array name="rol_family_array">
         <item>Selecciona tu rol familiar</item>

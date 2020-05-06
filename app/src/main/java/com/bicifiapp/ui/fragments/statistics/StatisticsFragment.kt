@@ -1,6 +1,7 @@
 package com.bicifiapp.ui.fragments.statistics
 
 import android.os.Build
+import android.view.View
 import co.devhack.androidextensions.components.liveDataObserve
 import co.devhack.base.State
 import co.devhack.presentation.BaseFragment
@@ -8,7 +9,7 @@ import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentStatisticsBinding
 import com.bicifiapp.extensions.empty
 import com.bicifiapp.extensions.getSharedPreferences
-import com.bicifiapp.extensions.safeString
+import com.bicifiapp.extensions.userId
 import com.bicifiapp.statistics.TestStatistic
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
@@ -17,7 +18,6 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.android.inject
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -37,7 +37,8 @@ class StatisticsFragment : BaseFragment(R.layout.fragment_statistics) {
         dialogLoading.dismiss()
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
+        _binding = FragmentStatisticsBinding.bind(view)
         initLiveData()
         loadDataUI()
     }
@@ -54,7 +55,7 @@ class StatisticsFragment : BaseFragment(R.layout.fragment_statistics) {
     }
 
     private fun loadDataUI() {
-        val userId = FirebaseAuth.getInstance().currentUser?.uid.safeString()
+        val userId = userId()
         statisticsViewModel.getStatisticsTestByUser(userId)
     }
 

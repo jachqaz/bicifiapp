@@ -1,15 +1,15 @@
 package com.bicifiapp.ui.activity.splash
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import com.bicifiapp.R
 import com.bicifiapp.databinding.ActivitySplashBinding
+import com.bicifiapp.extensions.userId
 import com.bicifiapp.ui.activity.homescreen.HomeScreenActivity
 import com.bicifiapp.ui.activity.onboarding.OnboardingActivity
-import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
 
@@ -31,13 +31,15 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                FirebaseAuth.getInstance().currentUser?.let {
+                val intent = Intent(applicationContext, OnboardingActivity::class.java)
+                startActivity(intent)
+                /*if (userId().isNullOrEmpty()) {
                     val intent = Intent(applicationContext, OnboardingActivity::class.java)
                     startActivity(intent)
-                } ?: kotlin.run {
+                } else {
                     val intent = Intent(applicationContext, HomeScreenActivity::class.java)
                     startActivity(intent)
-                }
+                }*/
                 finish()
             }
 

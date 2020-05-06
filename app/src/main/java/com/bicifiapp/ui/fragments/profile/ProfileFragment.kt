@@ -1,20 +1,20 @@
 package com.bicifiapp.ui.fragments.profile
 
 import android.content.Intent
+import android.view.View
 import android.widget.ArrayAdapter
-import androidx.navigation.fragment.findNavController
 import co.devhack.androidextensions.components.liveDataObserve
 import co.devhack.androidextensions.ui.dialogDate
 import co.devhack.base.State
 import co.devhack.presentation.BaseFragment
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentProfileBinding
+import com.bicifiapp.extensions.activity
 import com.bicifiapp.extensions.userId
 import com.bicifiapp.notificationssettings.repository.Profile
 import com.bicifiapp.ui.activity.questions.QuestionActivity
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
-import com.bicifiapp.ui.fragments.signin.SignInFragmentDirections
 import com.bicifiapp.ui.viewmodels.profile.ProfileViewModel
 import org.koin.android.ext.android.inject
 
@@ -30,8 +30,8 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         dialogLoading.dismiss()
     }
 
-    override fun initView() {
-        _binding = FragmentProfileBinding.bind(view!!)
+    override fun initView(view: View) {
+        _binding = FragmentProfileBinding.bind(view)
         initListeners()
         initAdapterRolFamily()
         initAdapterEducationLevel()
@@ -48,7 +48,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     }
 
     private fun initListeners() {
-        binding.profileBirthday.dialogDate(activity!!)
+        binding.profileBirthday.dialogDate(activity())
 
         binding.switchLocalPass.setOnClickListener {
             requestPermissionEvent()
@@ -61,7 +61,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
     private fun initAdapterEducationLevel() {
         ArrayAdapter.createFromResource(
-            activity!!,
+            activity(),
             R.array.education_level_array,
             android.R.layout.simple_spinner_dropdown_item
         ).also { adapter ->
@@ -73,7 +73,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
     private fun initAdapterRolFamily() {
         ArrayAdapter.createFromResource(
-            activity!!,
+            activity(),
             R.array.rol_family_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
@@ -135,7 +135,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         }
 
     private fun successful() {
-        Intent(activity!!, QuestionActivity::class.java).also {
+        Intent(activity(), QuestionActivity::class.java).also {
             startActivity(it)
         }
     }

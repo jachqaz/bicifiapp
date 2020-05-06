@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragmentOnboarding"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textTitleOnboarding"
+            style="@style/TitlesOnboarding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="Titulo o" />
+
+        <ImageView
+            android:id="@+id/imgOnboarding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:contentDescription="@string/image_onboarding"
+            android:src="@drawable/bici_logo" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/textDescOnboardingNoImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/DescriptionOnboarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_warning_black_24dp"
+                android:drawablePadding="10dp"
+                android:text="Test de salud financiera." />
+
+            <TextView
+                style="@style/DescriptionOnboarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_network_check_black_24dp"
+                android:drawablePadding="10dp"
+                android:text="Lo ubicara en uno de 4 niveles." />
+
+            <TextView
+                style="@style/DescriptionOnboarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_handshake"
+                android:drawablePadding="10dp"
+                android:text="Le ayudaremos a mejorar el nivel." />
+
+            <TextView
+                style="@style/DescriptionOnboarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_notifications_black_24dp"
+                android:drawablePadding="10dp"
+                android:text="Le recordaremos tareas clave" />
+
+            <TextView
+                style="@style/DescriptionOnboarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_lightbulb_outline_black_24dp"
+                android:drawablePadding="10dp"
+                android:text="Acceder a base de conocimiento." />
+
+            <TextView
+                style="@style/DescriptionOnboarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_lightbulb_outline_black_24dp"
+                android:drawablePadding="10dp"
+                android:text="Ejecuta sobre recomendaciones." />
+
+            <TextView
+                style="@style/DescriptionOnboarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_favorite_black_24dp"
+                android:drawablePadding="10dp"
+                android:text="No estará solo en su propio reto." />
+
+            <TextView
+                style="@style/DescriptionOnboarding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_car_cruise_control"
+                android:drawablePadding="10dp"
+                android:text="Mejorará su autonomía financiera." />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <TextView
+            android:id="@+id/textDescriptionOnboarding"
+            style="@style/DescriptionOnboarding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="Descripcion del onboarding de prueba" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navHome"
+        android:id="@+id/homeScreenFragment"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/lbl_home" />
 
     <item
-        android:id="@+id/navEmotion"
+        android:id="@+id/emotionalQuestionFragment"
         android:icon="@drawable/ic_favorite_36dp"
         android:title="@string/lbl_emotion" />
 
     <item
-        android:id="@+id/navTrend"
+        android:id="@+id/statisticsFragment"
         android:icon="@drawable/ic_trending_36dp"
         android:title="@string/lbl_trend" />
 

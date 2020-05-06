@@ -35,3 +35,5 @@ fun Fragment.getSharedPreferences() =
             Context.MODE_PRIVATE
         )
     }
+
+fun Fragment.activity() = this.requireActivity()

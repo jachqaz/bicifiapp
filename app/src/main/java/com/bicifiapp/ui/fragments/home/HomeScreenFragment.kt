@@ -2,6 +2,7 @@ package com.bicifiapp.ui.fragments.home
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.edit
 import co.devhack.androidextensions.components.liveDataObserve
 import co.devhack.base.State
@@ -9,12 +10,11 @@ import co.devhack.presentation.BaseFragment
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentHomeScreenBinding
 import com.bicifiapp.extensions.getSharedPreferences
-import com.bicifiapp.extensions.safeString
+import com.bicifiapp.extensions.userId
 import com.bicifiapp.questions.repository.answers.LastUserLevelRecord
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
 import com.bicifiapp.ui.viewmodels.home.HomeViewModel
-import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -36,7 +36,7 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
         dialogLoading.dismiss()
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
         _binding = FragmentHomeScreenBinding.bind(view)
         arguments?.let {
             isFreeUser = it.getBoolean(IS_FREE_USER)
@@ -80,7 +80,7 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
     }
 
     private fun loadDataUI() {
-        val userId = FirebaseAuth.getInstance().currentUser?.uid.safeString()
+        val userId = userId()
         homeViewModel.getCurrentUserLevel(userId)
     }
 

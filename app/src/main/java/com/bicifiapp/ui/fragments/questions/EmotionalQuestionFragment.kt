@@ -2,6 +2,7 @@ package com.bicifiapp.ui.fragments.questions
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
 import co.devhack.presentation.BaseFragment
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentEmotionalQuestionBinding
@@ -24,8 +25,8 @@ class EmotionalQuestionFragment : BaseFragment(R.layout.fragment_emotional_quest
         dialogLoading.dismiss()
     }
 
-    override fun initView() {
-        _binding = FragmentEmotionalQuestionBinding.bind(view!!)
+    override fun initView(view: View) {
+        _binding = FragmentEmotionalQuestionBinding.bind(view)
         initListeners()
         loadDataUI()
     }

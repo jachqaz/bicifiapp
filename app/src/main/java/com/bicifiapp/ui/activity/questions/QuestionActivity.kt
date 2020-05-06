@@ -1,5 +1,6 @@
 package com.bicifiapp.ui.activity.questions
 
+import android.content.Intent
 import android.widget.Toast
 import co.devhack.androidextensions.components.liveDataObserve
 import co.devhack.androidextensions.getDateWithFormat
@@ -11,6 +12,7 @@ import com.bicifiapp.extensions.safeString
 import com.bicifiapp.extensions.userId
 import com.bicifiapp.questions.repository.answers.Answer
 import com.bicifiapp.questions.repository.question.Question
+import com.bicifiapp.ui.activity.homescreen.HomeScreenActivity
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
 import com.bicifiapp.ui.fragments.questions.EmotionalQuestionFragment
@@ -107,7 +109,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     private fun loadEmotionalFragment() {
         binding.progressStatusQuestion.progress = currentQuestionIndex + 1
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
+        transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
         transaction.replace(R.id.questionFrame, EmotionalQuestionFragment.newInstance(""))
         transaction.commit()
     }
@@ -138,8 +140,8 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
             State.Loading -> showProgress()
             State.Empty -> hideProgress()
             is State.Success -> {
-                calculateUserLevel(state.responseTo())
                 hideProgress()
+                calculateUserLevel(state.responseTo())
             }
             null -> hideProgress()
         }
@@ -153,8 +155,8 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
             State.Loading -> showProgress()
             State.Empty -> hideProgress()
             is State.Success -> {
-                calculateLevelSuccess(state.responseTo())
                 hideProgress()
+                calculateLevelSuccess(state.responseTo())
             }
             null -> hideProgress()
         }
@@ -165,6 +167,9 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
 
     private fun calculateLevelSuccess(userLevel: Int) {
         Toast.makeText(this, "el nivel es de $userLevel", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, HomeScreenActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

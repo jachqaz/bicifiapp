@@ -37,7 +37,7 @@ class QuestionFragment : BaseFragment(R.layout.fragment_question) {
         dialogLoading.dismiss()
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
         _binding = FragmentQuestionBinding.bind(view)
         initListeners()
         initLiveData()
