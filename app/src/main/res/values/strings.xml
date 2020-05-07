@@ -125,4 +125,8 @@
     <string name="lbl_last_level">Ultimo puntaje: %s %  %s</string>
     <string name="lbl_last_record_emotional">Ultimo checkeo $mocion financiera</string>
     <string name="name_file_shared_preferences">bicifiappshared</string>
+    <string name="error_profile_no_birthday">Por favor indique el cumpleaños</string>
+    <string name="error_profile_no_familyrol">Por favor indique su rol</string>
+    <string name="error_profile_no_educationlevel">Por favor indique su nivel educativo</string>
+    <string name="error_profile_no_yearexperience">Por favor indique los años de experiencia</string>
 </resources>
