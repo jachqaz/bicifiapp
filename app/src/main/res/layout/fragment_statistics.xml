@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            tools:text="@sample/sampledata.json/puntajeAutonomiaFinanciera" />
+            android:text="@string/lbl_finance_autonomy" />
 
         <TextView
             android:id="@+id/txtLastLevel"
@@ -57,7 +57,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:contentDescription="@string/lbl_emotion"
-            android:src="@drawable/smile_sad" />
+            android:src="@drawable/ic_sentiment_very_satisfied_color" />
 
 
     </LinearLayout>

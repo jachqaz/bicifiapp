@@ -56,11 +56,11 @@ class QuestionViewModel(
         }
     }
 
-    fun calculateLevel(userId: String, answerId: String) {
+    fun calculateLevel(userId: String, answerId: String, emotionalState: String) {
         resultCalculateLevelLiveData.value = State.Loading
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                resultCalculateLevel = answersRepository.calculateLevel(userId, answerId)
+                resultCalculateLevel = answersRepository.calculateLevel(userId, answerId, emotionalState)
             }
             resultCalculateLevel.either(::handleFailureCalculate, ::setCalculateLevelSuccess)
         }

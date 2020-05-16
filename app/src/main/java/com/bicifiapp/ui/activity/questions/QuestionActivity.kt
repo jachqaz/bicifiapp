@@ -8,6 +8,7 @@ import co.devhack.base.State
 import co.devhack.presentation.BaseActivity
 import com.bicifiapp.R
 import com.bicifiapp.databinding.ActivityQuestionBinding
+import com.bicifiapp.extensions.empty
 import com.bicifiapp.extensions.safeString
 import com.bicifiapp.extensions.userId
 import com.bicifiapp.questions.repository.answers.Answer
@@ -30,6 +31,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     private lateinit var dialogLoading: DialogLoading
     private lateinit var questions: List<Question>
     private var currentQuestionIndex = 0
+    private var emotionalState = String.empty()
     private lateinit var userId: String
     private lateinit var answers: ArrayList<Answer>
 
@@ -68,6 +70,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     }
 
     override fun onQuestionEmotionalResponse(emotionalState: String) {
+        this.emotionalState = emotionalState
         questionViewModel.saveAnswers(answers, emotionalState)
     }
 
@@ -162,7 +165,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
         }
 
     private fun calculateUserLevel(answerId: String) {
-        questionViewModel.calculateLevel(userId, answerId)
+        questionViewModel.calculateLevel(userId, answerId, this.emotionalState)
     }
 
     private fun calculateLevelSuccess(userLevel: Int) {

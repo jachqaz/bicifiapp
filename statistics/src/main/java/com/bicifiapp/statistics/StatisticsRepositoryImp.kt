@@ -9,12 +9,18 @@ class StatisticsRepositoryImp(
     private val dataSource: StatisticsDataSource
 ) : StatisticsRepository {
 
+    companion object {
+        private const val TAKE_LAST = 10
+    }
+
     override suspend fun getStatisticsTestByUser(userId: String): Either<Failure, List<TestStatistic>> =
         try {
             Either.Right(
                 dataSource.getTestStatistic(userId).map {
                     it.toTestStatistic()
-                }
+                }.sortedByDescending {
+                    it.date
+                }.reversed().take(TAKE_LAST)
             )
         } catch (e: Exception) {
             Either.Left(e.toCustomExceptions())

@@ -7,6 +7,10 @@ import androidx.navigation.navOptions
 import com.bicifiapp.R
 import com.google.firebase.auth.FirebaseAuth
 
+const val LAST_LEVEL = "level"
+const val LAST_DATE_TEST = "date"
+const val LAST_EMOTIONAL_STATE = "emotionalstate"
+
 fun Fragment.userId() =
     FirebaseAuth.getInstance().currentUser?.uid.safeString()
 
@@ -37,3 +41,19 @@ fun Fragment.getSharedPreferences() =
     }
 
 fun Fragment.activity() = this.requireActivity()
+
+fun Fragment.claims(block: (HashMap<String, String>) -> Unit) {
+    userAuth()?.let { user ->
+        user.getIdToken(false)
+            .addOnSuccessListener { token ->
+                block(
+                    HashMap<String, String>().apply {
+                        put(LAST_LEVEL, token.claims[LAST_LEVEL].toString())
+                        put(LAST_DATE_TEST, token.claims[LAST_DATE_TEST].toString())
+                        put(LAST_EMOTIONAL_STATE, token.claims[LAST_EMOTIONAL_STATE].toString())
+                    }
+                )
+
+            }
+    }
+}

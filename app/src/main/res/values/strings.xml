@@ -115,6 +115,7 @@
         <item>Maestría</item>
         <item>Doctorado</item>
     </string-array>
+
     <string name="title_activity_home_screen">HomeScreenActivity</string>
     <string name="lbl_home">Inicio</string>
     <string name="lbl_emotion">$moción</string>
@@ -122,7 +123,9 @@
     <string name="title_notifications">Notificaciones</string>
     <string name="lbl_share">Share</string>
     <string name="lbl_repeat_questions">Repeat Questions</string>
-    <string name="lbl_last_level">Ultimo puntaje: %s %  %s</string>
+    <string name="lbl_last_level">Ultimo puntaje: %d -  %s</string>
     <string name="lbl_last_record_emotional">Ultimo checkeo $mocion financiera</string>
     <string name="name_file_shared_preferences">bicifiappshared</string>
+    <string name="lbl_finance_autonomy">Puntaje de Autonomia Financiera</string>
+    <string name="lbl_success_emotional_state">Se ha registrado una nuevo estado emocional</string>
 </resources>

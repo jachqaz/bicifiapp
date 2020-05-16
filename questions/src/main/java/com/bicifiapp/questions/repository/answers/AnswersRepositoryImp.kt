@@ -37,11 +37,11 @@ class AnswersRepositoryImp(
             Either.Left(e.toCustomExceptions())
         }
 
-    override suspend fun calculateLevel(userId: String, answerId: String) =
+    override suspend fun calculateLevel(userId: String, answerId: String, emotionalState: String) =
         try {
             when (networkHandler.isConnected) {
                 true -> Either.Right(
-                    dataSource.calculateLevel(userId, answerId)
+                    dataSource.calculateLevel(userId, answerId, emotionalState)
                 )
                 else -> Either.Left(Failure.NetworkConnection)
             }
@@ -54,6 +54,18 @@ class AnswersRepositoryImp(
             when (networkHandler.isConnected) {
                 true -> Either.Right(
                     dataSource.getLastUserLevel(userId).toLastUserLevelRecord()
+                )
+                else -> Either.Left(Failure.NetworkConnection)
+            }
+        } catch (e: Exception) {
+            Either.Left(e.toCustomExceptions())
+        }
+
+    override suspend fun saveEmotionalState(emotionalState: String): Either<Failure, Boolean> =
+        try {
+            when (networkHandler.isConnected) {
+                true -> Either.Right(
+                    dataSource.saveEmotionalState(emotionalState)
                 )
                 else -> Either.Left(Failure.NetworkConnection)
             }

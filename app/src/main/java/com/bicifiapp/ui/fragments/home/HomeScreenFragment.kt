@@ -9,6 +9,8 @@ import co.devhack.base.State
 import co.devhack.presentation.BaseFragment
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentHomeScreenBinding
+import com.bicifiapp.extensions.LAST_EMOTIONAL_STATE
+import com.bicifiapp.extensions.claims
 import com.bicifiapp.extensions.getSharedPreferences
 import com.bicifiapp.extensions.userId
 import com.bicifiapp.questions.repository.answers.LastUserLevelRecord
@@ -108,9 +110,13 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
     }
 
     private fun saveSharedPreferences(txtLastLevel: String, lastLevel: Int) {
-        getSharedPreferences()?.edit {
-            putString(TEXT_LAST_LEVEL, "$txtLastLevel - $lastLevel%")
+        claims { claims ->
+            getSharedPreferences()?.edit {
+                putString(TEXT_LAST_LEVEL, "$txtLastLevel - $lastLevel%")
+                putString(LAST_EMOTIONAL_STATE, claims[LAST_EMOTIONAL_STATE])
+            }
         }
+
     }
 
     companion object {

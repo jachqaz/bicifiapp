@@ -19,6 +19,10 @@ import com.bicifiapp.questions.repository.question.QuestionRepository
 import com.bicifiapp.questions.repository.question.QuestionRepositoryImp
 import com.bicifiapp.questions.repository.question.datasources.DataSourceQuestion
 import com.bicifiapp.questions.repository.question.datasources.DataSourceQuestionFirebase
+import com.bicifiapp.statistics.StatisticsRepository
+import com.bicifiapp.statistics.StatisticsRepositoryImp
+import com.bicifiapp.statistics.datasource.StatisticsDataSource
+import com.bicifiapp.statistics.datasource.StatisticsDataSourceFirebase
 import org.koin.dsl.module
 
 val profileRepositoryModule = module {
@@ -75,5 +79,16 @@ val knowledgeRepositoryModule = module {
             debug = BuildConfig.DEBUG
         )
             .create(ArticlesApi::class.java)
+    }
+}
+
+val statisticsRepositoryModule = module {
+
+    factory<StatisticsRepository> {
+        StatisticsRepositoryImp(get())
+    }
+
+    factory<StatisticsDataSource> {
+        StatisticsDataSourceFirebase()
     }
 }

@@ -1,6 +1,5 @@
 package com.bicifiapp.ui.activity.homescreen
 
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -8,31 +7,39 @@ import androidx.navigation.ui.setupWithNavController
 import co.devhack.presentation.BaseActivity
 import com.bicifiapp.R
 import com.bicifiapp.databinding.ActivityHomeScreenBinding
+import com.bicifiapp.ui.fragments.home.HomeScreenFragment
 
-class HomeScreenActivity : BaseActivity() {
+class HomeScreenActivity : BaseActivity(), HomeScreenFragment.HomeListener {
 
     private lateinit var binding: ActivityHomeScreenBinding
 
     override fun initView() {
-        setContentView(R.layout.activity_home_screen)
         binding = ActivityHomeScreenBinding.inflate(layoutInflater)
-        setupNavigation()
+        setContentView(binding.root)
+        setUpNavigation()
     }
 
-    private fun setupNavigation() {
-        val host: NavHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
+    override fun repeatTest() {
 
-        val navController = host.navController
+    }
 
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.homeScreenFragment, R.id.emotionalQuestionFragment, R.id.statisticsFragment
+    private fun setUpNavigation() {
+        try {
+            val host: NavHostFragment = supportFragmentManager
+                .findFragmentById(R.id.nav_host_home_screen) as NavHostFragment? ?: return
+
+            val navController = host.navController
+
+            val appBarConfiguration = AppBarConfiguration(
+                setOf(
+                    R.id.homeScreenFragment, R.id.emotionalQuestionFragment, R.id.statisticsFragment
+                )
             )
-        )
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        binding.navView.setupWithNavController(navController)
+            binding.navView.setupWithNavController(navController)
+        }catch (e: Exception){
+            print(e)
+        }
     }
 
 }

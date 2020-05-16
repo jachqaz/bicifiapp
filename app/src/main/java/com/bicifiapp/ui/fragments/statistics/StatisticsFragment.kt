@@ -7,6 +7,7 @@ import co.devhack.base.State
 import co.devhack.presentation.BaseFragment
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentStatisticsBinding
+import com.bicifiapp.extensions.LAST_EMOTIONAL_STATE
 import com.bicifiapp.extensions.empty
 import com.bicifiapp.extensions.getSharedPreferences
 import com.bicifiapp.extensions.userId
@@ -19,7 +20,7 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import org.koin.android.ext.android.inject
-import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
@@ -68,6 +69,7 @@ class StatisticsFragment : BaseFragment(R.layout.fragment_statistics) {
             State.Loading -> showProgress()
             State.Empty -> hideProgress()
             is State.Success -> {
+                loadEmotionalState()
                 loadChart(state.responseTo())
                 hideProgress()
             }
@@ -80,27 +82,44 @@ class StatisticsFragment : BaseFragment(R.layout.fragment_statistics) {
         val dataFilter: MutableList<BarEntry> = mutableListOf()
 
         val dateFormatted = testStatistics.map {
-            getDateTimeFormat(it.date) ?: it.date
+            getDateTimeFormat(it.date) ?: it.date.toString()
         }
 
-        testStatistics.reversed().forEachIndexed { index, item ->
+        testStatistics.forEachIndexed { index, item ->
             dataFilter.add(BarEntry(item.level.toFloat(), index))
         }
 
         val barDataSet = BarDataSet(dataFilter, String.empty()).apply {
             valueTextSize = BAR_CHART_TEXT_SIZE
-            color = getColor(R.color.colorAccent)
+            color = getColor(R.color.colorPrimaryDark)
         }
 
-        configBarChart(dateFormatted.reversed(), barDataSet)
+        configBarChart(dateFormatted, barDataSet)
         binding.barChart.invalidate()
+    }
+
+    private fun loadEmotionalState() {
+        getSharedPreferences()?.also {
+            when (it.getString(LAST_EMOTIONAL_STATE, String.empty())) {
+                getString(R.string.i_am_defeated) ->
+                    binding.imgEmotional.setImageResource(R.drawable.ic_sentiment_very_dissatisfied_color)
+
+                getString(R.string.i_am_soso) ->
+                    binding.imgEmotional.setImageResource(R.drawable.ic_sentiment_dissatisfied_color)
+
+                getString(R.string.i_am_almost_fine) ->
+                    binding.imgEmotional.setImageResource(R.drawable.ic_sentiment_satisfied_color)
+
+                getString(R.string.i_am_fine) ->
+                    binding.imgEmotional.setImageResource(R.drawable.ic_sentiment_very_satisfied_color)
+            }
+        }
     }
 
     private fun setLastLevel() {
         getSharedPreferences()?.also {
             binding.txtLastLevel.text = it.getString(TEXT_LAST_LEVEL, String.empty())
         }
-
     }
 
     private fun configBarChart(dateFormatted: List<String>, barDataSet: BarDataSet) {
@@ -117,15 +136,9 @@ class StatisticsFragment : BaseFragment(R.layout.fragment_statistics) {
         }
     }
 
-    private fun getDateTimeFormat(date: String): String? {
+    private fun getDateTimeFormat(date: LocalDateTime?): String? {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val dateSplit = date.split(SPLIT_DELIMITERS)
-            val localDate = LocalDate.of(
-                dateSplit[DATE_INDEX_TWO].toInt(),
-                dateSplit[DATE_INDEX_ONE].toInt(),
-                dateSplit[DATE_INDEX_ZERO].toInt()
-            )
-            return DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).format(localDate)
+            return DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).format(date)
         }
         return null
     }
@@ -133,10 +146,6 @@ class StatisticsFragment : BaseFragment(R.layout.fragment_statistics) {
     companion object {
 
         private const val BAR_CHART_TEXT_SIZE = 8f
-        private const val SPLIT_DELIMITERS = "/"
-        private const val DATE_INDEX_ZERO = 0
-        private const val DATE_INDEX_ONE = 1
-        private const val DATE_INDEX_TWO = 2
         private const val BAR_CHART_GRANULARITY = 1f
         private const val BAR_CHART_DRAW_GRID_LINES = false
         private const val HIDE_LEGEND = false

@@ -3,16 +3,22 @@ package com.bicifiapp.ui.fragments.questions
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import co.devhack.androidextensions.components.liveDataObserve
+import co.devhack.base.State
 import co.devhack.presentation.BaseFragment
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentEmotionalQuestionBinding
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
+import com.bicifiapp.ui.viewmodels.emotionalquestion.EmotionalQuestionViewModel
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 class EmotionalQuestionFragment : BaseFragment(R.layout.fragment_emotional_question) {
 
-    private lateinit var callback: OnQuestionEmotionalListener
+    private val emotionalQuestionViewModel by inject<EmotionalQuestionViewModel>()
+
+    private var callback: OnQuestionEmotionalListener? = null
     private lateinit var dialogLoading: DialogLoading
     private var _binding: FragmentEmotionalQuestionBinding? = null
     private val binding get() = _binding!!
@@ -29,6 +35,7 @@ class EmotionalQuestionFragment : BaseFragment(R.layout.fragment_emotional_quest
         _binding = FragmentEmotionalQuestionBinding.bind(view)
         initListeners()
         loadDataUI()
+        initLiveData()
     }
 
     override fun onDestroyView() {
@@ -66,7 +73,10 @@ class EmotionalQuestionFragment : BaseFragment(R.layout.fragment_emotional_quest
     }
 
     private fun sendResponseEmotionalState(emotionalState: String) {
-        callback.onQuestionEmotionalResponse(emotionalState)
+        when (callback) {
+            null -> emotionalQuestionViewModel.saveEmotionalState(emotionalState)
+            else -> callback?.onQuestionEmotionalResponse(emotionalState)
+        }
     }
 
     private fun loadDataUI() {
@@ -76,6 +86,31 @@ class EmotionalQuestionFragment : BaseFragment(R.layout.fragment_emotional_quest
                 if (dateLastResponse!!.isEmpty()) getString(R.string.lbl_first_time) else dateLastResponse
         }
     }
+
+    private fun initLiveData() {
+        liveDataObserve(
+            emotionalQuestionViewModel.saveEmotionalStateLiveData,
+            ::onArticleByLabelStateChange
+        )
+    }
+
+    private fun onArticleByLabelStateChange(state: State?) =
+        when (state) {
+            is State.Failed -> {
+                hideProgress()
+                //handleFailure(state.failure)
+            }
+            State.Loading -> showProgress()
+            State.Empty -> hideProgress()
+            is State.Success -> {
+                notifySuccess(
+                    messageIdRes = R.string.lbl_success_emotional_state,
+                    colorId = R.color.success_snackbar
+                )
+                hideProgress()
+            }
+            null -> hideProgress()
+        }
 
     companion object {
         private const val DATE_LAST_RESPONSE_ARG = "dateLastResponse"

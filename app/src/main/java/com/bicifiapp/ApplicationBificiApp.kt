@@ -25,7 +25,11 @@ class ApplicationBificiApp : Application() {
                     questionRepositoryModule,
                     answersRepositoryModule,
                     questionViewModelModule,
-                    knowledgeRepositoryModule
+                    knowledgeRepositoryModule,
+                    statisticsRepositoryModule,
+                    homeViewModelModule,
+                    statisticsViewModelModule,
+                    emotionalQuestionViewModelModule
                 )
             )
         }

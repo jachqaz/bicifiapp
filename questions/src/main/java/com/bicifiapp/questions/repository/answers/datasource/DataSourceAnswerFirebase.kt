@@ -1,8 +1,10 @@
 package com.bicifiapp.questions.repository.answers.datasource
 
+import co.devhack.androidextensions.getDateWithFormat
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
+import java.util.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -10,6 +12,7 @@ import kotlin.coroutines.suspendCoroutine
 class DataSourceAnswerFirebase : DataSourceAnswer {
 
     private companion object {
+        const val EMOTIONAL_STATE_COLLECTION = "emotionalstate"
         const val ANSWER_COLLECTION = "answers"
         const val USER_ID_FIELD = "userId"
         const val ANSWER_ID_FIELD = "answerId"
@@ -60,12 +63,16 @@ class DataSourceAnswerFirebase : DataSourceAnswer {
             }
         }
 
-    override suspend fun calculateLevel(userId: String, answerId: String): Int =
+    override suspend fun calculateLevel(
+        userId: String,
+        answerId: String,
+        emotionalState: String
+    ): Int =
         suspendCoroutine { continuation ->
             val data = hashMapOf(
                 USER_ID_FIELD to userId,
                 ANSWER_ID_FIELD to answerId,
-                EMOTIONAL_STATE_FIELD to answerId
+                EMOTIONAL_STATE_FIELD to emotionalState
             )
 
             functions.getHttpsCallable(FUNCTION_NAME_CALCULATE_LEVEL)
@@ -97,6 +104,21 @@ class DataSourceAnswerFirebase : DataSourceAnswer {
 
         }
 
+    override suspend fun saveEmotionalState(emotionalState: String): Boolean =
+        suspendCoroutine { continuation ->
+            db.collection(EMOTIONAL_STATE_COLLECTION)
+                .add(
+                    EmotionalStateEntity(
+                        Date().getDateWithFormat(),
+                        emotionalState
+                    )
+                )
+                .addOnFailureListener {
+                    continuation.resumeWithException(it)
+                }.addOnSuccessListener {
+                    continuation.resume(true)
+                }
+        }
 
     private fun createHeadAnswer(headAnswer: HeadAnswer, block: (String) -> Unit) =
         db.collection(ANSWER_COLLECTION)

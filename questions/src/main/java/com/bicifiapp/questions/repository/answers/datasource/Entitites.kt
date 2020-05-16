@@ -43,3 +43,8 @@ data class LastUserLevelRecordEntity(
             descriptionLevel
         )
 }
+
+data class EmotionalStateEntity(
+    val date: String,
+    val emotionalState: String
+)
