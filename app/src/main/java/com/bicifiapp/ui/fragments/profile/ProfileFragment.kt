@@ -3,6 +3,7 @@ package com.bicifiapp.ui.fragments.profile
 import android.content.Intent
 import android.view.View
 import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
 import co.devhack.androidextensions.components.liveDataObserve
 import co.devhack.androidextensions.ui.dialogDate
 import co.devhack.base.State
@@ -16,6 +17,7 @@ import com.bicifiapp.ui.activity.questions.QuestionActivity
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
 import com.bicifiapp.ui.viewmodels.profile.ProfileViewModel
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
@@ -102,17 +104,33 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         val acceptNotification = binding.switchNotificationPass.isChecked
         val acceptLocation = binding.switchLocalPass.isChecked
 
-        profileViewModel.saveProfile(
-            Profile(
-                userId(),
-                birthday,
-                familyRol,
-                educationLevel,
-                yearExperience,
-                acceptNotification,
-                acceptLocation
-            )
-        )
+        when {
+            birthday.isEmpty() -> {
+                showSnackBar(R.string.error_profile_no_birthday, R.color.error_snackbar)
+            }
+            familyRol.isEmpty() -> {
+                showSnackBar(R.string.error_profile_no_familyrol, R.color.error_snackbar)
+            }
+            educationLevel.isEmpty() -> {
+                showSnackBar(R.string.error_profile_no_educationlevel, R.color.error_snackbar)
+            }
+            yearExperience <= 0 -> {
+                showSnackBar(R.string.error_profile_no_yearexperience, R.color.error_snackbar)
+            }
+            else -> {
+                profileViewModel.saveProfile(
+                    Profile(
+                        userId(),
+                        birthday,
+                        familyRol,
+                        educationLevel,
+                        yearExperience,
+                        acceptNotification,
+                        acceptLocation
+                    )
+                )
+            }
+        }
     }
 
     private fun initLiveData() {
@@ -137,6 +155,13 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     private fun successful() {
         Intent(activity(), QuestionActivity::class.java).also {
             startActivity(it)
+        }
+    }
+
+    private fun showSnackBar(resId: Int, colorId: Int) = view?.rootView?.let {
+        Snackbar.make(it, resId, Snackbar.LENGTH_SHORT).apply {
+            view.setBackgroundColor(ContextCompat.getColor(context, colorId))
+            show()
         }
     }
 

@@ -84,12 +84,14 @@ class OnboardingActivity : FragmentActivity(), ViewPager.OnPageChangeListener {
         addFragment(
             OnboardingFragment.newInstance(
                 0,
+                0,
                 this@OnboardingActivity.resources.getString(R.string.lbl_what_is_test),
                 this@OnboardingActivity.resources.getString(R.string.lbl_description_test)
             )
         )
         addFragment(
             OnboardingFragment.newInstance(
+                R.drawable.ic_help_outline_black_48dp,
                 R.drawable.onboarding_card1,
                 this@OnboardingActivity.resources.getString(R.string.lbl_reach_25),
                 this@OnboardingActivity.resources.getString(R.string.lbl_question_finances)
@@ -97,6 +99,7 @@ class OnboardingActivity : FragmentActivity(), ViewPager.OnPageChangeListener {
         )
         addFragment(
             OnboardingFragment.newInstance(
+                R.drawable.ic_sentiment_very_dissatisfied_white_36dp,
                 R.drawable.onboarding_card2,
                 this@OnboardingActivity.resources.getString(R.string.lbl_reach_25_50),
                 this@OnboardingActivity.resources.getString(R.string.lbl_dreamer)
@@ -104,6 +107,7 @@ class OnboardingActivity : FragmentActivity(), ViewPager.OnPageChangeListener {
         )
         addFragment(
             OnboardingFragment.newInstance(
+                R.drawable.ic_sentiment_satisfied_white_36dp,
                 R.drawable.onboarding_card3,
                 this@OnboardingActivity.resources.getString(R.string.lbl_reach_50_75),
                 this@OnboardingActivity.resources.getString(R.string.lbl_executor)
@@ -111,6 +115,7 @@ class OnboardingActivity : FragmentActivity(), ViewPager.OnPageChangeListener {
         )
         addFragment(
             OnboardingFragment.newInstance(
+                R.drawable.ic_sentiment_very_satisfied_white_36dp,
                 R.drawable.onboarding_card4,
                 this@OnboardingActivity.resources.getString(R.string.lbl_reach_75),
                 this@OnboardingActivity.resources.getString(R.string.lbl_leader)

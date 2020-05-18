@@ -1,6 +1,8 @@
 package com.bicifiapp.ui.fragments.home
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.edit
@@ -9,11 +11,9 @@ import co.devhack.base.State
 import co.devhack.presentation.BaseFragment
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentHomeScreenBinding
-import com.bicifiapp.extensions.LAST_EMOTIONAL_STATE
-import com.bicifiapp.extensions.claims
-import com.bicifiapp.extensions.getSharedPreferences
-import com.bicifiapp.extensions.userId
+import com.bicifiapp.extensions.*
 import com.bicifiapp.questions.repository.answers.LastUserLevelRecord
+import com.bicifiapp.ui.activity.questions.QuestionActivity
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
 import com.bicifiapp.ui.viewmodels.home.HomeViewModel
@@ -22,6 +22,7 @@ import timber.log.Timber
 
 private const val IS_FREE_USER = "isFreeUser"
 private const val TEXT_LAST_LEVEL = "text_last_level"
+private const val LAST_DATE_RESPONSE_QUESTIONS = "last_date_response"
 
 
 class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
@@ -45,7 +46,6 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
         }
         initListener()
         initLiveData()
-        loadDataUI()
     }
 
     override fun showProgress() {
@@ -68,9 +68,25 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        loadDataUI()
+    }
+
     private fun initListener() {
         binding.btnRepeatQuestions.setOnClickListener {
             callback.repeatTest()
+        }
+
+        binding.btnRepeatQuestions.setOnClickListener {
+            startActivity(
+                Intent(activity, QuestionActivity::class.java).apply {
+                    putExtra(
+                        LAST_DATE_RESPONSE_QUESTIONS,
+                        getSharedPreferences()?.getString(LAST_DATE_TEST, String.empty())
+                    )
+                }
+            )
         }
     }
 
@@ -106,20 +122,31 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
         binding.txtLastLevel.text = getString(R.string.lbl_last_level)
             .format(userLastLevel.lastLevel, userLastLevel.dateLastLevel)
         binding.txtResultLevel.text = userLastLevel.descriptionLevel
-        saveSharedPreferences(userLastLevel.titleLevel, userLastLevel.lastLevel)
+        saveSharedPreferences(
+            userLastLevel.titleLevel,
+            userLastLevel.lastLevel,
+            userLastLevel.dateLastLevel
+        )
     }
 
-    private fun saveSharedPreferences(txtLastLevel: String, lastLevel: Int) {
+    @SuppressLint("SimpleDateFormat")
+    private fun saveSharedPreferences(txtLastLevel: String, lastLevel: Int, dateLastLevel: String) {
         claims { claims ->
             getSharedPreferences()?.edit {
                 putString(TEXT_LAST_LEVEL, "$txtLastLevel - $lastLevel%")
                 putString(LAST_EMOTIONAL_STATE, claims[LAST_EMOTIONAL_STATE])
+                putString(
+                    LAST_DATE_TEST,
+                    dateLastLevel
+                )
             }
         }
 
     }
 
     companion object {
+
+        const val DATE_FORMAT = "dd-MM-yyyy HH:mm"
 
         @JvmStatic
         fun newInstance(isPayUser: Boolean) =

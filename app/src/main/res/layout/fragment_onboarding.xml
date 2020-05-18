@@ -24,6 +24,14 @@
             android:text="Titulo o" />
 
         <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/black"
+            android:src="@drawable/ic_sentiment_dissatisfied_white_36dp" />
+
+        <ImageView
             android:id="@+id/imgOnboarding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

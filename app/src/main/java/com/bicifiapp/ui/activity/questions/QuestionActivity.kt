@@ -23,14 +23,21 @@ import org.koin.android.ext.android.inject
 import java.util.*
 import kotlin.collections.ArrayList
 
+const val LAST_DATE_RESPONSE_QUESTIONS = "last_date_response"
+
 class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     EmotionalQuestionFragment.OnQuestionEmotionalListener {
+
+    private companion object{
+        const val FORMAT_DATE = "dd-MM-yyyy HH:mm"
+    }
 
     private val questionViewModel by inject<QuestionViewModel>()
     private lateinit var binding: ActivityQuestionBinding
     private lateinit var dialogLoading: DialogLoading
     private lateinit var questions: List<Question>
     private var currentQuestionIndex = 0
+    private var lastDateResponseQuestions: String? = ""
     private var emotionalState = String.empty()
     private lateinit var userId: String
     private lateinit var answers: ArrayList<Answer>
@@ -43,6 +50,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
         binding = ActivityQuestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initLiveData()
+        loadDataIntent()
         loadQuestions()
         answers = ArrayList()
         userId = userId().safeString()
@@ -58,7 +66,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
                 userId = userId,
                 questionId = questionId,
                 response = response,
-                date = Date().getDateWithFormat()
+                date = Date().getDateWithFormat(FORMAT_DATE)
             )
         )
 
@@ -72,6 +80,10 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     override fun onQuestionEmotionalResponse(emotionalState: String) {
         this.emotionalState = emotionalState
         questionViewModel.saveAnswers(answers, emotionalState)
+    }
+
+    private fun loadDataIntent() {
+        lastDateResponseQuestions = intent?.getStringExtra(LAST_DATE_RESPONSE_QUESTIONS)
     }
 
     private fun initLiveData() {
@@ -98,7 +110,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
                 currentQuestion.id,
                 questions.size,
                 currentQuestionIndex,
-                "",
+                lastDateResponseQuestions ?: String.empty(),
                 currentQuestion.text,
                 currentQuestion.label
             )
@@ -113,7 +125,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
         binding.progressStatusQuestion.progress = currentQuestionIndex + 1
         val transaction = supportFragmentManager.beginTransaction()
         transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
-        transaction.replace(R.id.questionFrame, EmotionalQuestionFragment.newInstance(""))
+        transaction.replace(R.id.questionFrame, EmotionalQuestionFragment.newInstance())
         transaction.commit()
     }
 
@@ -169,10 +181,15 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     }
 
     private fun calculateLevelSuccess(userLevel: Int) {
-        Toast.makeText(this, "el nivel es de $userLevel", Toast.LENGTH_LONG).show()
-        val intent = Intent(this, HomeScreenActivity::class.java)
-        startActivity(intent)
-        finish()
+        lastDateResponseQuestions?.let {
+            finish()
+        } ?: run {
+            Toast.makeText(this, "el nivel es de $userLevel", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, HomeScreenActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
 }

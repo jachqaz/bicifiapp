@@ -63,7 +63,7 @@ object Versions {
 
     const val navigationVersion = "2.2.1"
     const val frameworkBase = "0.9.1"
-    const val presentation = "0.9.3"
+    const val presentation = "0.9.4"
     const val androidExtensions = "0.9.2"
 
     const val mPAndroidChart = "2.2.4"

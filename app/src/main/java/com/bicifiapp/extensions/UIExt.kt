@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 const val LAST_LEVEL = "level"
 const val LAST_DATE_TEST = "date"
+const val LAST_DATE_EMOTIONAL_TEST = "emotionalstatedate"
 const val LAST_EMOTIONAL_STATE = "emotionalstate"
 
 fun Fragment.userId() =
@@ -44,7 +45,7 @@ fun Fragment.activity() = this.requireActivity()
 
 fun Fragment.claims(block: (HashMap<String, String>) -> Unit) {
     userAuth()?.let { user ->
-        user.getIdToken(false)
+        user.getIdToken(true)
             .addOnSuccessListener { token ->
                 block(
                     HashMap<String, String>().apply {

@@ -18,17 +18,16 @@
         <activity
             android:name=".ui.activity.homescreen.HomeScreenActivity"
             android:label="@string/title_activity_home_screen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.activity.questions.QuestionActivity" />
         <activity
             android:name=".ui.activity.splash.SplashActivity"
             android:screenOrientation="fullSensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.activity.signin.SignInActivity" />
         <activity android:name=".ui.activity.onboarding.OnboardingActivity" />

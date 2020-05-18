@@ -123,9 +123,4 @@ dependencies {
     implementation ExternalLibraries.moshiConverter
     implementation ExternalLibraries.loggingInterceptor
 
-    implementation TestLibraries.junit
-    testImplementation Testing.junit
-    androidTestImplementation Testing.runner
-    androidTestImplementation Testing.expresso
-
 }

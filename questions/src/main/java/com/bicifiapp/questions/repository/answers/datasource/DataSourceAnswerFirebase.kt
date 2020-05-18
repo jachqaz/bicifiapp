@@ -24,6 +24,7 @@ class DataSourceAnswerFirebase : DataSourceAnswer {
         const val TITLE_LAST_LEVEL_FIELD = "titlelevel"
         const val DESCRIPTION_LAST_LEVEL_FIELD = "descriptionLevel"
         const val LEVEL_FIELD = "level"
+        const val FORMAT_DATE = "dd-MM-yyyy HH:mm"
     }
 
     private val db by lazy {
@@ -109,7 +110,7 @@ class DataSourceAnswerFirebase : DataSourceAnswer {
             db.collection(EMOTIONAL_STATE_COLLECTION)
                 .add(
                     EmotionalStateEntity(
-                        Date().getDateWithFormat(),
+                        Date().getDateWithFormat(FORMAT_DATE),
                         emotionalState
                     )
                 )

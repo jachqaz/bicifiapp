@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentOnboardingBinding
+import kotlinx.android.synthetic.main.fragment_onboarding.*
 
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
@@ -26,15 +27,18 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private fun setDataFragment() {
         arguments?.let {
-            if (arguments!!.getInt("imageResId") == 0) {
+            if (it.getInt(IMAGE_RES_ID) == 0) {
+                //image is not required and show description static only
+                binding.imgIcon.visibility = View.GONE
                 binding.imgOnboarding.visibility = View.GONE
                 binding.textDescriptionOnboarding.visibility = View.GONE
                 binding.textDescOnboardingNoImage.visibility = View.VISIBLE
             } else {
-                binding.imgOnboarding.setImageResource(it.getInt("imageResId"))
-                binding.textDescriptionOnboarding.text = it.getString("description")
+                binding.imgIcon.setImageResource(it.getInt(ICON))
+                binding.imgOnboarding.setImageResource(it.getInt(IMAGE_RES_ID))
+                binding.textDescriptionOnboarding.text = it.getString(DESCRIPTION)
             }
-            binding.textTitleOnboarding.text = it.getString("title")
+            binding.textTitleOnboarding.text = it.getString(TITLE)
         }
     }
 
@@ -42,14 +46,17 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         private const val TITLE = "title"
         private const val DESCRIPTION = "description"
         private const val IMAGE_RES_ID = "imageResId"
+        private const val ICON = "imageIcon"
 
         @JvmStatic
         fun newInstance(
+            imageIcon: Int,
             imageResId: Int,
             title: String,
             description: String
         ) = OnboardingFragment().apply {
             arguments = Bundle().apply {
+                putInt(ICON, imageIcon)
                 putString(TITLE, title)
                 putString(DESCRIPTION, description)
                 putInt(IMAGE_RES_ID, imageResId)

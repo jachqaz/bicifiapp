@@ -128,4 +128,8 @@
     <string name="name_file_shared_preferences">bicifiappshared</string>
     <string name="lbl_finance_autonomy">Puntaje de Autonomia Financiera</string>
     <string name="lbl_success_emotional_state">Se ha registrado una nuevo estado emocional</string>
+    <string name="error_profile_no_birthday">Por favor indique el cumpleaños</string>
+    <string name="error_profile_no_familyrol">Por favor indique su rol</string>
+    <string name="error_profile_no_educationlevel">Por favor indique su nivel educativo</string>
+    <string name="error_profile_no_yearexperience">Por favor indique los años de experiencia</string>
 </resources>
