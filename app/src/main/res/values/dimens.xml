@@ -5,6 +5,7 @@
     <dimen name="empty_size">0dp</dimen>
     <dimen name="dimen_size_40">40dp</dimen>
     <dimen name="dimen_size_16">16dp</dimen>
+    <dimen name="dimen_size_8">8dp</dimen>
     <dimen name="dimen_size_36">36dp</dimen>
     <dimen name="very_small_size">4dp</dimen>
     <dimen name="dimen_size_14">14dp</dimen>
@@ -14,4 +15,7 @@
     <dimen name="dime_separate">40dp</dimen>
     <dimen name="dimen_size_250">250dp</dimen>
     <dimen name="dimen_size_4">4dp</dimen>
+    <dimen name="navDrawer_header_height">170dp</dimen>
+    <dimen name="nav_drawer_width">304dp</dimen>
+    <dimen name="dimen_size_80">80dp</dimen>
 </resources>

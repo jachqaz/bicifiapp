@@ -41,6 +41,12 @@ fun Fragment.getSharedPreferences() =
         )
     }
 
+fun Activity.getSharedPreferences() =
+    this.getSharedPreferences(
+        this.getString(R.string.name_file_shared_preferences),
+        Context.MODE_PRIVATE
+    )
+
 fun Fragment.activity() = this.requireActivity()
 
 fun Fragment.claims(block: (HashMap<String, String>) -> Unit) {

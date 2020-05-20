@@ -6,10 +6,14 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.bicifiapp.R
+import com.bicifiapp.common.Constants
 import com.bicifiapp.databinding.ActivitySplashBinding
+import com.bicifiapp.extensions.empty
+import com.bicifiapp.extensions.getSharedPreferences
 import com.bicifiapp.extensions.userId
 import com.bicifiapp.ui.activity.homescreen.HomeScreenActivity
 import com.bicifiapp.ui.activity.onboarding.OnboardingActivity
+import com.bicifiapp.ui.activity.signin.SignInActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -33,13 +37,20 @@ class SplashActivity : AppCompatActivity() {
             override fun onAnimationEnd(animation: Animation?) {
                 val intent = Intent(applicationContext, OnboardingActivity::class.java)
                 startActivity(intent)
-                /*if (userId().isNullOrEmpty()) {
-                    val intent = Intent(applicationContext, OnboardingActivity::class.java)
-                    startActivity(intent)
+                if (userId().isNullOrEmpty()) {
+                    val onBoardingDone =
+                        getSharedPreferences()?.getString(Constants.ONBOARDING_DONE, String.empty())
+                    if (onBoardingDone.isNullOrEmpty()) {
+                        val intentOnBoarding =
+                            Intent(applicationContext, OnboardingActivity::class.java)
+                        startActivity(intentOnBoarding)
+                    } else {
+                        val intentHome = Intent(applicationContext, SignInActivity::class.java)
+                        startActivity(intentHome)
+                    }
                 } else {
-                    val intent = Intent(applicationContext, HomeScreenActivity::class.java)
-                    startActivity(intent)
-                }*/
+                    initHomeScreen()
+                }
                 finish()
             }
 
@@ -47,5 +58,10 @@ class SplashActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun initHomeScreen() {
+        val intentHome = Intent(applicationContext, HomeScreenActivity::class.java)
+        startActivity(intentHome)
     }
 }

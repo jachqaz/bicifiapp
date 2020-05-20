@@ -28,23 +28,27 @@
 
     <TextView
         android:id="@+id/lblLastQtEmotional"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:gravity="end"
         android:text="@string/lbl_description_last_question_emotional"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/textdateLastQtEmotional"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleQtEmotional" />
+        app:layout_constraintTop_toBottomOf="@+id/titleQtEmotional"
+        app:layout_constraintWidth_percent="0.5" />
 
     <TextView
         android:id="@+id/textdateLastQtEmotional"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:gravity="start"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblLastQtEmotional"
+        app:layout_constraintStart_toEndOf="@+id/lblLastQtEmotional"
+        app:layout_constraintTop_toBottomOf="@+id/titleQtEmotional"
+        app:layout_constraintWidth_percent="0.5"
         tools:text="@sample/sampledata.json/lastVisited" />
 
     <ImageView
@@ -64,7 +68,7 @@
 
     <TextView
         android:id="@+id/textDescriptionQuestion"
-        style="@style/SubTitles"
+        style="@style/MediumText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -81,7 +85,7 @@
         android:layout_width="0dp"
         android:layout_height="92dp"
         android:layout_marginStart="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/redLight"
         android:drawableBottom="@drawable/ic_sentiment_very_dissatisfied_white_36dp"
         android:text="@string/i_am_defeated"
@@ -136,7 +140,7 @@
         style="@style/ButtonAnswerEmotional"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@color/greenLight"
         android:text="@string/lbl_sentiment_vey_satisfied"
         app:layout_constraintRight_toRightOf="parent"

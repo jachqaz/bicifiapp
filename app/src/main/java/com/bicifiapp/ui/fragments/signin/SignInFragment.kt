@@ -10,8 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bicifiapp.BuildConfig
 import com.bicifiapp.R
+import com.bicifiapp.common.Constants
 import com.bicifiapp.databinding.FragmentSignInBinding
+import com.bicifiapp.extensions.activity
 import com.bicifiapp.extensions.animSlideLeftToRight
+import com.bicifiapp.extensions.empty
+import com.bicifiapp.extensions.getSharedPreferences
+import com.bicifiapp.ui.activity.questions.QuestionActivity
 import com.bicifiapp.ui.activity.signin.SignInActivity
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -170,6 +175,17 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private fun authSuccess() {
         showSnackBar(R.string.auth_success_social_network, R.color.success_snackbar)
+
+        val onBoardingDone =
+            getSharedPreferences()?.getString(Constants.ONBOARDING_DONE, String.empty())
+
+        if (!onBoardingDone.isNullOrEmpty()) {
+            Intent(activity(), QuestionActivity::class.java).also {
+                startActivity(it)
+            }
+            return
+        }
+
         findNavController().navigate(
             SignInFragmentDirections.nextProfileAction(),
             animSlideLeftToRight()
@@ -190,8 +206,8 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     private fun getFragmentContext() = (context as SignInActivity)
 
     companion object {
-        const val RC_SIGN_IN_GOOGLE = 1636
-        const val RC_SIGN_IN_FACEBOOK = 64206
+        private const val RC_SIGN_IN_GOOGLE = 1636
+        private const val RC_SIGN_IN_FACEBOOK = 64206
         private const val TWITTER_PROVIDER = "twitter.com"
         private const val EMAIL_READ_PERMISSION = "email"
         private const val PROFILE_READ_PERMISSION = "public_profile"

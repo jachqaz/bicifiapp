@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/lbl_repeat_questions"
-            android:src="@drawable/ic_share_black_24dp" />
+            android:src="@drawable/ic_share_24dp" />
 
     </LinearLayout>
 
@@ -94,7 +94,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="146dp"
+        android:layout_marginBottom="100dp"
         android:background="@color/grey_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

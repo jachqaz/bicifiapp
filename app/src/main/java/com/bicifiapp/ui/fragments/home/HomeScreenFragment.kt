@@ -1,7 +1,6 @@
 package com.bicifiapp.ui.fragments.home
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -18,7 +17,6 @@ import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
 import com.bicifiapp.ui.viewmodels.home.HomeViewModel
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 private const val IS_FREE_USER = "isFreeUser"
 private const val TEXT_LAST_LEVEL = "text_last_level"
@@ -29,7 +27,6 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
 
     private val homeViewModel by inject<HomeViewModel>()
 
-    private lateinit var callback: HomeListener
     private var isFreeUser: Boolean = false
     private var _binding: FragmentHomeScreenBinding? = null
     private val binding get() = _binding!!
@@ -57,27 +54,12 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
         super.onDestroyView()
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        try {
-            callback = activity as HomeListener
-        } catch (ex: Exception) {
-            Timber.e(
-                "The activity must implemented HomeListener"
-            )
-        }
-    }
-
     override fun onResume() {
         super.onResume()
         loadDataUI()
     }
 
     private fun initListener() {
-        binding.btnRepeatQuestions.setOnClickListener {
-            callback.repeatTest()
-        }
-
         binding.btnRepeatQuestions.setOnClickListener {
             startActivity(
                 Intent(activity, QuestionActivity::class.java).apply {
@@ -146,8 +128,6 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
 
     companion object {
 
-        const val DATE_FORMAT = "dd-MM-yyyy HH:mm"
-
         @JvmStatic
         fun newInstance(isPayUser: Boolean) =
             HomeScreenFragment().apply {
@@ -155,9 +135,5 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
                     putBoolean(IS_FREE_USER, isPayUser)
                 }
             }
-    }
-
-    interface HomeListener {
-        fun repeatTest()
     }
 }

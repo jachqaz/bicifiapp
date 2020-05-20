@@ -72,6 +72,7 @@
         Nunc nec rhoncus magna. Integer sit amet mauris dui. </string>
     <string name="cancel">Cancelar</string>
     <string name="title_profile">Perfil y Permisos</string>
+    <string name="lbl_profile">Perfil</string>
     <string name="start_test">Iniciar prueba de autonomia financiera</string>
     <string name="tip_profile">TIP: Más servicios y beneficios si nos permite interactuar y saber donde vive.</string>
     <string name="textNotificationPass">Acepta notificaciones y tips vía email.</string>
@@ -121,7 +122,7 @@
     <string name="lbl_emotion">$moción</string>
     <string name="lbl_trend">Tendencia</string>
     <string name="title_notifications">Notificaciones</string>
-    <string name="lbl_share">Share</string>
+    <string name="lbl_share">Compartir</string>
     <string name="lbl_repeat_questions">Repeat Questions</string>
     <string name="lbl_last_level">Ultimo puntaje: %d -  %s</string>
     <string name="lbl_last_record_emotional">Ultimo checkeo $mocion financiera</string>
@@ -132,4 +133,6 @@
     <string name="error_profile_no_familyrol">Por favor indique su rol</string>
     <string name="error_profile_no_educationlevel">Por favor indique su nivel educativo</string>
     <string name="error_profile_no_yearexperience">Por favor indique los años de experiencia</string>
+    <string name="lbl_member_free">Membresia Gratis</string>
+    <string name="lbl_signOut">Cerrar Sesión</string>
 </resources>
