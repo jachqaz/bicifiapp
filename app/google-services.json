@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "681179643172-6dk5f1b4m5352i387h1310s6989ekmqf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bicifiapp",
+            "certificate_hash": "dd39da2f228500b59b1f9eebbf3bdcba7bdfe824"
+          }
+        },
+        {
           "client_id": "681179643172-9bjr2lo55jqaq1ierjptud9vpcsft2qn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

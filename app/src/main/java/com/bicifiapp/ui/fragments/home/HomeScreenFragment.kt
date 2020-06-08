@@ -8,6 +8,8 @@ import androidx.core.content.edit
 import co.devhack.androidextensions.components.liveDataObserve
 import co.devhack.base.State
 import co.devhack.presentation.BaseFragment
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.list.listItemsMultiChoice
 import com.bicifiapp.R
 import com.bicifiapp.databinding.FragmentHomeScreenBinding
 import com.bicifiapp.extensions.*
@@ -17,6 +19,7 @@ import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
 import com.bicifiapp.ui.viewmodels.home.HomeViewModel
 import org.koin.android.ext.android.inject
+
 
 private const val IS_FREE_USER = "isFreeUser"
 private const val TEXT_LAST_LEVEL = "text_last_level"
@@ -70,6 +73,19 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
                 }
             )
         }
+        binding.btnShare.setOnClickListener { shareApp() }
+
+        binding.btnRemember.setOnClickListener{
+            MaterialDialog(activity()).show {
+                title(R.string.select_day_weak)
+                listItemsMultiChoice(R.array.days_array) { dialog, index, text ->
+                    // Invoked when the user selects item(s)
+                    System.out.println(text)
+                }
+                positiveButton(R.string.select)
+                negativeButton(R.string.cancel)
+            }
+        }
     }
 
     private fun initLiveData() {
@@ -109,6 +125,18 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
             userLastLevel.lastLevel,
             userLastLevel.dateLastLevel
         )
+    }
+
+    private fun shareApp(){
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, "Hola acabo de realizar un test que me dice como esta mi nivel financiero," +
+                        " quieres conocer un poco y mejorar tus finanazas:\n\n" + "https://bicifiapp.page.link/NLtk")
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, "¿Cómo están tus finanzas?")
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
     }
 
     @SuppressLint("SimpleDateFormat")

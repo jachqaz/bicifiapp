@@ -74,6 +74,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                     )
                 }
             } catch (e: ApiException) {
+                Timber.e(e)
                 authFailed()
             }
         } else if (requestCode == RC_SIGN_IN_FACEBOOK) {

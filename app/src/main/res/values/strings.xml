@@ -38,32 +38,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="terms_conditions">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum justo diam, hendrerit ut justo ac, dapibus venenatis nunc.
-        Vivamus egestas scelerisque aliquet. Donec pulvinar egestas lacus, auctor lacinia est elementum convallis. Donec et placerat mi, ac posuere odio.
-        Aliquam erat volutpat. In ipsum sapien, fermentum vitae faucibus nec, semper sed tellus. Nunc dictum, ante eu euismod venenatis, magna arcu dictum
-        ligula, in feugiat purus sapien a ante. Donec diam libero, pellentesque vitae iaculis ac, consectetur tincidunt metus. In condimentum mollis elementum. \n
-
-        Ut non nulla ante. Sed at malesuada odio. In hac habitasse platea dictumst. Aenean in semper dui. Phasellus lacinia pulvinar lorem eget bibendum.
-        Morbi placerat vitae justo id bibendum. Ut ornare sodales leo, nec placerat nisl dignissim eu. Etiam vitae ullamcorper dui.
-        In hac habitasse platea dictumst. Donec maximus placerat justo non efficitur. Donec egestas tincidunt nisl sed congue.
-        Praesent a ante fermentum, elementum massa vitae, pretium erat. Duis laoreet commodo massa, et fringilla sapien blandit non.
-        Pellentesque vulputate ultricies lectus, at tincidunt augue bibendum a. Vivamus ullamcorper mauris ligula, id accumsan nibh tristique sit amet. \n
-
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec lacinia diam placerat libero hendrerit, id
-        finibus augue gravida. Quisque posuere turpis at magna gravida lobortis. Nunc hendrerit risus ut ante porta, at vestibulum nisi vestibulum.
-        Curabitur lacinia ut turpis sed aliquam. Etiam maximus est odio, vitae hendrerit justo eleifend non. Proin sed nulla dolor.\n
-
-        Sed rutrum nisi diam, sit amet aliquam neque tincidunt sed. Aenean efficitur justo et fringilla auctor. Etiam sit amet varius erat.
-        Morbi at leo a dolor venenatis scelerisque non ut diam. Praesent non semper diam, vitae blandit elit. Suspendisse orci justo, facilisis
-        sit amet augue non, vulputate fringilla leo. Pellentesque tempus eros at egestas ornare. Cras rhoncus auctor nibh. Fusce porttitor leo
-        eget neque dignissim pretium. Nullam egestas dictum eleifend.\n
-
-        Mauris pellentesque ut augue ut placerat. Curabitur blandit leo vel orci fringilla, et tempor massa dignissim. Donec pellentesque tortor vitae
-        nunc porta bibendum. Duis tempus ullamcorper odio, ac vestibulum arcu suscipit ut. Proin sem purus, viverra eu sem nec, laoreet vehicula ante.
-        Aliquam elit justo, molestie vitae varius interdum, gravida vitae ante. Nam consequat ultricies libero vitae lobortis. Etiam eget gravida libero.
-        Nunc nec rhoncus magna. Integer sit amet mauris dui. In lacinia cursus arcu. Mauris convallis lorem at sapien imperdiet mattis. Donec eget consectetur
-        ante, ac congue metus. Integer ac condimentum justo.</string>
-    <string name="title_terms_conditions">Términos y condiciones</string>
     <string name="accept">Aceptar</string>
     <string name="title_notification_pass">Permiso de Notificaciones</string>
     <string name="textNotification">Mauris pellentesque ut augue ut placerat. Curabitur blandit leo vel orci fringilla, et tempor massa dignissim. Donec pellentesque tortor vitae
@@ -117,6 +91,16 @@
         <item>Doctorado</item>
     </string-array>
 
+    <string-array name="days_array">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miércoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sábado</item>
+        <item>Domingo</item>
+    </string-array>
+
     <string name="title_activity_home_screen">HomeScreenActivity</string>
     <string name="lbl_home">Inicio</string>
     <string name="lbl_emotion">$moción</string>
@@ -135,4 +119,445 @@
     <string name="error_profile_no_yearexperience">Por favor indique los años de experiencia</string>
     <string name="lbl_member_free">Membresia Gratis</string>
     <string name="lbl_signOut">Cerrar Sesión</string>
+
+    <string name="title_terms_conditions">BICIFI APP TÉRMINOS Y CONDICIONES - POLÍTICA DE PRIVACIDAD Y USO DE DATOS</string>
+    <string name="terms_conditions"><![CDATA[Cuando accede a nuestras aplicaciones móviles, nuestros sitios web en bicifi.com, redes sociales o nuestro portal
+        de servicio al cliente en bicifi.zendesk.com o cualquier software, hoja de cálculo o cualquier contenido asociado, incluido el recibo de materiales
+        educativos y comunicaciones para administrar su capacitación, suscripción, funcionalidad y servicios, ya sea como invitado o como usuario registrado
+        (colectivamente, la "Plataforma"), usted acepta estar sujeto a los siguientes Términos y Condiciones, así como a la política de Privacidad y de uso
+        de datos de Bicifi LLC (La compania)  Dichas políticas podran ser actualizadas periódicamente sin previo aviso. Por favor revísalos cuidadosamente.<br><br>
+
+        La Plataforma se ofrece y está disponible para usuarios de 13 años o más (16 años o más en la Unión Europea). Al usar esta Plataforma, usted declara
+        y garantiza que es mayor de edad para formar un contrato vinculante con la Compañía y cumplir con todos los requisitos de elegibilidad anteriores.
+        Si no cumple con todos estos requisitos, no debe acceder ni utilizar el sitio web. Registrarse en nombre de otra persona que no cumple con este
+        requisito de edad es en sí mismo una violación de estos Términos.<br><br>
+
+        La plataforma, los servicios y el contenido se proporcionan "tal cual" sin garantía de ningún tipo, expresa o implícita, incluidas, entre otras,
+        las garantías implícitas de comerciabilidad, idoneidad para un propósito particular, título, no infracción, seguridad o exactitud. BICIFI LLC
+        renuncia específicamente a cualquier obligación de actualizar la información en la Plataforma y es su responsabilidad evaluar la precisión,
+        confiabilidad, oportunidad e integridad de cualquier información disponible en la Plataforma. BICIFI LLC no garantiza que la Plataforma opere
+        sin errores o que la plataforma, sus servidores o el contenido estén libres de virus informáticos o contaminación similar o características
+        destructivas. Si elige usar la Plataforma, o se basa en la información presentada, lo hace bajo su propio riesgo.<br><br>
+
+        Algunos países, estados o jurisdicciones no permiten la exclusión de ciertas garantías. En consecuencia, algunas de las exclusiones anteriores pueden
+        no aplicarse en su caso.<br><br>
+
+        <b>Indemnización</b><br><br>
+
+        Exención de daños usted acepta indemnizar, defender y eximir de responsabilidad a BICIFI LLC de cualquier responsabilidad, pérdida, reclamo y
+        gasto, incluidos los honorarios de abogados, relacionados con su violación de estos Términos y condiciones o el uso de la Plataforma. Nada en
+        estos términos de uso afectará los derechos legales no renunciables que se apliquen a usted. BIFICI LLC se reserva el derecho de asumir la defensa y
+        el control exclusivos (a su cargo) de cualquier asunto sujeto a indemnización en virtud de esta sección. En tal caso, usted acepta cooperar con
+        cualquier solicitud razonable que ayude a BICIFI LLC a defender dicho asunto.<br><br>
+
+        <b>Elección de la ley</b><br><br>
+
+        Toda la actividad o el uso de la Plataforma y los servicios y estos Términos y condiciones se rigen por las leyes de Colombia en la ciudad
+        aplicable de Santa Fe de Bogotá, sin tener en cuenta los principios de conflicto de leyes. El Tribunal de Colombia tendrá jurisdicción exclusiva
+        para escuchar y determinar cualquier reclamo o disputa entre usted y BICIFI LLC, relacionada directa o indirectamente con estos Términos y
+        Condiciones, o con cualquier asunto que surja de estos Términos y Condiciones, o cualquier otro documento ejecutado y entregado en relación
+        con estos Términos y condiciones, el uso de la Plataforma o los servicios en línea ofrecidos por BICIFI LLC. Si el tribunal carece de jurisdicción
+        sobre el tema, cualquier tribunal estatal ubicado en Florida, West Palm Beach, tendrá jurisdicción exclusiva para escuchar y determinar tales
+        reclamos o disputas. En la mayor medida permitida por la ley estatal y federal aplicable, usted y BICIFI LLC acuerdan renunciar al derecho
+        constitucional a un juicio ante un jurado. Antes de iniciar cualquier actividad legal en Colombia o en Florida se presentará el caso ante una
+        mediación preliminar en la camara de comercio de bogotá para eliminar cualquier costo preliminar legal. De no llegar a mediación se procederá
+        en accione legales en Colombia y como se describió anteriormente por ultimo se llevara el caso al condado de Palm Beach en Florida.<br><br>
+
+        <b>Renuncia de demanda colectiva</b><br><br>
+
+        Usted acepta que cualquier arbitraje o procedimiento se limitará a la disputa entre nosotros y usted individualmente. En la medida en que lo
+        permita la ley, (i) ningún arbitraje o procedimiento se unirá a ningún otro; (ii) no hay derecho o autoridad para que cualquier disputa sea
+        arbitrada o resuelta en una demanda colectiva o para utilizar procedimientos de demanda colectiva; y (iii) no existe el derecho o la autoridad
+        para que una disputa se presente en una capacidad representativa en representación del público en general o de cualquier otra persona. Usted
+        acepta que puede presentar reclamaciones contra nosotros solo en su capacidad individual y no como demandante o miembro de la clase en ningún
+        supuesto procedimiento de clase o representante.<br><br>
+
+        <b>Renuncia y divisibilidad</b><br><br>
+
+        Cualquier exención de cualquier disposición contenida en estos Términos y condiciones no se considerará como una renuncia a ningún otro derecho,
+        término o disposición de estos Términos y condiciones. Si se determina que alguna disposición en estos Términos y Condiciones es total o parcialmente
+        inválida, ilegal o inaplicable, dicha disposición se aplicará en la medida en que sea legal y válida y la validez, legalidad y aplicabilidad de las
+        disposiciones restantes no se aplicará de ninguna manera afectado o deteriorado por ello.<br><br>
+
+        <b>Asignación</b><br><br>
+
+        No puede asignar estos Términos y condiciones (por ley o de otro modo) sin el consentimiento previo por escrito de BICIFI LLC, y cualquier asignación
+        prohibida será nula y sin efecto. BICIFI LLC puede asignar estos Términos y Condiciones o cualquier derecho a continuación sin su consentimiento.<br><br>
+
+        <b>Plataforma y términos sujetos a cambios</b><br><br>
+
+        Nos reservamos el derecho de cambiar estos Términos y condiciones mediante la publicación de un acuerdo revisado. Si no está de acuerdo con estos
+        cambios, debe dejar de usar la Plataforma. La información en la Plataforma está sujeta a cambios sin previo aviso.<br><br>
+
+        Nos reservamos el derecho de retirar o modificar la Plataforma, y ​​cualquier servicio o material que proporcionamos en la Plataforma, a nuestro
+        exclusivo criterio y sin previo aviso. No seremos responsables si por alguna razón toda o parte de la Plataforma no está disponible en cualquier
+        momento o por algún período.<br><br>
+
+        <b>Acceso al sitio web y seguridad de la cuenta</b><br><br>
+
+        Nos reservamos el derecho de retirar o modificar la Plataforma, y ​​cualquier servicio o material que proporcionamos en él, a nuestro exclusivo
+        criterio y sin previo aviso. No seremos responsables si por alguna razón toda o parte de la Plataforma no está disponible en cualquier momento
+        o por algún período.<br><br>
+
+        Para acceder a la Plataforma o algunos de los recursos que ofrece, es posible que se le solicite que proporcione ciertos detalles de registro u
+        otra información. Es una condición de su uso de la Plataforma que toda la información que proporcione sobre ella sea correcta, actual y completa.
+        Usted acepta que toda la información que proporciona para registrarse en esta Plataforma o de otra manera, incluido, entre otros, mediante el uso
+        de cualquier función interactiva en la Plataforma, se rige por nuestra Política de privacidad, y acepta todas las acciones que tomemos con respecto
+        a su información coherente con nuestra Política de privacidad.<br><br>
+
+        Si elige, o se le proporciona, un nombre de usuario, contraseña o cualquier otra información como parte de nuestros procedimientos de seguridad,
+        debe tratar dicha información como confidencial y divulgará esa información confidencial únicamente bajo su propio riesgo y discreción. Si, a su
+        discreción, elige compartir su nombre de usuario, contraseña u otra información de seguridad con cualquier otra persona o entidad para compartir
+        el acceso, renunciamos a toda responsabilidad por cualquier cosa que esa persona o entidad pueda hacer para comprometer la seguridad de su cuenta.<br><br>
+
+        Usted acepta notificarnos de inmediato sobre cualquier acceso no autorizado o uso de su nombre de usuario o contraseña o cualquier otra violación
+        de seguridad. También acepta asegurarse de salir de su cuenta al final de cada sesión. Debe tener especial cuidado al acceder a su cuenta desde
+        una computadora pública o compartida para que otros no puedan ver o registrar su contraseña u otra información personal.<br><br>
+
+        Tenemos derecho a deshabilitar cualquier nombre de usuario, contraseña u otro identificador, ya sea elegido por usted o proporcionado por nosotros,
+        en cualquier momento si, en nuestra opinión, ha violado alguna disposición de estos Términos de servicio.<br><br>
+
+        No somos responsables de la precisión de los datos financieros obtenidos de sitios de terceros que se muestran o informan a través de la Plataforma
+        o cualquiera de nuestros servicios. BICIFI LLC, sin embargo, no es responsable y no puede garantizar la precisión u oportunidad de la información
+        financiera que recuperamos en su nombre directamente, de proveedores de tecnología de terceros, de instituciones financieras de terceros donde se
+        mantienen sus cuentas, o de investigación / mercado de terceros proveedores de datos utilizados para proporcionar los Servicios o de la propia
+        información por usted provista.<br><br>
+
+        <b>Derechos de propiedad intelectual</b><br><br>
+
+        La Plataforma y todo su contenido, características y funcionalidad (incluyendo, entre otros, toda la información, software, algoritmos, texto,
+        pantallas, imágenes, video y audio, y el diseño, selección y disposición de los mismos) son propiedad de La compañía, sus otorgantes de licencias
+        u otros proveedores de dicho material y están protegidos por las leyes internacionales de derechos de autor, marcas registradas, patentes, secretos
+        comerciales y otras leyes de propiedad intelectual o derechos de propiedad de los Estados Unidos.<br><br>
+
+        Estos Términos de servicio le permiten usar la Plataforma solo para su uso personal y no comercial. No debe reproducir, distribuir, modificar,
+        crear trabajos derivados de, mostrar públicamente, realizar públicamente, volver a publicar, descargar, almacenar o transmitir ningún material en
+        nuestra Plataforma.<br><br>
+
+        No debe acceder ni utilizar para ningún fin comercial ninguna parte de la Plataforma ni ningún servicio o material disponible a través de ella.<br><br>
+
+        Si imprime, copia, modifica, descarga o de otra manera usa o proporciona a cualquier otra persona acceso a cualquier parte de la Plataforma en
+        incumplimiento de los Términos de Servicio, su derecho a usar la Plataforma cesará inmediatamente y debe, a nuestra opción, devolver o destruir
+        cualquier copia de los materiales que haya hecho. No se le transfiere ningún derecho, título o interés en o sobre la Plataforma o cualquier contenido
+        en la Plataforma, y ​​BICIFI LLC se reserva todos los derechos no expresamente otorgados. Cualquier uso del sitio web o aplicaciones moviles  que
+        no esté expresamente permitido por estos Términos de servicio constituye un incumplimiento de estos Términos de servicio y puede violar los derechos
+        de autor, marcas registradas y otras leyes.<br><br>
+
+        <b>Marcas comerciales</b><br><br>
+
+        El nombre de la empresa BICIFI LLC, los términos "The Financial Bycicle", "Financial Glaucoma", “BI”  el logotipo de la empresa, algoritmos, modelo
+        de consultoria virtual  y todos los nombres, logotipos, nombres de productos y servicios, diseños y lemas relacionados son marcas comerciales de
+        BICIFI LLC o sus filiales o licenciantes. . No debe usar tales marcas sin el permiso previo por escrito de BICIFI LLC. Todos los demás nombres,
+        logotipos, nombres de productos y servicios, diseños y lemas en este sitio web son marcas comerciales de sus respectivos propietarios.<br><br>
+
+        <b>Uso general</b><br><br>
+
+        Si crea una cuenta en la Plataforma, comprende y acepta que BICIFI LLC está diseñado y destinado a proporcionar información general y educación y
+        no es un sustituto de asesoramiento financiero, de inversión y / o legal, retiro o pensión de salud o herencias y otro tema financiero detallado.
+        Cuando BICIFI LLC ofrece recomendaciones específicas, usted también comprende y acepta que las personas deben consultar a su propio asesor financiero,
+        de inversiones y / o legal en el curso de la implementación de cualquier recomendación específica. El negocio donde opera BICIFI LLC es solo en el
+        negocio de publicación, entrenamiento y capacitación, no en la inversión financiera o asesoramiento financiero o representación legal de ningún tipo.<br><br>
+
+        <b>Terminación</b><br><br>
+
+        BICIFI LLC puede cancelar su acceso a todo o parte del sitio web en cualquier momento, con o sin causa, con o sin aviso, con efecto inmediato. Si
+        desea rescindir este Acuerdo o su cuenta con BICIFI LLC (si tiene una), simplemente puede dejar de usar el Sitio web o las aplicaciones moviles u
+        otro servicio digital de La Plataforma.<br><br>
+
+        <b>Limitación de responsabilidad</b><br><br>
+
+        En ningún caso BICIFI LLC, o sus proveedores o licenciantes, serán responsables con respecto a cualquier tema de este acuerdo bajo ningún contrato,
+        negligencia, responsabilidad estricta u otra teoría legal o equitativa por: (i) cualquier daño especial, incidental o consecuente ; (ii) el costo de
+        adquisición o productos o servicios sustitutos; o (iii) por interrupción del uso o pérdida o corrupción de datos. Lo anterior no se aplicará en la
+        medida prohibida por la ley aplicable.<br><br>
+
+        1) Representación general y garantía. Usted declara y garantiza que (i) su uso de la Plataforma estará en estricta conformidad con la
+        Plataforma Política de privacidad y seguridad de, con este Acuerdo y con todas las leyes y regulaciones aplicables (incluidas, entre otras,
+        las leyes o regulaciones locales en su país, estado , ciudad u otra área gubernamental, con respecto a la conducta en línea y el contenido aceptable,
+        e incluyendo todas las leyes aplicables con respecto a la transmisión de datos técnicos exportados desde los Estados Unidos o el país en el que
+        reside) y (ii) su uso de La Plataforma no infringir o malversar los derechos de propiedad intelectual de BICIFI LLC o de cualquier tercero.<br><br>
+
+        2) Indemnización. Usted acepta indemnizar y eximir de responsabilidad a BICIFI LLC, sus contratistas y sus licenciantes, y sus respectivos
+        directores, funcionarios, empleados y agentes de y contra todos y cada uno de los reclamos y gastos, incluidos los honorarios de abogados,
+        derivados de su uso de la Plataforma , incluidos, entre otros, su violación de este Acuerdo.]]></string>
+
+    <string name="title_privacy_policy">POLÍTICA DE PRIVACIDAD</string>
+
+    <string name="privacy_policy"><![CDATA[<b>INTRODUCCIÓN</b><br><br>
+        BICIFI LLC es una Plataforma web, servidores, comunicaciones, aplicaciones móviles y otros medios digitales. Esta Política de privacidad explica
+        cómo recopilamos, usamos, divulgamos y protegemos su información cuando visita nuestra plataforma , incluido cualquier otro formulario de medios,
+        canal de medios, sitio web móvil o aplicación móvil relacionado o conectado al mismo (colectivamente, el "La Plataforma") o mediante integracion a
+        datos de terceros. Lea atentamente esta política de privacidad. Si no está de acuerdo con los términos de esta política de privacidad, no acceda a
+        la plataforma.<br><br>
+
+        Nos reservamos el derecho de realizar cambios a esta Política de privacidad en cualquier momento y por cualquier motivo. Le avisaremos sobre
+        cualquier cambio actualizando la fecha de "Última actualización" de esta Política de privacidad. Cualquier cambio o modificación entrará en vigencia
+        inmediatamente después de publicar la Política de privacidad actualizada en el Sitio, y usted renuncia al derecho de recibir un aviso específico de
+        cada cambio o modificación.<br><br>
+
+        Le recomendamos que revise periódicamente esta Política de privacidad para mantenerse informado de las actualizaciones. Se considerará que se le ha
+        informado, estará sujeto a, y se considerará que ha aceptado los cambios en cualquier Política de privacidad revisada por su uso continuo del Sitio
+        después de la fecha de publicación de dicha Política de privacidad revisada.<br><br>
+
+        <b>RECOPILACIÓN DE SU INFORMACIÓN</b><br><br>
+
+        Podemos recopilar información sobre usted de varias maneras. La información que podemos recopilar en el Sitio incluye:<br><br>
+
+        Datos personales Información de identificación personal, como su nombre, dirección de envío, dirección de correo electrónico y número de teléfono,
+        e información demográfica, como su edad, sexo, ciudad natal e intereses, que usted voluntariamente de [cuando se registre en el Sitio o en nuestra
+        aplicación móvil o cuando elija participar en diversas actividades relacionadas con el Sitio y nuestra aplicación móvil, como chat en línea,
+        ubicacion geo espacial, preferencias de uso de La Plataforma  y tableros de mensajes asi como algoritmos de analysis de datos de su aplicacion
+        movil y/o alianzas estrategicas con proveedores de datos de terceros.<br><br>
+
+        Información de nuestros servidores recopilan automáticamente cuando accede al Sitio o las aplicaciones móviles, como su dirección IP, su tipo de
+        navegador, su sistema operativo, sus tiempos de acceso y las páginas que ha visto directamente antes y después de acceder al Sitio. Si está
+        utilizando nuestra aplicación móvil, esta información también puede incluir el nombre y tipo de su dispositivo, su sistema operativo, su número de
+        teléfono, su país, sus me gusta y respuestas a una publicación, y otras interacciones con la aplicación y otros usuarios a través del servidor
+        archivos de registro, así como cualquier otra información que elija proporcionar. Otra información que podremos capturar será derivada de su
+        aplicación móvil o integraciones con proveedores de servicios financieros o transaccionales o georeferenciadores todos relacionados a proveer
+        una experiencia de educación financiera integral.<br><br>
+
+        <b>Datos</b><br><br>
+
+        Información financiera, como datos relacionados con su método de pago (por ejemplo, número de tarjeta de crédito válido, marca de tarjeta, fecha de
+        vencimiento) que podemos recopilar cuando realiza la compra, el pedido , devolver, intercambiar o solicitar información sobre nuestros servicios
+        desde el Sitio o nuestra aplicación móvil. Almacenamos información  que recopilamos. De lo contrario, toda la información financiera es almacenada
+        por nuestro procesador de pagos, Stripe u otro paralelo que podamos desarrollar entre los cuales pueden estar [Amazon Payments,] [Authorize.Net,]
+        [Braintree Payments,] [Chargify,] [Dwolla,] [Google Checkout,] [Paypal,] [SafeCharge,] [Stripe,] [WePay,] [2Checkout,] [otro], y se le recomienda
+        que revise su política de privacidad y se comunique con ellos directamente para obtener respuestas a sus preguntas.<br><br>
+
+        <b>Permisos de Facebook, google y twitter</b><br><br>
+
+        La Plataforma puede acceder por defecto o por que crea su cuenta usando estas redes sociales  a su Facebook, google o twiiter account. Podremos
+        capturar Información básica de la cuenta, incluyendo su nombre, correo electrónico, sexo, fecha de nacimiento, ciudad actual y URL de la foto de
+        perfil, así como otra información que elija hacer pública desde dichas integraciones. También podemos solicitar acceso a otros permisos relacionados
+        con su cuenta, como amigos, registros y me gusta o like, y usted puede optar por otorgarnos o negarnos el acceso a cada permiso individual.<br><br>
+
+        <b>Datos de redes sociales</b><br><br>
+
+        Información del usuario de sitios de redes sociales, como Apples Game Center, Facebook, Google+, Instagram, Pinterest, Twitter, incluido su nombre,
+        nombre de usuario de su red social, ubicación, sexo, fecha de nacimiento, dirección de correo electrónico, foto de perfil , y datos públicos para
+        contactos, si conecta su cuenta a dichas redes sociales. Si está utilizando nuestra aplicación móvil, esta información también puede incluir la
+        información de contacto de cualquier persona que invite a usar y / o unirse a nuestra aplicación móvil.<br><br>
+
+        Datos del móvil Información del dispositivo, como su ID, modelo y fabricante del dispositivo móvil, e información sobre la ubicación de su dispositivo,
+        si accede al Sitio desde un dispositivo móvil.<br><br>
+
+        <b>Información de Terceros</b><br><br>
+
+        Información dede terceros de terceros, como información personal o amigos de la red, si conecta su cuenta a un tercero y le otorga permiso al Sitio para
+        acceder a esta información.<br><br>
+
+        Si su entidad financiera llegare a estar vinculada a nuestra Plataforma podría llegar a compartir información de sus cuentas.<br><br>
+
+        <b>Información de la aplicación móvil</b><br><br>
+
+        Si se conecta utilizando nuestra aplicación móvil:<br><br>
+
+        - Información de ubicación geográfica. Podemos solicitar acceso o permiso y rastrear información basada en la ubicación desde su dispositivo móvil,
+        ya sea de forma continua o mientras está utilizando nuestra aplicación móvil, para proporcionar servicios basados ​​en la ubicación.<br><br>
+
+        - Acceso a dispositivos móviles. Es posible que solicitemos acceso o permiso a ciertas funciones de su dispositivo móvil, incluidas las de su
+        dispositivo móvil [bluetooth, calendario, cámara, contactos, micrófono, recordatorios, sensores, mensajes SMS, cuentas de redes sociales,
+        almacenamiento] y otras funciones.<br><br>
+
+        - Datos del dispositivo móvil. Podemos recopilar información del dispositivo (como su ID de dispositivo móvil, modelo y fabricante), sistema
+        operativo, información de versión y dirección IP.<br><br>
+
+        - Notificaciones push. Podemos solicitar que le enviemos notificaciones push sobre su cuenta, servicios de notificaciones a su dispositivo o
+        a la Aplicación.<br><br>
+
+        <b>USO DE SU INFORMACIÓN</b><br><br>
+
+        Tener información precisa sobre usted nos permite brindarle una experiencia fluida, eficiente y personalizada. Específicamente, podemos usar
+        la información recopilada sobre usted a través del Sitio [o nuestra aplicación móvil] para:<br><br>
+
+        - Recopilar datos estadísticos anónimos y análisis para uso interno o con terceros.<br><br>
+
+        - Crea y administra tu cuenta.<br><br>
+
+        - Entregarle publicidad dirigida, cupones, boletines y otra información sobre promociones de nuestra plataforma.<br><br>
+
+        - Enviarle un correo electrónico con respecto a su cuenta o estado de su nivel de puntaje en el cuestionario de autonomia financiera.<br><br>
+
+        - Cumplir y administrar compras, pedidos, pagos y otras transacciones relacionadas con el Sitio [y nuestra aplicación móvil].<br><br>
+
+        - Aumentar la eficiencia y el funcionamiento del Sitio [y nuestra aplicación móvil].<br><br>
+
+        - Monitoree y analice el uso y las tendencias para mejorar su experiencia con el Sitio [y nuestra aplicación móvil].<br><br>
+
+        - Notificarle las actualizaciones del Sitio [y nuestra aplicación móvil].<br><br>
+
+        - Ofrecerle nuevos productos, servicios, [aplicaciones móviles] y / o recomendaciones.<br><br>
+
+        - Realice otras actividades comerciales según sea necesario.<br><br>
+
+        - Procesar pagos y reembolsos.<br><br>
+
+        - Solicite comentarios y contacte con usted sobre su uso del Sitio [y nuestra aplicación móvil].<br><br>
+
+        - Responda a las solicitudes de productos y servicio al cliente.<br><br>
+
+        - Enviarle un boletín informativo.<br><br>
+
+        <b>DIVULGACIÓN DE SU INFORMACIÓN</b><br><br>
+
+        Podemos compartir información que hemos recopilado sobre usted en ciertas situaciones. Su información puede divulgarse de la siguiente manera:<br><br>
+
+        Si creemos que la divulgación de información sobre usted es necesaria para responder a un proceso legal, para investigar o remediar posibles
+        violaciones de nuestras políticas, o para proteger los derechos, la propiedad y seguridad de otros, podemos compartir su información según lo
+        permitido o requerido por cualquier ley, norma o regulación aplicable. Esto incluye el intercambio de información con otras entidades para la
+        protección contra el fraude y la reducción del riesgo de crédito.<br><br>
+
+        <b>Proveedores de servicios de terceros</b><br><br>
+
+        Podemos compartir su información con terceros que realizan servicios para nosotros o en nuestro nombre, incluido el procesamiento de pagos,
+        análisis de datos, entrega de correo electrónico, servicios de alojamiento, servicio al cliente, servicios de análisis financiero y todo lo
+        relevante para mejorar su educación económica y financiera asi como  asistencia de marketing.<br><br>
+
+        <b>Comunicaciones de marketing</b><br><br>
+
+        Podemos compartir su información con terceros con fines de marketing, según lo permita la ley.<br><br>
+
+        <b>Interacciones con otros usuarios</b><br><br>
+
+        Si interactúa con otros usuarios de la Plataforma,, esos usuarios pueden ver su nombre, foto de perfil y descripciones de su actividad,
+        incluido el envío de invitaciones a otros usuarios, chatear con otros usuarios o agentes de servicio directos o empleados de un servicio
+        tercerizado, dar me gusta a las publicaciones , siguiendo los blogs.<br><br>
+
+        <b>Publicaciones en línea</b><br><br>
+
+        Cuando publica comentarios, contribuciones u otro contenido en la Plataforma, sus publicaciones pueden ser vistas por todos los usuarios
+        y pueden distribuirse públicamente fuera del Sitio y nuestra Plataforma  a perpetuidad.<br><br>
+
+        Anunciantes de terceros Podemos utilizar compañías de publicidad de terceros para publicar anuncios cuando visita el Sitio [o nuestra
+        aplicación móvil]. Estas compañías pueden usar información sobre sus visitas al Sitio [y nuestra aplicación móvil] y otros sitios web
+        que están contenidos en cookies web para proporcionar anuncios sobre productos y servicios que le interesan.<br><br>
+
+        <b>Afiliados</b><br><br>
+
+        Podemos compartir su información con nuestros afiliados, en cuyo caso exigiremos que dichos afiliados cumplan con esta Política de privacidad.
+        Los afiliados incluyen nuestra compañía matriz y cualquier subsidiaria, empresa conjunta u otras compañías que controlemos o que estén bajo
+        control común con nosotros.<br><br>
+
+        <b>Socios comerciales</b><br><br>
+
+        Podemos compartir su información con nuestros socios comerciales para ofrecerle ciertos productos, servicios o promociones.<br><br>
+
+        <b>Muro de oferta </b><br><br>
+
+        Nuestra Plataforma puede mostrar un "muro de oferta" alojado por un tercero. Dicho muro de oferta permite a los anunciantes de terceros ofrecer
+        moneda virtual, productos o servicios tercerizados, regalos u otros artículos a los usuarios a cambio de la aceptación y finalización de una oferta
+        publicitaria. Tal muro de oferta puede aparecer en nuestra aplicación móvil y mostrarse en función de ciertos datos, como su área geográfica o
+        información demográfica. Cuando haga clic en un muro de ofertas, abandonará nuestra aplicación móvil. Se compartirá un identificador único, como
+        su ID de usuario, con el proveedor del muro de la oferta para evitar fraudes y acreditar adecuadamente su cuenta.<br><br>
+
+        Contactos de redes sociales si se conecta al Sitio o nuestra Plataforma a través de una red social , sus contactos en la red social verán su nombre,
+        foto de perfil y descripciones de su actividad.<br><br>
+
+        <b>Otros terceros</b><br><br>
+
+        Podemos compartir su información con anunciantes e inversores con el fin de realizar análisis comerciales generales. También podemos compartir su
+        información con dichos terceros con fines de comercialización, según lo permita la ley.<br><br>
+
+        <b>Venta o quiebra</b><br><br>
+
+        Si reorganizamos o vendemos todos o una parte de nuestros activos, nos sometemos a una fusión o somos adquiridos por otra entidad, podemos
+        transferir su información a la entidad sucesora. Si cerramos o entramos en bancarrota, su información sería un activo transferido o adquirido
+        por un tercero. Usted reconoce que tales transferencias pueden ocurrir y que el cesionario puede rechazar los compromisos de honor que hicimos
+        en esta Política de privacidad.<br><br>
+
+        No somos responsables de las acciones de terceros con los que comparte datos personales o confidenciales, y no tenemos autoridad para administrar
+        o controlar solicitudes de terceros. Si ya no desea recibir correspondencia, correos electrónicos u otras comunicaciones de terceros, es responsable
+        de comunicarse directamente con el tercero.<br><br>
+
+        <b>TECNOLOGÍAS DE SEGUIMIENTO</b><br><br>
+
+        Cookies y balizas web<br><br>
+
+        Podemos usar cookies, balizas web, píxeles de rastreo y otras tecnologías de rastreo en nuestra Plataforma para ayudar a personalizarla y
+        mejorar su experiencia. La mayoría de los navegadores están configurados para aceptar cookies de forma predeterminada. Puede eliminar o
+        rechazar las cookies, pero tenga en cuenta que dicha acción podría afectar la disponibilidad y la funcionalidad del Sitio [o nuestra aplicación
+        móvil].No puede rechazar balizas web o funciones de rastreo dentro de la plataforma de la aplicación web u otro sistema integrado a ella.<br><br>
+
+        Podemos utilizar cookies, balizas web, píxeles de seguimiento y otras tecnologías de seguimiento en La Plataforma para ayudar a personalizar el
+        Sitio y nuestra aplicación móvil o servicios o software relacionados y mejorar su experiencia.<br><br>
+
+        <b>Publicidad basada en Internet</b><br><br>
+
+        Además, podemos usar software de terceros para publicar anuncios en nuestra plataforma  incluyendo  nuestra aplicación móvil, implementar
+        campañas de marketing por correo electrónico y administrar otros iniciativas de marketing interactivo. Este software de terceros puede usar
+        cookies o tecnología de seguimiento similar para ayudarlo a administrar y optimizar su experiencia en línea con nosotros.<br><br>
+
+        <b>Análisis del sitio web</b><br><br>
+
+        También podemos asociarnos con proveedores seleccionados [como [Adobe Analytics,] [externosClicktale,] [Clicky,] [Cloudfare,] [Crazy Egg,]
+        [Flurry Analytics,] [Google Analytics,] [Heap Analytics,] [Inspectlet,] [Kissmetrics,][Mixpanel,] [Piwik,] y otros], para permitir el
+        seguimiento de tecnologías y servicios de remarketing en nuestra Plataforma incluyendo nuestra aplicación móvil mediante el uso de cookies
+        propias y de terceros. cookies, para, entre otras cosas, analizar y rastrear el uso de la Plataforma por parte de los usuarios, determinar
+        la popularidad de cierto contenido y comprender mejor la actividad en línea. Al acceder a nuestra plataforma, usted acepta que estos proveedores
+        externos recopilen y usen su información. Le recomendamos que revise su política de privacidad y se comunique con ellos directamente para obtener
+        respuestas a sus preguntas. No transferimos información personal a estos proveedores externos.<br><br>
+
+        Debe tener en cuenta que obtener una computadora nueva, instalar un navegador nuevo, actualizar un navegador existente o borrar o alterar los archivos
+        de cookies de su navegador o su telefono o tablet también puede eliminar ciertas cookies, complementos o configuraciones de exclusión voluntaria.<br><br>
+
+        <b>SITIOS WEB DE TERCEROS</b><br><br>
+
+        Nuestra Plataforma puede contener enlaces a sitios web de terceros y aplicaciones de interés, incluidos anuncios y servicios externos, que no
+        están afiliados a nosotros. Una vez que haya utilizado estos enlaces para abandonar algún componente de nuestra Plataforma, cualquier información
+        que proporcione a estos terceros no estará cubierta por esta Política de privacidad, y no podemos garantizar la seguridad y privacidad de su
+        información. Antes de visitar y proporcionar cualquier información a sitios web de terceros, debe informarse sobre las políticas y prácticas
+        de privacidad (si corresponde) del tercero responsable de ese sitio web, y debe tomar las medidas necesarias para, a su discreción, proteger el
+        privacidad de su información No somos responsables por el contenido o las prácticas y políticas de privacidad y seguridad de terceros,
+        incluidos otros sitios, servicios o aplicaciones que pueden estar vinculados hacia o desde nuestra Plataforma.<br><br>
+
+        <b>SEGURIDAD DE SU INFORMACIÓN</b><br><br>
+
+        Si bien hemos tomado medidas razonables para proteger la información personal que nos proporciona, tenga en cuenta que a pesar de nuestros esfuerzos,
+        ninguna medida de seguridad es perfecta o impenetrable, y no se puede garantizar ningún método de transmisión de datos contra cualquier intercepción u
+        otro tipo de mal uso. Cualquier información divulgada en línea es vulnerable a la intercepción y al uso indebido por parte de personas no autorizadas.
+        Por lo tanto, no podemos garantizar una seguridad completa si proporciona información personal.<br><br>
+
+        <b>POLÍTICA PARA NIÑOS</b><br><br>
+
+        No solicitamos intencionalmente información ni comercializamos a niños menores de 13 años. Si tiene conocimiento de los datos que hemos recopilado de
+        niños menores de 13 años, contáctenos utilizando la información de contacto que se proporciona a continuación.<br><br>
+
+        <b>OPCIONES CON RESPECTO A SU INFORMACIÓN</b><br><br>
+
+        [Información de la cuenta]<br><br>
+
+        En cualquier momento puede revisar o cambiar la información en su cuenta o cancelar su cuenta para cancelar su cuenta, desactivaremos o eliminaremos
+        su cuenta e información de nuestras bases de datos activas. Sin embargo, parte de la información puede conservarse en nuestros archivos para evitar
+        fraudes, solucionar problemas, ayudar con cualquier investigación, hacer cumplir nuestros Términos de uso y / o cumplir con los requisitos legales.<br><br>
+
+        Si ya no desea recibir correspondencia, correos electrónicos u otras comunicaciones de terceros, es responsable de comunicarse directamente con el tercero.<br><br>
+
+        <b>DERECHOS DE PRIVACIDAD DE CALIFORNIA</b><br><br>
+
+        La Sección 1798.83 del Código Civil de California, también conocida como la ley "Shine The Light", permite que nuestros usuarios que son residentes de
+        California nos soliciten y obtengan, una vez al año y de forma gratuita, información sobre categorías de información personal (si cualquiera) divulgamos
+        a terceros con fines de marketing directo y los nombres y direcciones de todos los terceros con los que compartimos información personal en el año
+        calendario inmediatamente anterior. Si es residente de California y desea hacer dicha solicitud, envíenos su solicitud por escrito utilizando la
+        información de contacto que se proporciona a continuación.<br><br>
+
+        Si es menor de 18 años, reside en California y tiene una cuenta registrada en La Plataforma [o nuestra aplicación móvil], tiene derecho a solicitar
+        la eliminación de datos no deseados que publique públicamente en el Sitio [o nuestra aplicación móvil].Para solicitar la eliminación de dichos datos,
+        comuníquese con nosotros utilizando la información de contacto que se proporciona a continuación, e incluya la dirección de correo electrónico asociada
+        con su cuenta y una declaración de que reside en California. Nos aseguraremos de que los datos no se muestren públicamente en el Sitio [o nuestra
+        aplicación móvil], pero tenga en cuenta que es posible que los datos no se eliminen completa o completamente de nuestros sistemas.<br><br>
+
+        <b>CONTÁCTENOS</b><br><br>
+
+        Si tiene preguntas o comentarios sobre esta Política de privacidad, contáctenos en:<br><br>
+
+        www.bicifi.com]]></string>
+    <string name="next">Siguiente</string>
+    <string name="how_improve">¿Cómo mejorar mi nivel?</string>
+    <string name="remember">Recordar</string>
+    <string name="task">Tareas</string>
+    <string name="questions">Preguntas</string>
+    <string name="select">seleccionar</string>
+    <string name="select_day_weak">¿Qué dia de la semana deseas el recordatorio?</string>
 </resources>

@@ -67,6 +67,10 @@ object Versions {
     const val androidExtensions = "0.9.2"
 
     const val mPAndroidChart = "2.2.4"
+
+    const val dinamicLinks = "19.0.0"
+
+    const val materialDialogs = "3.3.0"
 }
 
 object Classpath {
@@ -115,6 +119,7 @@ object ExternalLibraries {
     const val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     const val mPAndroidChart = "com.github.PhilJay:MPAndroidChart:v${Versions.mPAndroidChart}"
+    const val materialDialogs = "com.afollestad.material-dialogs:core:${Versions.materialDialogs}"
 }
 
 object SupportLibraries {
@@ -152,4 +157,6 @@ object Firebase {
     const val firebaseFunctions =
         "com.google.firebase:firebase-functions:${Versions.firebaseFunctions}"
     const val functionsKtx = "com.google.firebase:firebase-functions-ktx:${Versions.functionsKtx}"
+
+    const val firebaseDinamicLinks ="com.google.firebase:firebase-dynamic-links:${Versions.dinamicLinks}"
 }

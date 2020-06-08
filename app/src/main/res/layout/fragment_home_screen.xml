@@ -48,11 +48,9 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/velocimeterHomeScreen"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="144dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -75,28 +73,34 @@
             android:id="@+id/btnRepeatQuestions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dime_separate"
+            android:background="@color/white"
             android:contentDescription="@string/lbl_share"
+            android:padding="10dp"
+            android:layout_marginEnd="@dimen/dimen_size_40"
             android:src="@drawable/ic_repeat_black_24dp" />
 
         <ImageButton
             android:id="@+id/btnShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginStart="@dimen/dimen_size_40"
             android:contentDescription="@string/lbl_repeat_questions"
+            android:padding="10dp"
             android:src="@drawable/ic_share_24dp" />
 
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/grey_200"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lblHowImprove"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
@@ -109,5 +113,63 @@
             tools:text="@sample/sampledata.json/baseKnowledge" />
     </ScrollView>
 
+    <TextView
+        android:id="@+id/lblHowImprove"
+        style="@style/Titles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="@string/how_improve"
+        app:layout_constraintBottom_toTopOf="@+id/lytOptionsExtra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/lytOptionsExtra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnRemember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_size_16"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:drawableTop="@drawable/ic_calendar_check"
+            android:padding="10dp"
+            android:text="@string/remember"
+            android:textAppearance="@style/SubTitles" />
+
+        <Button
+            android:id="@+id/btnQuetion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_size_16"
+            android:layout_marginEnd="@dimen/dimen_size_16"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:drawableTop="@drawable/ic_clipboard_text_multiple_outline"
+            android:padding="10dp"
+            android:text="@string/task"
+            android:textAppearance="@style/SubTitles" />
+
+        <Button
+            android:id="@+id/btnTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_size_16"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:drawableTop="@drawable/ic_comment_question"
+            android:padding="10dp"
+            android:text="@string/questions"
+            android:textAppearance="@style/SubTitles" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
