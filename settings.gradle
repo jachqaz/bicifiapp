@@ -1,6 +1,6 @@
 rootProject.name='bicifiapp'
 include ':app'
-include ':buildSrc'
+
 include ':notificationssettings'
 include ':questions'
 include ':statistics'

@@ -12,4 +12,5 @@
     <color name="redLight">#f44336</color>
     <color name="greyLight">#828282</color>
     <color name="greyMoreLight">#C7C5C5</color>
+    <color name="orange">#f99901</color>
 </resources>

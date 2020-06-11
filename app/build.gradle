@@ -101,6 +101,7 @@ dependencies {
     implementation Firebase.firebasePerf
     implementation Firebase.crashlytics
     implementation Libraries.timber
+    implementation Firebase.firebaseDinamicLinks
 
     implementation Libraries.lifecycle
     implementation Libraries.lifecycleExtensions
@@ -126,5 +127,6 @@ dependencies {
     implementation ExternalLibraries.loggingInterceptor
 
     implementation ExternalLibraries.stripe
+    implementation ExternalLibraries.materialDialogs
 
 }
