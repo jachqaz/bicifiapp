@@ -54,6 +54,7 @@ object Versions {
     const val lottieVersion = "3.4.0"
     const val retrofit = "2.6.0"
     const val loggingInterceptor = "3.12.0"
+    const val stripe = "14.4.1"
 
     const val legacySupport = "1.0.0"
     const val compileSdk = 29
@@ -115,6 +116,7 @@ object ExternalLibraries {
     const val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     const val mPAndroidChart = "com.github.PhilJay:MPAndroidChart:v${Versions.mPAndroidChart}"
+    const val stripe = "com.stripe:stripe-android:${Versions.stripe}"
 }
 
 object SupportLibraries {

@@ -35,7 +35,6 @@ class HomeViewModel(
 
     private fun hadleGetLastUserLevelSuccess(lastUserLevelRecord: LastUserLevelRecord) {
         getCurrentUserLevelLiveData.value = State.Success(lastUserLevelRecord)
-
     }
 
     private fun handleFailure(failure: Failure) {
