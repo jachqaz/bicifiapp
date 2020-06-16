@@ -21,7 +21,8 @@ data class AnswerEntity(
 data class HeadAnswer(
     val userId: String,
     val date: String,
-    val answerEmotionalState: String
+    val answerEmotionalState: String,
+    val type: String
 )
 
 data class AnswersSimple(
@@ -46,5 +47,6 @@ data class LastUserLevelRecordEntity(
 
 data class EmotionalStateEntity(
     val date: String,
-    val emotionalState: String
+    val emotionalState: String,
+    val userId: String
 )

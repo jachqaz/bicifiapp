@@ -11,10 +11,9 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:background="@color/grey_200"
         android:orientation="vertical"
-        android:padding="@dimen/activity_margin"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,45 +48,104 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/velocimeterHomeScreen"
         android:layout_width="match_parent"
-        android:layout_height="144dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="anim_speedometer.json"
-        app:lottie_repeatCount="3" />
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="anim_speedometer.json" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:orientation="horizontal"
+        android:weightSum="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/velocimeterHomeScreen">
+
 
         <ImageButton
             android:id="@+id/btnRepeatQuestions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:contentDescription="@string/lbl_share"
-            android:padding="10dp"
+            android:layout_gravity="center"
             android:layout_marginEnd="@dimen/dimen_size_40"
+            android:background="@color/white"
+            android:contentDescription="@string/lbl_repeat_questions"
+            android:padding="10dp"
             android:src="@drawable/ic_repeat_black_24dp" />
 
         <ImageButton
             android:id="@+id/btnShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@color/white"
-            android:layout_marginStart="@dimen/dimen_size_40"
-            android:contentDescription="@string/lbl_repeat_questions"
+            android:contentDescription="@string/lbl_share"
             android:padding="10dp"
             android:src="@drawable/ic_share_24dp" />
+
+        <ImageButton
+            android:id="@+id/btnRepeatQuestionsFailed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_size_40"
+            android:background="@color/white"
+            android:contentDescription="@string/lbl_repeat_failed_questions"
+            android:padding="10dp"
+            android:src="@drawable/ic_repeat_question_failed_24" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/txtRepeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_size_36"
+            android:padding="10dp"
+            android:src="@drawable/ic_repeat_black_24dp"
+            android:text="@string/lbl_repeat_questions"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:src="@drawable/ic_repeat_black_24dp"
+            android:text="@string/lbl_share"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtFailedRepeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:src="@drawable/ic_repeat_black_24dp"
+            android:text="@string/lbl_repeat_failed_questions"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -96,14 +154,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/grey_200"
         app:layout_constraintBottom_toTopOf="@+id/lblHowImprove"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutText">
 
         <TextView
             android:id="@+id/txtResultLevel"

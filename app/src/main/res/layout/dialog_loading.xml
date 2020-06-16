@@ -10,7 +10,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="bicycle_anim.json"
+        app:lottie_fileName="loading_animation.json"
         app:lottie_loop="true"
         android:layout_centerInParent="true"/>
 

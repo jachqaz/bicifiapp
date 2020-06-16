@@ -6,6 +6,7 @@ import com.bicifiapp.di.emotionalQuestionViewModelModule
 import com.bicifiapp.di.homeViewModelModule
 import com.bicifiapp.di.knowledgeRepositoryModule
 import com.bicifiapp.di.networkHandlerModule
+import com.bicifiapp.di.notificationModule
 import com.bicifiapp.di.profileRepositoryModule
 import com.bicifiapp.di.profileViewModelModule
 import com.bicifiapp.di.questionRepositoryModule
@@ -41,7 +42,8 @@ class ApplicationBificiApp : Application() {
                     statisticsRepositoryModule,
                     homeViewModelModule,
                     statisticsViewModelModule,
-                    emotionalQuestionViewModelModule
+                    emotionalQuestionViewModelModule,
+                    notificationModule
                 )
             )
         }

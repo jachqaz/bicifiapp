@@ -19,7 +19,7 @@ object Versions {
     const val kotlin = "1.3.41"
     const val recycler = "1.0.0"
     const val glide = "4.10.0"
-    const val crashlytics = "2.10.1"
+    const val crashlytics = "17.0.1"
     const val koin = "2.0.1"
     const val timber = "4.7.1"
     const val design = "1.0.0"
@@ -31,10 +31,10 @@ object Versions {
     const val expresso = "3.2.0"
     const val lifecycle = "2.2.0"
     const val livedataExtensions = "2.2.0"
-    const val firebaseAuth = "19.2.0"
-    const val firebaseAnalytics = "17.2.3"
-    const val firebaseInAppMessage = "19.0.3"
-    const val firebasePerf = "19.0.5"
+    const val firebaseAuth = "19.3.1"
+    const val firebaseAnalytics = "17.4.3"
+    const val firebaseInAppMessage = "19.0.7"
+    const val firebasePerf = "19.0.7"
     const val mockitoCore = "3.0.0"
     const val mockitoInline = "3.0.0"
     const val coroutinesTest = "1.3.3"
@@ -46,7 +46,7 @@ object Versions {
     const val constraintLayout = "1.1.3"
     const val facebook = "[4,5)"
     const val google = "17.0.0"
-    const val firestoreKtx = "21.4.2"
+    const val firestoreKtx = "21.4.3"
     const val firebaseFunctions = "19.0.2"
     const val functionsKtx = "19.0.2"
     const val androidTools = "3.6.1"
@@ -63,13 +63,14 @@ object Versions {
     const val targetSdk = 29
 
     const val navigationVersion = "2.2.1"
+    const val workVersion = "2.4.0-alpha03"
     const val frameworkBase = "0.9.1"
     const val presentation = "0.9.4"
     const val androidExtensions = "0.9.2"
 
     const val mPAndroidChart = "2.2.4"
 
-    const val dinamicLinks = "19.0.0"
+    const val dinamicLinks = "19.1.0"
 
     const val materialDialogs = "3.3.0"
 }
@@ -104,6 +105,7 @@ object Libraries {
     const val navigationFragment =
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
     const val navigationKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
+    const val workManagerKtx = "androidx.work:work-runtime-ktx:${Versions.workVersion}"
 }
 
 object ExternalLibraries {
@@ -154,7 +156,7 @@ object Firebase {
     const val firebaseInAppMessaging =
         "com.google.firebase:firebase-inappmessaging-display:${Versions.firebaseInAppMessage}"
     const val firebasePerf = "com.google.firebase:firebase-perf:${Versions.firebasePerf}"
-    const val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
+    const val crashlytics = "com.google.firebase:firebase-crashlytics:${Versions.crashlytics}"
     const val firestoreKtx = "com.google.firebase:firebase-firestore-ktx:${Versions.firestoreKtx}"
     const val firebaseFunctions =
         "com.google.firebase:firebase-functions:${Versions.firebaseFunctions}"

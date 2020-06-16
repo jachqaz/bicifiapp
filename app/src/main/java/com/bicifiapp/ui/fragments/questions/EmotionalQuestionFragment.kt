@@ -14,6 +14,7 @@ import com.bicifiapp.extensions.LAST_DATE_EMOTIONAL_TEST
 import com.bicifiapp.extensions.LAST_DATE_TEST
 import com.bicifiapp.extensions.LAST_EMOTIONAL_STATE
 import com.bicifiapp.extensions.getSharedPreferences
+import com.bicifiapp.extensions.userId
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
 import com.bicifiapp.ui.viewmodels.emotionalquestion.EmotionalQuestionViewModel
@@ -88,7 +89,7 @@ class EmotionalQuestionFragment : BaseFragment(R.layout.fragment_emotional_quest
                         Date().getDateWithFormat(DATE_FORMAT)
                     )
                 }
-                emotionalQuestionViewModel.saveEmotionalState(emotionalState)
+                emotionalQuestionViewModel.saveEmotionalState(emotionalState, userId())
             }
             else -> callback?.onQuestionEmotionalResponse(emotionalState)
         }

@@ -101,13 +101,26 @@
         <item>Domingo</item>
     </string-array>
 
+    <string-array name="hours_array">
+        <item>6 am</item>
+        <item>8 am</item>
+        <item>10 am</item>
+        <item>12 pm</item>
+        <item>2 pm</item>
+        <item>4 pm</item>
+        <item>6 pm</item>
+        <item>8 pm</item>
+        <item>10 pm</item>
+    </string-array>
+
     <string name="title_activity_home_screen">HomeScreenActivity</string>
     <string name="lbl_home">Inicio</string>
     <string name="lbl_emotion">$moción</string>
     <string name="lbl_trend">Tendencia</string>
     <string name="title_notifications">Notificaciones</string>
     <string name="lbl_share">Compartir</string>
-    <string name="lbl_repeat_questions">Repeat Questions</string>
+    <string name="lbl_repeat_questions">Repetir Todo</string>
+    <string name="lbl_repeat_failed_questions">Repetir Falladas</string>
     <string name="lbl_last_level">Ultimo puntaje: %d -  %s</string>
     <string name="lbl_last_record_emotional">Ultimo checkeo $mocion financiera</string>
     <string name="name_file_shared_preferences">bicifiappshared</string>
@@ -560,4 +573,10 @@
     <string name="questions">Preguntas</string>
     <string name="select">seleccionar</string>
     <string name="select_day_weak">¿Qué dia de la semana deseas el recordatorio?</string>
+    <string name="lbl_message_dont_have_repeat_question">Felicitaciones!! Ya estas haciendo todas las buenas practicas financieras.</string>
+    <string name="lbl_congratulations">Felicitaciones</string>
+    <string name="lbl_ok">Listo</string>
+    <string name="lbl_share_message_default">Hola acabo de realizar un test que me dice como esta mi nivel financiero,\" +
+        \" quieres conocer un poco y mejorar tus finanazas:\n\n\" + \"https://bicifiapp.page.link/NLtk</string>
+    <string name="lbl_subject">¿Cómo están tus finanzas?</string>
 </resources>

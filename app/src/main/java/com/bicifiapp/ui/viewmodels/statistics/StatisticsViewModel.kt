@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import co.devhack.base.Either
 import co.devhack.base.State
 import co.devhack.base.error.Failure
+import com.bicifiapp.statistics.Statistics
 import com.bicifiapp.statistics.StatisticsRepository
-import com.bicifiapp.statistics.TestStatistic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -16,7 +16,7 @@ class StatisticsViewModel(
     private val statisticsRepository: StatisticsRepository
 ) : ViewModel() {
 
-    private lateinit var resultStatisticTest: Either<Failure, List<TestStatistic>>
+    private lateinit var resultStatisticTest: Either<Failure, Statistics>
 
     val resultStatisticTestLiveData by lazy {
         MutableLiveData<State>()
@@ -39,7 +39,7 @@ class StatisticsViewModel(
         resultStatisticTestLiveData.value = State.Failed(failure)
     }
 
-    private fun handlerStatisticsTestByUser(statistics: List<TestStatistic>) {
+    private fun handlerStatisticsTestByUser(statistics: Statistics) {
         resultStatisticTestLiveData.value = State.Success(statistics)
     }
 }

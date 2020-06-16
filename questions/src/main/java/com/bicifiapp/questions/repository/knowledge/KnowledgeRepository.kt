@@ -6,5 +6,4 @@ import co.devhack.base.error.Failure
 interface KnowledgeRepository {
 
     suspend fun getArticleByLabel(label: String): Either<Failure, ArticleKnowledge>
-
 }

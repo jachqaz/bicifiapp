@@ -57,7 +57,6 @@ class HomeScreenActivity : BaseActivity() {
             else -> super.onOptionsItemSelected(item)
         }
 
-
     private fun setUpNavigation(navController: NavController) {
         binding.navView.setupWithNavController(navController)
     }
@@ -81,7 +80,6 @@ class HomeScreenActivity : BaseActivity() {
             binding.drawerLayoutHome.closeDrawers()
             true
         }
-
     }
 
     private fun loadHeaderNavigationView() {
@@ -106,5 +104,3 @@ class HomeScreenActivity : BaseActivity() {
         }
     }
 }
-
-

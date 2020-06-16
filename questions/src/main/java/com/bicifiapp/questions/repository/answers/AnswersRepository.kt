@@ -5,7 +5,11 @@ import co.devhack.base.error.Failure
 
 interface AnswersRepository {
 
-    suspend fun saveAnswers(answers: List<Answer>, emotionalState: String): Either<Failure, String>
+    suspend fun saveAnswers(
+        answers: List<Answer>,
+        emotionalState: String,
+        questionType: String
+    ): Either<Failure, String>
 
     suspend fun calculateLevel(
         userId: String,
@@ -15,6 +19,5 @@ interface AnswersRepository {
 
     suspend fun getLastUserLevel(userId: String): Either<Failure, LastUserLevelRecord>
 
-    suspend fun saveEmotionalState(emotionalState: String): Either<Failure, Boolean>
-
+    suspend fun saveEmotionalState(emotionalState: String, userId: String): Either<Failure, Boolean>
 }
