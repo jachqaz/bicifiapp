@@ -5,6 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.edit
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import co.devhack.androidextensions.components.liveDataObserve
 import co.devhack.base.State
 import co.devhack.presentation.BaseFragment
@@ -24,11 +27,13 @@ import com.bicifiapp.extensions.getSharedPreferences
 import com.bicifiapp.extensions.userId
 import com.bicifiapp.notificationssettings.notification.Notification
 import com.bicifiapp.questions.repository.answers.LastUserLevelRecord
+import com.bicifiapp.services.RemainderWorker
 import com.bicifiapp.ui.activity.questions.QuestionActivity
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
 import com.bicifiapp.ui.viewmodels.home.HomeViewModel
 import org.koin.android.ext.android.inject
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 private const val IS_FREE_USER = "isFreeUser"
@@ -112,8 +117,9 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
         }
 
         if (daysSelected.isNotEmpty()) {
-            if (daysSelected.isNotEmpty())
+            if (daysSelected.isNotEmpty()) {
                 dialog.checkItems(daysSelected.toIntArray())
+            }
         }
     }
 
@@ -242,13 +248,57 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
         }
 
     private fun createScheduleNotification() {
-        /*val saveRequest =
-            PeriodicWorkRequestBuilder<RemainderWorker>(1, TimeUnit.HOURS)
-                .build()
+        WorkManager.getInstance(requireActivity()).cancelAllWorkByTag(NOTIFICATION_TASK)
 
-        WorkManager.getInstance(activity())
-            .enqueue(saveRequest)*/
+        val initialDelay = calculateInitDelayHours()
+
+        when {
+            initialDelay >= 0 -> PeriodicWorkRequestBuilder<RemainderWorker>(
+                REPEAT_INTERVAL_HOUR,
+                TimeUnit.HOURS
+            ).setInitialDelay(1, TimeUnit.MINUTES)
+                .addTag(NOTIFICATION_TASK)
+                .build()
+            initialDelay == DEFAULT_VALUE_HOURS_EQUALS -> PeriodicWorkRequestBuilder<RemainderWorker>(
+                REPEAT_INTERVAL_HOUR,
+                TimeUnit.HOURS
+            ).addTag(NOTIFICATION_TASK)
+                .build()
+            else -> null
+        }?.also {
+            WorkManager.getInstance(activity())
+                .enqueueUniquePeriodicWork(
+                    NOTIFICATION_TASK,
+                    ExistingPeriodicWorkPolicy.REPLACE,
+                    it
+                )
+        }
     }
+
+    private fun calculateInitDelayHours(): Long =
+        if (hourSelected.isNotEmpty()) {
+            var hourSchedule = hourSelected
+                .split(SPACE_STRING)[INDEX_GET_HOUR]
+                .split(SEPARATOR_HOUR)[INDEX_GET_HOUR].toInt()
+            val schedule = hourSelected.split(SPACE_STRING)[INDEX_GET_SCHEDULE]
+            if (schedule == SCHEDULE_PM) {
+                hourSchedule = convertHourTo24Hours(hourSchedule)
+            }
+
+            val hourNow = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+            when {
+                hourNow == hourSchedule -> DEFAULT_VALUE_HOURS_EQUALS
+                hourSchedule > hourNow -> (hourSchedule - hourNow).toLong()
+                else -> (TOTAL_HOURS_DAY - (hourNow - hourSchedule)).toLong()
+            }
+        } else HOUR_NOT_SELECTED
+
+    private fun convertHourTo24Hours(hour: Int): Int =
+        if (hour != HOURS_HALF_DAY) {
+            HOURS_HALF_DAY + hour
+        } else {
+            hour
+        }
 
     private fun setTextUserLastLevel(userLastLevel: LastUserLevelRecord) {
         binding.txtLevel.text = userLastLevel.titleLevel
@@ -293,6 +343,17 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
     companion object {
 
         const val TEXT_PLAIN = "text/plain"
+        const val DEFAULT_VALUE_HOURS_EQUALS = -1L
+        const val TOTAL_HOURS_DAY = 24
+        const val INDEX_GET_HOUR = 0
+        const val REPEAT_INTERVAL_HOUR = 24L
+        const val HOUR_NOT_SELECTED = -2L
+        const val HOURS_HALF_DAY = 12
+        const val INDEX_GET_SCHEDULE = 1
+        const val SCHEDULE_PM = "pm"
+        const val SPACE_STRING = " "
+        const val SEPARATOR_HOUR = ":"
+        const val NOTIFICATION_TASK = "notification_task"
 
         @JvmStatic
         fun newInstance(isPayUser: Boolean) =

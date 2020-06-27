@@ -89,7 +89,6 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     private fun loadDataIntent() {
         lastDateResponseQuestions = intent?.getStringExtra(LAST_DATE_RESPONSE_QUESTIONS)
         intent?.let {
-            val v = it.getStringExtra(REPEAT_QUESTION_TYPE) ?: ""
             questionType =
                 QuestionTypeEnum.valueOf(it.getStringExtra(REPEAT_QUESTION_TYPE) ?: "")
         }

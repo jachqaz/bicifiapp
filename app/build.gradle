@@ -42,14 +42,15 @@ android {
         enabled = true
     }
 
-// To inline the bytecode built with JVM target 1.8 into
-// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
-
+    configurations {
+        all*.exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -87,6 +88,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation Libraries.navigationFragment
     implementation Libraries.navigationKtx
+    implementation Libraries.workManagerKtx
     kapt Libraries.glideCompile
 
     implementation Libraries.koinAndroid

@@ -107,7 +107,6 @@ class EmotionalQuestionFragment : BaseFragment(R.layout.fragment_emotional_quest
             }
     }
 
-
     private fun initLiveData() {
         liveDataObserve(
             emotionalQuestionViewModel.saveEmotionalStateLiveData,
@@ -124,10 +123,10 @@ class EmotionalQuestionFragment : BaseFragment(R.layout.fragment_emotional_quest
             State.Loading -> showProgress()
             State.Empty -> hideProgress()
             is State.Success -> {
-                notifySuccess(
+                /*notifySuccess(
                     messageIdRes = R.string.lbl_success_emotional_state,
                     colorId = R.color.success_snackbar
-                )
+                )*/
                 hideProgress()
             }
             null -> hideProgress()

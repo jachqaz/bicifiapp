@@ -106,12 +106,14 @@ class StatisticsFragment : BaseFragment(R.layout.fragment_statistics) {
             color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary)
         }
 
-        configBarChartQuestions(
-            dateFormattedQuestions,
-            barDataSetQuestion,
-            barDataSetQuestionEmotional
-        )
-        binding.barChart.invalidate()
+        if (dateFormattedQuestions.isNotEmpty()) {
+            configBarChartQuestions(
+                dateFormattedQuestions,
+                barDataSetQuestion,
+                barDataSetQuestionEmotional
+            )
+            binding.barChart.invalidate()
+        }
 
         val dateFormattedEmotional = statistics.statisticEmotional.map {
             getDateTimeFormat(it.date)
@@ -132,9 +134,10 @@ class StatisticsFragment : BaseFragment(R.layout.fragment_statistics) {
             color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary)
         }
 
-        configBarChartEmotional(dateFormattedEmotional, barDataSetEmotional)
-
-        binding.barChartEmotion.invalidate()
+        if (dateFormattedEmotional.isNotEmpty()) {
+            configBarChartEmotional(dateFormattedEmotional, barDataSetEmotional)
+            binding.barChartEmotion.invalidate()
+        }
     }
 
     private fun loadEmotionalState() {

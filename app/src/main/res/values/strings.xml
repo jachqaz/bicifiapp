@@ -102,15 +102,15 @@
     </string-array>
 
     <string-array name="hours_array">
-        <item>6 am</item>
-        <item>8 am</item>
-        <item>10 am</item>
-        <item>12 pm</item>
-        <item>2 pm</item>
-        <item>4 pm</item>
-        <item>6 pm</item>
-        <item>8 pm</item>
-        <item>10 pm</item>
+        <item>6:00 am</item>
+        <item>8:00 am</item>
+        <item>10:00 am</item>
+        <item>12:00 pm</item>
+        <item>2:00 pm</item>
+        <item>4:00 pm</item>
+        <item>6:00 pm</item>
+        <item>8:00 pm</item>
+        <item>10:00 pm</item>
     </string-array>
 
     <string name="title_activity_home_screen">HomeScreenActivity</string>
@@ -579,4 +579,6 @@
     <string name="lbl_share_message_default">Hola acabo de realizar un test que me dice como esta mi nivel financiero,\" +
         \" quieres conocer un poco y mejorar tus finanazas:\n\n\" + \"https://bicifiapp.page.link/NLtk</string>
     <string name="lbl_subject">¿Cómo están tus finanzas?</string>
+    <string name="lbl_title_remainder_evaluate_status">Recuerda evaluar tu estado financiero</string>
+    <string name="lbl_notifications_channel">notifications channel</string>
 </resources>
