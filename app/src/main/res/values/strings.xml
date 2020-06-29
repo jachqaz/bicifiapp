@@ -560,4 +560,5 @@
     <string name="questions">Preguntas</string>
     <string name="select">seleccionar</string>
     <string name="select_day_weak">¿Qué dia de la semana deseas el recordatorio?</string>
+    <string name="crear">Create</string>
 </resources>

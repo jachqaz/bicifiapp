@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.task.TaskFragment">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/Titles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="@dimen/dimen_size_16"
+        android:paddingEnd="@dimen/dimen_size_16"
+        android:text="Crea una tareas para mejorar tu salud financiera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subTitle"
+        style="@style/SubTitles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_size_16"
+        android:paddingStart="@dimen/dimen_size_16"
+        android:paddingEnd="@dimen/dimen_size_16"
+        android:text="Estas son las tareas que debes mejorar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spQuestionFail"
+        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_size_8"
+        android:minHeight="@dimen/dimen_size_40"
+        android:layout_marginStart="@dimen/dimen_size_16"
+        android:layout_marginEnd="@dimen/dimen_size_16"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subTitle" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_size_16"
+        android:layout_marginTop="@dimen/dimen_size_16"
+        android:layout_marginEnd="@dimen/dimen_size_16"
+        android:background="@drawable/tooltip"
+        android:padding="@dimen/dimen_size_8"
+        android:text="Tiene un presupuesto de ingresos y egresos que revisa solo (soltero) o con su familia (casado o con partner) comparando cuanto realmente gano (ganaron) y gasto (gastaron) por lo menos una vez cada trimestre ?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spQuestionFail" />
+
+    <TextView
+        android:id="@+id/txtExamples"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_size_16"
+        android:layout_marginTop="@dimen/dimen_size_8"
+        android:layout_marginEnd="@dimen/dimen_size_16"
+        android:background="@drawable/tooltip"
+        android:padding="@dimen/dimen_size_8"
+        android:text="Ejemplos de lo que puedes hacer:
+                       \n - Crear un presupuesto en excel
+                       \n - Hablar con tu familia para ..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtExamples">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/dimen_size_16"
+            android:paddingEnd="@dimen/dimen_size_16">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputTaskDo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/birthday"
+                    android:inputType="text"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputTaskWho"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/birthday"
+                    android:inputType="text"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputTaskWhen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/birthday"
+                    android:inputType="text"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputTaskDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/birthday"
+                    android:inputType="text"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnCreateTask"
+        style="@style/ButtonMain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/crear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
