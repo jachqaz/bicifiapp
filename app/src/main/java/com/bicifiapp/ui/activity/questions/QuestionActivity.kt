@@ -6,6 +6,7 @@ import co.devhack.androidextensions.components.liveDataObserve
 import co.devhack.androidextensions.getDateWithFormat
 import co.devhack.base.State
 import co.devhack.presentation.BaseActivity
+import com.afollestad.materialdialogs.MaterialDialog
 import com.bicifiapp.R
 import com.bicifiapp.databinding.ActivityQuestionBinding
 import com.bicifiapp.extensions.empty
@@ -16,6 +17,8 @@ import com.bicifiapp.questions.repository.question.Question
 import com.bicifiapp.ui.activity.homescreen.HomeScreenActivity
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
+import com.bicifiapp.ui.fragments.home.QuestionTypeEnum
+import com.bicifiapp.ui.fragments.home.REPEAT_QUESTION_TYPE
 import com.bicifiapp.ui.fragments.questions.EmotionalQuestionFragment
 import com.bicifiapp.ui.fragments.questions.QuestionFragment
 import com.bicifiapp.ui.viewmodels.questions.QuestionViewModel
@@ -28,7 +31,7 @@ const val LAST_DATE_RESPONSE_QUESTIONS = "last_date_response"
 class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     EmotionalQuestionFragment.OnQuestionEmotionalListener {
 
-    private companion object{
+    private companion object {
         const val FORMAT_DATE = "dd-MM-yyyy HH:mm"
     }
 
@@ -38,6 +41,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     private lateinit var questions: List<Question>
     private var currentQuestionIndex = 0
     private var lastDateResponseQuestions: String? = ""
+    private lateinit var questionType: QuestionTypeEnum
     private var emotionalState = String.empty()
     private lateinit var userId: String
     private lateinit var answers: ArrayList<Answer>
@@ -49,11 +53,11 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     override fun initView() {
         binding = ActivityQuestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        userId = userId().safeString()
         initLiveData()
         loadDataIntent()
         loadQuestions()
         answers = ArrayList()
-        userId = userId().safeString()
     }
 
     override fun showProgress() {
@@ -79,11 +83,15 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
 
     override fun onQuestionEmotionalResponse(emotionalState: String) {
         this.emotionalState = emotionalState
-        questionViewModel.saveAnswers(answers, emotionalState)
+        questionViewModel.saveAnswers(answers, emotionalState, questionType.code)
     }
 
     private fun loadDataIntent() {
         lastDateResponseQuestions = intent?.getStringExtra(LAST_DATE_RESPONSE_QUESTIONS)
+        intent?.let {
+            questionType =
+                QuestionTypeEnum.valueOf(it.getStringExtra(REPEAT_QUESTION_TYPE) ?: "")
+        }
     }
 
     private fun initLiveData() {
@@ -96,7 +104,7 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
     }
 
     private fun loadQuestions() {
-        questionViewModel.getQuestions()
+        questionViewModel.getQuestions(questionType.code, userId)
     }
 
     private fun runQuestionFragment() {
@@ -139,14 +147,33 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
             State.Empty -> hideProgress()
             is State.Success -> {
                 this.questions = state.responseTo()
-                binding.progressStatusQuestion.max = this.questions.size + 1
-                runQuestionFragment()
+                if (hasQuestions(this.questions)) {
+                    binding.progressStatusQuestion.max = this.questions.size + 1
+                    runQuestionFragment()
+                }
                 hideProgress()
             }
             null -> hideProgress()
         }
 
-    private fun onGetAnswersStateChange(state: State?) =
+    private fun hasQuestions(questions: List<Question>) =
+        when (questions.isEmpty()) {
+            true -> {
+                MaterialDialog(this).show {
+                    title(R.string.lbl_congratulations)
+                    message(R.string.lbl_message_dont_have_repeat_question)
+                    positiveButton(R.string.lbl_ok) {
+                        finish()
+                    }
+                }
+                false
+            }
+            else -> true
+        }
+
+    private fun onGetAnswersStateChange(
+        state: State?
+    ) =
         when (state) {
             is State.Failed -> {
                 hideProgress()
@@ -161,7 +188,9 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
             null -> hideProgress()
         }
 
-    private fun onCalculateLevelStateChange(state: State?) =
+    private fun onCalculateLevelStateChange(
+        state: State?
+    ) =
         when (state) {
             is State.Failed -> {
                 hideProgress()
@@ -189,7 +218,5 @@ class QuestionActivity : BaseActivity(), QuestionFragment.OnQuestionListener,
             startActivity(intent)
             finish()
         }
-
     }
-
 }

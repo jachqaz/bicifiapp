@@ -22,11 +22,11 @@ class EmotionalQuestionViewModel(
         MutableLiveData<State>()
     }
 
-    fun saveEmotionalState(emotionalState: String) {
+    fun saveEmotionalState(emotionalState: String, userId: String) {
         saveEmotionalStateLiveData.value = State.Loading
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                result = answersRepository.saveEmotionalState(emotionalState)
+                result = answersRepository.saveEmotionalState(emotionalState, userId)
             }
             result.either(::handleFailure, ::saveEmotionalStateSuccess)
         }

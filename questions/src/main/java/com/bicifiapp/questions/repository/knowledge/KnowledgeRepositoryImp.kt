@@ -22,5 +22,4 @@ class KnowledgeRepositoryImp(
         } catch (e: Exception) {
             Either.Left(e.toCustomExceptions())
         }
-
 }

@@ -11,11 +11,14 @@ class QuestionRepositoryImp(
     private val networkHandler: NetworkHandler
 ) : QuestionRepository {
 
-    override suspend fun getAllQuestions(): Either<Failure, List<Question>> =
+    override suspend fun getQuestionsByType(
+        questionType: String,
+        userId: String
+    ): Either<Failure, List<Question>> =
         try {
             when (networkHandler.isConnected) {
                 true -> Either.Right(
-                    dataSource.getAllQuestions().map {
+                    dataSource.getQuestionsByType(questionType, userId).map {
                         it.toQuestion()
                     }
                 )

@@ -19,6 +19,8 @@ import com.bicifiapp.notificationssettings.repository.Profile
 import com.bicifiapp.ui.activity.questions.QuestionActivity
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
+import com.bicifiapp.ui.fragments.home.QuestionTypeEnum
+import com.bicifiapp.ui.fragments.home.REPEAT_QUESTION_TYPE
 import com.bicifiapp.ui.viewmodels.profile.ProfileViewModel
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
@@ -161,9 +163,11 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
             putString(Constants.ONBOARDING_DONE, Constants.ONBOARDING_DONE_VALUE)
         }
 
-        Intent(activity(), QuestionActivity::class.java).also {
-            startActivity(it)
-        }
+        startActivity(
+            Intent(activity(), QuestionActivity::class.java).apply {
+                putExtra(REPEAT_QUESTION_TYPE, QuestionTypeEnum.REPEAT_ALL.name)
+            }
+        )
     }
 
     private fun showSnackBar(resId: Int, colorId: Int) = view?.rootView?.let {

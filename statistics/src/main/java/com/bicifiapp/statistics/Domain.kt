@@ -1,8 +1,12 @@
 package com.bicifiapp.statistics
 
-import java.time.LocalDateTime
+data class Statistics(
+    val statisticQuestions: List<TestStatistic>,
+    val statisticEmotional: List<TestStatistic>
+)
 
 data class TestStatistic(
-    val date: LocalDateTime?,
-    val level: Int
+    val date: String,
+    val level: Int?,
+    val levelEmotional: Int
 )

@@ -35,34 +35,32 @@ class DataSourceAnswerFirebase : DataSourceAnswer {
         Firebase.functions
     }
 
-    override suspend fun saveAnswers(answers: List<AnswerEntity>, emotionalState: String): String =
-        suspendCoroutine { continuation ->
+    override suspend fun saveAnswers(
+        answers: List<AnswerEntity>,
+        emotionalState: String,
+        questionType: String
+    ): String {
 
-            createHeadAnswer(
-                HeadAnswer(
-                    answers[0].userId,
-                    answers[0].date,
-                    emotionalState
-                )
-            ) { id ->
-                answers.forEach { answer ->
-                    db.collection(ANSWER_COLLECTION)
-                        .document(id)
-                        .collection(ANSWER_COLLECTION)
-                        .add(
-                            AnswersSimple(
-                                answer.questionId,
-                                answer.response
-                            )
-                        )
-                        .addOnFailureListener {
-                            continuation.resumeWithException(it)
-                        }
-                }
+        val answerHeaderId = createHeadAnswer(
+            HeadAnswer(
+                answers[0].userId,
+                answers[0].date,
+                emotionalState,
+                questionType
+            )
+        )
 
-                continuation.resume(id)
-            }
+        answers.map { answer ->
+            AnswersSimple(
+                answer.questionId,
+                answer.response
+            )
+        }.forEach { answerSimple ->
+            saveDetailAnswer(answerSimple, answerHeaderId)
         }
+
+        return answerHeaderId
+    }
 
     override suspend fun calculateLevel(
         userId: String,
@@ -102,16 +100,16 @@ class DataSourceAnswerFirebase : DataSourceAnswer {
                     )
                 }
                 .addOnFailureListener { continuation.resumeWithException(it) }
-
         }
 
-    override suspend fun saveEmotionalState(emotionalState: String): Boolean =
+    override suspend fun saveEmotionalState(emotionalState: String, userId: String): Boolean =
         suspendCoroutine { continuation ->
             db.collection(EMOTIONAL_STATE_COLLECTION)
                 .add(
                     EmotionalStateEntity(
                         Date().getDateWithFormat(FORMAT_DATE),
-                        emotionalState
+                        emotionalState,
+                        userId
                     )
                 )
                 .addOnFailureListener {
@@ -121,13 +119,30 @@ class DataSourceAnswerFirebase : DataSourceAnswer {
                 }
         }
 
-    private fun createHeadAnswer(headAnswer: HeadAnswer, block: (String) -> Unit) =
-        db.collection(ANSWER_COLLECTION)
-            .add(headAnswer)
-            .addOnSuccessListener {
-                block(it.id)
-            }.addOnFailureListener {
-                throw it
-            }
+    private suspend fun createHeadAnswer(headAnswer: HeadAnswer): String =
+        suspendCoroutine { continuation ->
+            db.collection(ANSWER_COLLECTION)
+                .add(headAnswer)
+                .addOnSuccessListener {
+                    continuation.resume(it.id)
+                }.addOnFailureListener {
+                    continuation.resumeWithException(it)
+                }
+        }
 
+    private suspend fun saveDetailAnswer(
+        answersSimple: AnswersSimple,
+        idAnswerHeader: String
+    ): Boolean = suspendCoroutine { continuation ->
+        db.collection(ANSWER_COLLECTION)
+            .document(idAnswerHeader)
+            .collection(ANSWER_COLLECTION)
+            .add(answersSimple)
+            .addOnSuccessListener {
+                continuation.resume(true)
+            }
+            .addOnFailureListener {
+                continuation.resumeWithException(it)
+            }
+    }
 }

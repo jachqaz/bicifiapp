@@ -14,7 +14,8 @@ class AnswersRepositoryImp(
 
     override suspend fun saveAnswers(
         answers: List<Answer>,
-        emotionalState: String
+        emotionalState: String,
+        questionType: String
     ): Either<Failure, String> =
         try {
             when (networkHandler.isConnected) {
@@ -28,7 +29,8 @@ class AnswersRepositoryImp(
                                 it.date
                             )
                         },
-                        emotionalState
+                        emotionalState,
+                        questionType
                     )
                 )
                 else -> Either.Left(Failure.NetworkConnection)
@@ -61,16 +63,15 @@ class AnswersRepositoryImp(
             Either.Left(e.toCustomExceptions())
         }
 
-    override suspend fun saveEmotionalState(emotionalState: String): Either<Failure, Boolean> =
+    override suspend fun saveEmotionalState(emotionalState: String, userId: String): Either<Failure, Boolean> =
         try {
             when (networkHandler.isConnected) {
                 true -> Either.Right(
-                    dataSource.saveEmotionalState(emotionalState)
+                    dataSource.saveEmotionalState(emotionalState, userId)
                 )
                 else -> Either.Left(Failure.NetworkConnection)
             }
         } catch (e: Exception) {
             Either.Left(e.toCustomExceptions())
         }
-
 }

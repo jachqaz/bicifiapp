@@ -2,6 +2,10 @@ package com.bicifiapp.di
 
 import co.devhack.base.network.Network.createNetworkClient
 import com.bicifiapp.BuildConfig
+import com.bicifiapp.notificationssettings.notification.NotificationRepository
+import com.bicifiapp.notificationssettings.notification.NotificationRepositoryImp
+import com.bicifiapp.notificationssettings.notification.datasources.NotificationDataSource
+import com.bicifiapp.notificationssettings.notification.datasources.NotificationFirestoreDataSource
 import com.bicifiapp.notificationssettings.repository.ProfileRepository
 import com.bicifiapp.notificationssettings.repository.ProfileRepositoryImp
 import com.bicifiapp.notificationssettings.repository.datasources.DataSourceFirestore
@@ -34,7 +38,6 @@ val profileRepositoryModule = module {
     factory<DataSourceNotificationSettings> {
         DataSourceFirestore()
     }
-
 }
 
 val questionRepositoryModule = module {
@@ -46,7 +49,6 @@ val questionRepositoryModule = module {
     factory<DataSourceQuestion> {
         DataSourceQuestionFirebase()
     }
-
 }
 
 val answersRepositoryModule = module {
@@ -58,7 +60,6 @@ val answersRepositoryModule = module {
     factory<DataSourceAnswer> {
         DataSourceAnswerFirebase()
     }
-
 }
 
 val knowledgeRepositoryModule = module {
@@ -73,7 +74,7 @@ val knowledgeRepositoryModule = module {
         )
     }
 
-    single<ArticlesApi> {
+    single {
         createNetworkClient(
             baseUrl = BuildConfig.BASE_URL_ZENDESK,
             debug = BuildConfig.DEBUG
@@ -85,10 +86,20 @@ val knowledgeRepositoryModule = module {
 val statisticsRepositoryModule = module {
 
     factory<StatisticsRepository> {
-        StatisticsRepositoryImp(get())
+        StatisticsRepositoryImp(get(), get())
     }
 
     factory<StatisticsDataSource> {
         StatisticsDataSourceFirebase()
+    }
+}
+
+val notificationModule = module {
+
+    factory<NotificationRepository> {
+        NotificationRepositoryImp(get(), get())
+    }
+    factory<NotificationDataSource> {
+        NotificationFirestoreDataSource()
     }
 }

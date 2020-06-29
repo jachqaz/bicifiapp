@@ -25,13 +25,12 @@ val questionViewModelModule = module {
     viewModel {
         ArticleViewModel(get())
     }
-
 }
 
 val homeViewModelModule = module {
 
     viewModel {
-        HomeViewModel(get())
+        HomeViewModel(get(), get())
     }
 }
 

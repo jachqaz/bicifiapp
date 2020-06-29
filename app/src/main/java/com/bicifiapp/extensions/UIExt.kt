@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.navigation.navOptions
+import androidx.work.CoroutineWorker
 import com.bicifiapp.R
 import com.google.firebase.auth.FirebaseAuth
 
@@ -60,7 +61,9 @@ fun Fragment.claims(block: (HashMap<String, String>) -> Unit) {
                         put(LAST_EMOTIONAL_STATE, token.claims[LAST_EMOTIONAL_STATE].toString())
                     }
                 )
-
             }
     }
 }
+
+fun CoroutineWorker.userId() =
+    FirebaseAuth.getInstance().currentUser?.uid.safeString()

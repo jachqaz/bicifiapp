@@ -13,7 +13,6 @@ import com.bicifiapp.questions.repository.question.QuestionRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 class QuestionViewModel(
     private val questionRepository: QuestionRepository,
@@ -36,21 +35,21 @@ class QuestionViewModel(
         MutableLiveData<State>()
     }
 
-    fun getQuestions() {
+    fun getQuestions(questionType: String, userId: String) {
         resultAnswersLiveData.value = State.Loading
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                resultQuestions = questionRepository.getAllQuestions()
+                resultQuestions = questionRepository.getQuestionsByType(questionType, userId)
             }
             resultQuestions.either(::handleFailureQuestions, ::getQuestionsSuccess)
         }
     }
 
-    fun saveAnswers(answers: List<Answer>, emotionalState: String) {
+    fun saveAnswers(answers: List<Answer>, emotionalState: String, questionType: String) {
         resultAnswersLiveData.value = State.Loading
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                resultAnswers = answersRepository.saveAnswers(answers, emotionalState)
+                resultAnswers = answersRepository.saveAnswers(answers, emotionalState, questionType)
             }
             resultAnswers.either(::handleFailureAnswers, ::getAnswersSuccess)
         }
@@ -60,7 +59,8 @@ class QuestionViewModel(
         resultCalculateLevelLiveData.value = State.Loading
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                resultCalculateLevel = answersRepository.calculateLevel(userId, answerId, emotionalState)
+                resultCalculateLevel =
+                    answersRepository.calculateLevel(userId, answerId, emotionalState)
             }
             resultCalculateLevel.either(::handleFailureCalculate, ::setCalculateLevelSuccess)
         }
@@ -89,5 +89,4 @@ class QuestionViewModel(
     private fun handleFailureCalculate(failure: Failure) {
         resultCalculateLevelLiveData.value = State.Failed(failure)
     }
-
 }

@@ -33,5 +33,4 @@ class ProfileRepositoryImp(
         } catch (exception: Exception) {
             Either.Left(exception.toCustomExceptions())
         }
-
 }

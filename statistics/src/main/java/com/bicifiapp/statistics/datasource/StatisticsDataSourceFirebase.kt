@@ -1,13 +1,14 @@
 package com.bicifiapp.statistics.datasource
 
-import android.os.Build
 import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
-import java.time.LocalDateTime
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
+@Suppress("UNCHECKED_CAST")
 class StatisticsDataSourceFirebase : StatisticsDataSource {
 
     private companion object {
@@ -15,19 +16,16 @@ class StatisticsDataSourceFirebase : StatisticsDataSource {
         const val USER_ID_FIELD = "userId"
         const val DATE_FIELD = "date"
         const val LEVEL_FIELD = "level"
-        const val SPLIT_DELIMITERS_DATE = "-"
-        const val SPLIT_DELIMITERS_TIME = ":"
-        const val SPLIT_DELIMITERS_EMPTY = " "
-        private const val DATE_INDEX_ZERO = 0
-        private const val DATE_INDEX_ONE = 1
-        private const val DATE_INDEX_TWO = 2
+        const val LEVEL_EMOTIONAL_STATE_FIELD = "levelemotionalstate"
+        const val STATISTICS_QUESTION_FIELD = "statisticsQuestions"
+        const val STATISTICS_EMOTIONAL_FIELD = "statisticsEmotional"
     }
 
     private val functions by lazy {
         Firebase.functions
     }
 
-    override suspend fun getTestStatistic(userId: String): List<TestStatisticEntity> =
+    override suspend fun getTestStatistic(userId: String): StatisticsEntity =
         suspendCoroutine { continuation ->
 
             val data = hashMapOf(
@@ -37,36 +35,47 @@ class StatisticsDataSourceFirebase : StatisticsDataSource {
             functions.getHttpsCallable(FUNCTION_GET_TEST_STATISTIC)
                 .call(data)
                 .addOnSuccessListener { task ->
-                    val statistics = ArrayList<TestStatisticEntity>().apply {
-                        val resp = task.data as ArrayList<HashMap<String, Any>>
-                        resp.forEach { element ->
-                            add(
-                                TestStatisticEntity(
-                                    getDateTime(element[DATE_FIELD].toString()),
-                                    element[LEVEL_FIELD].toString().toInt()
+                    try {
+                        val resp = task.data as HashMap<String, Any>
+                        val statisticQuestionsTmp =
+                            resp[STATISTICS_QUESTION_FIELD] as List<HashMap<String, Any>>
+                        val statisticEmotionalTmp =
+                            resp[STATISTICS_EMOTIONAL_FIELD] as List<HashMap<String, Any>>
+
+                        val statisticQuestions = ArrayList<TestStatisticEntity>().apply {
+                            statisticQuestionsTmp.forEach { element ->
+                                add(
+                                    TestStatisticEntity(
+                                        date = element[DATE_FIELD].toString(),
+                                        level = element[LEVEL_FIELD].toString().toInt(),
+                                        levelEmotional = element[LEVEL_EMOTIONAL_STATE_FIELD].toString()
+                                            .toInt()
+                                    )
                                 )
-                            )
+                            }
                         }
+
+                        val statisticEmotional = ArrayList<TestStatisticEntity>().apply {
+                            statisticEmotionalTmp.forEach { element ->
+                                add(
+                                    TestStatisticEntity(
+                                        date = element[DATE_FIELD].toString(),
+                                        levelEmotional = element[LEVEL_EMOTIONAL_STATE_FIELD].toString()
+                                            .toInt()
+                                    )
+                                )
+                            }
+                        }
+                        continuation.resume(
+                            StatisticsEntity(
+                                statisticQuestions,
+                                statisticEmotional
+                            )
+                        )
+                    } catch (e: Exception) {
+                        continuation.resumeWithException(e)
                     }
-                    continuation.resume(statistics)
                 }
                 .addOnFailureListener { continuation.resumeWithException(it) }
         }
-
-    private fun getDateTime(date: String): LocalDateTime? {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val dateTimeSplit = date.split(SPLIT_DELIMITERS_EMPTY)
-            val dateSplit = dateTimeSplit[0].split(SPLIT_DELIMITERS_DATE)
-            val timeSplit = dateTimeSplit[1].split(SPLIT_DELIMITERS_TIME)
-            return LocalDateTime.of(
-                dateSplit[DATE_INDEX_TWO].toInt(),
-                dateSplit[DATE_INDEX_ONE].toInt(),
-                dateSplit[DATE_INDEX_ZERO].toInt(),
-                timeSplit[DATE_INDEX_ZERO].toInt(),
-                timeSplit[DATE_INDEX_ONE].toInt()
-            )
-        }
-        return null
-    }
-
 }

@@ -31,36 +31,40 @@
             style="@style/SubTitles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             tools:text="@sample/sampledata.json/level2" />
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChart"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_size_250"
-            android:layout_marginTop="20dp" />
+            android:layout_height="@dimen/dimen_size_150"
+            android:layout_marginTop="16dp" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChartEmotion"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_size_150"
+            android:layout_marginTop="16dp" />
 
         <TextView
             android:id="@+id/txtLastEmocion"
             style="@style/SubTitles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@string/lbl_last_record_emotional" />
 
         <ImageView
             android:id="@+id/imgEmotional"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/lbl_emotion"
             android:src="@drawable/ic_sentiment_very_satisfied_color" />
 
-
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
