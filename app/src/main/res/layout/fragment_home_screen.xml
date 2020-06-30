@@ -206,7 +206,7 @@
             android:textAppearance="@style/SubTitles" />
 
         <Button
-            android:id="@+id/btnQuetion"
+            android:id="@+id/btnTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_size_16"
@@ -214,12 +214,12 @@
             android:layout_marginBottom="10dp"
             android:background="@color/white"
             android:drawableTop="@drawable/ic_clipboard_text_multiple_outline"
-            android:padding="10dp"
             android:text="@string/task"
+            android:padding="10dp"
             android:textAppearance="@style/SubTitles" />
 
         <Button
-            android:id="@+id/btnTask"
+            android:id="@+id/btnQuetion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimen_size_16"

@@ -168,7 +168,7 @@
         style="@style/ButtonMain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/crear"
+        android:text="@string/create"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

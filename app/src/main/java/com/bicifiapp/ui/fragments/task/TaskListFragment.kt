@@ -20,7 +20,6 @@ class TaskListFragment : BaseFragment(R.layout.fragment_task_list) {
 
     override fun initView(view: View) {
         _binding = FragmentTaskListBinding.bind(view)
-        initListeners()
     }
 
     override fun onDestroyView() {
@@ -32,7 +31,9 @@ class TaskListFragment : BaseFragment(R.layout.fragment_task_list) {
         dialogLoading = showAnimLoading()
     }
 
-    private fun initListeners() {
-        binding.btnFab.setOnClickListener {  }
+    companion object {
+
+        @JvmStatic
+        fun newInstance() = TaskListFragment()
     }
 }

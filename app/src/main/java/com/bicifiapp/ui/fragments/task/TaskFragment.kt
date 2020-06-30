@@ -50,4 +50,9 @@ class TaskFragment : BaseFragment(R.layout.fragment_task) {
             show()
         }
     }
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = TaskFragment()
+    }
 }

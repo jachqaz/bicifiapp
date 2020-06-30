@@ -29,6 +29,7 @@ import com.bicifiapp.notificationssettings.notification.Notification
 import com.bicifiapp.questions.repository.answers.LastUserLevelRecord
 import com.bicifiapp.services.RemainderWorker
 import com.bicifiapp.ui.activity.questions.QuestionActivity
+import com.bicifiapp.ui.activity.tasks.TaskActivity
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
 import com.bicifiapp.ui.viewmodels.home.HomeViewModel
@@ -97,6 +98,9 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
         }
         binding.btnRepeatQuestionsFailed.setOnClickListener {
             startActivityQuestion(QuestionTypeEnum.REPEAT_FAILED)
+        }
+        binding.btnTask.setOnClickListener {
+            startActivityTask()
         }
     }
 
@@ -175,6 +179,14 @@ class HomeScreenFragment : BaseFragment(R.layout.fragment_home_screen) {
                 )
             }
         )
+
+    private fun startActivityTask(){
+        startActivity(
+            Intent(
+                activity, TaskActivity::class.java
+            ).apply {  }
+        )
+    }
 
     private fun initLiveData() {
         liveDataObserve(

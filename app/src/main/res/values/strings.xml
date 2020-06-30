@@ -584,5 +584,6 @@
     <string name="lbl_subject">¿Cómo están tus finanzas?</string>
     <string name="lbl_title_remainder_evaluate_status">Recuerda evaluar tu estado financiero</string>
     <string name="lbl_notifications_channel">notifications channel</string>
+    <string name="title_task_list_fragment">Tareas para mejorar mi salud financiera</string>
 
 </resources>
