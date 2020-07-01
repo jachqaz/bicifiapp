@@ -9,3 +9,4 @@ data class Profile(
     val acceptNotification: Boolean,
     val acceptLocation: Boolean
 )
+

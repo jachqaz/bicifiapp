@@ -18,8 +18,13 @@ class ProfileViewModel(
 ) : ViewModel() {
 
     private lateinit var result: Either<Failure, Boolean>
+    private lateinit var resultGetProfile: Either<Failure, Profile?>
 
     val saveProfileLiveData by lazy {
+        MutableLiveData<State>()
+    }
+
+    val getProfileLiveData by lazy {
         MutableLiveData<State>()
     }
 
@@ -33,6 +38,16 @@ class ProfileViewModel(
         }
     }
 
+    fun getProfileByUserId(userId: String) {
+        getProfileLiveData.value = State.Loading
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                resultGetProfile = profileRepository.getByUserId(userId)
+            }
+            resultGetProfile.either(::getProfileHandleFailure, ::getProfileSuccess)
+        }
+    }
+
     private fun saveProfileSuccess(success: Boolean) {
         saveProfileLiveData.value = State.Success(success)
     }
@@ -42,4 +57,16 @@ class ProfileViewModel(
         Timber.e("error in ProfileViewModel: $failure")
     }
 
+    private fun getProfileSuccess(profile: Profile?) {
+        if (profile == null) {
+            getProfileLiveData.value = State.Failed(Failure.CustomError)
+        } else {
+            getProfileLiveData.value = State.Success(profile)
+        }
+    }
+
+    private fun getProfileHandleFailure(failure: Failure) {
+        getProfileLiveData.value = State.Failed(failure)
+        Timber.e("error getting profile at ProfileViewModel: $failure")
+    }
 }

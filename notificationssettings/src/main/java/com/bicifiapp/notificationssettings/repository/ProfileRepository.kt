@@ -6,4 +6,6 @@ import co.devhack.base.error.Failure
 interface ProfileRepository {
 
     suspend fun save(profile: Profile): Either<Failure, Boolean>
+
+    suspend fun getByUserId(userId: String): Either<Failure, Profile?>
 }

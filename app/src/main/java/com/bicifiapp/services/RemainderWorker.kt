@@ -19,7 +19,6 @@ class RemainderWorker(
 ) : CoroutineWorker(appContext, workerParams), KoinComponent {
 
     companion object {
-        const val BOUND_NEXT_INT = 1000000
         const val SUNDAY_DAY = 6
         const val CONVERT_MY_DAYS = 2
     }
@@ -36,7 +35,7 @@ class RemainderWorker(
                     var dayOfWeekToday = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
                     dayOfWeekToday =
                         if (dayOfWeekToday == 1) SUNDAY_DAY else dayOfWeekToday - CONVERT_MY_DAYS
-                    days.firstOrNull { it.toInt() == dayOfWeekToday }?.let {
+                    if (containDay(days, dayOfWeekToday)) {
                         notification(applicationContext) {
                             title = applicationContext
                                 .getString(R.string.lbl_title_remainder_evaluate_status)
@@ -51,4 +50,13 @@ class RemainderWorker(
                 })
             Result.success()
         }
+
+    private fun containDay(days: List<Int>, dayToFind: Int): Boolean {
+        for (day in days) {
+            if (day == dayToFind) {
+                return true
+            }
+        }
+        return false
+    }
 }

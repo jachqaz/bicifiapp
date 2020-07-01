@@ -1,19 +1,15 @@
 package com.bicifiapp.ui.activity.splash
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import co.devhack.androidextensions.ui.startActivity
 import com.bicifiapp.R
-import com.bicifiapp.common.Constants
 import com.bicifiapp.databinding.ActivitySplashBinding
-import com.bicifiapp.extensions.empty
-import com.bicifiapp.extensions.getSharedPreferences
 import com.bicifiapp.extensions.userId
 import com.bicifiapp.ui.activity.homescreen.HomeScreenActivity
 import com.bicifiapp.ui.activity.onboarding.OnboardingActivity
-import com.bicifiapp.ui.activity.signin.SignInActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -31,37 +27,19 @@ class SplashActivity : AppCompatActivity() {
         binding.imvLogo.animation = animation
         animation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationRepeat(animation: Animation?) {
-
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                val intent = Intent(applicationContext, OnboardingActivity::class.java)
-                startActivity(intent)
                 if (userId().isNullOrEmpty()) {
-                    val onBoardingDone =
-                        getSharedPreferences()?.getString(Constants.ONBOARDING_DONE, String.empty())
-                    if (onBoardingDone.isNullOrEmpty()) {
-                        val intentOnBoarding =
-                            Intent(applicationContext, OnboardingActivity::class.java)
-                        startActivity(intentOnBoarding)
-                    } else {
-                        val intentHome = Intent(applicationContext, SignInActivity::class.java)
-                        startActivity(intentHome)
-                    }
+                    startActivity<OnboardingActivity>()
                 } else {
-                    initHomeScreen()
+                    startActivity<HomeScreenActivity>()
                 }
                 finish()
             }
 
             override fun onAnimationStart(animation: Animation?) {
             }
-
         })
-    }
-
-    private fun initHomeScreen() {
-        val intentHome = Intent(applicationContext, HomeScreenActivity::class.java)
-        startActivity(intentHome)
     }
 }

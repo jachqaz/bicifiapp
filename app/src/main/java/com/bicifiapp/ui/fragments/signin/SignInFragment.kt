@@ -1,23 +1,27 @@
 package com.bicifiapp.ui.fragments.signin
 
 import android.content.Intent
-import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import co.devhack.androidextensions.components.liveDataObserve
+import co.devhack.androidextensions.ui.startActivity
+import co.devhack.base.State
+import co.devhack.base.error.Failure
+import co.devhack.presentation.BaseFragment
 import com.bicifiapp.BuildConfig
 import com.bicifiapp.R
-import com.bicifiapp.common.Constants
 import com.bicifiapp.databinding.FragmentSignInBinding
-import com.bicifiapp.extensions.activity
 import com.bicifiapp.extensions.animSlideLeftToRight
-import com.bicifiapp.extensions.empty
-import com.bicifiapp.extensions.getSharedPreferences
-import com.bicifiapp.ui.activity.questions.QuestionActivity
+import com.bicifiapp.extensions.userId
+import com.bicifiapp.notificationssettings.repository.Profile
+import com.bicifiapp.ui.activity.homescreen.HomeScreenActivity
 import com.bicifiapp.ui.activity.signin.SignInActivity
+import com.bicifiapp.ui.dialogs.DialogLoading
+import com.bicifiapp.ui.dialogs.showAnimLoading
+import com.bicifiapp.ui.viewmodels.profile.ProfileViewModel
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -27,15 +31,22 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.*
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.FacebookAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.OAuthProvider
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
+class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
 
-class SignInFragment : Fragment(R.layout.fragment_sign_in) {
+    private val profileViewModel by inject<ProfileViewModel>()
 
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
     private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var dialogLoading: DialogLoading
 
     private val auth by lazy {
         FirebaseAuth.getInstance()
@@ -45,17 +56,25 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private val providerTwitter by lazy { OAuthProvider.newBuilder(TWITTER_PROVIDER) }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initView(view: View) {
         _binding = FragmentSignInBinding.bind(view)
+        initLiveData()
         initValues()
         initListener()
         initViewsProperties()
     }
 
+    override fun showProgress() {
+        dialogLoading = showAnimLoading()
+    }
+
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+
+    override fun hideProgress() {
+        dialogLoading.dismiss()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -80,6 +99,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         } else if (requestCode == RC_SIGN_IN_FACEBOOK) {
             callbackManager.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    private fun initLiveData() {
+        liveDataObserve(profileViewModel.getProfileLiveData, ::onGetProfileStateChange)
     }
 
     private fun initViewsProperties() {
@@ -175,25 +198,11 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     }
 
     private fun authSuccess() {
-        showSnackBar(R.string.auth_success_social_network, R.color.success_snackbar)
-
-        val onBoardingDone =
-            getSharedPreferences()?.getString(Constants.ONBOARDING_DONE, String.empty())
-
-        if (!onBoardingDone.isNullOrEmpty()) {
-            Intent(activity(), QuestionActivity::class.java).also {
-                startActivity(it)
-            }
-            return
-        }
-
-        findNavController().navigate(
-            SignInFragmentDirections.nextProfileAction(),
-            animSlideLeftToRight()
-        )
+        profileViewModel.getProfileByUserId(userId())
     }
 
     private fun authFailed() {
+        hideProgress()
         showSnackBar(R.string.auth_success_social_failed, R.color.error_snackbar)
     }
 
@@ -202,6 +211,41 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
             view.setBackgroundColor(ContextCompat.getColor(context, colorId))
             show()
         }
+    }
+
+    private fun onGetProfileStateChange(state: State?) =
+        when (state) {
+            is State.Failed -> {
+                when (state.failure) {
+                    is Failure.CustomError -> {
+                        handlerNewUser()
+                        hideProgress()
+                    }
+                    else -> {
+                        handleFailure(state.failure)
+                        hideProgress()
+                    }
+                }
+            }
+            State.Loading -> showProgress()
+            State.Empty -> hideProgress()
+            is State.Success -> {
+                successfulGetProfile(state.responseTo())
+                hideProgress()
+            }
+            null -> hideProgress()
+        }
+
+    private fun handlerNewUser() {
+        findNavController().navigate(
+            SignInFragmentDirections.nextProfileAction(),
+            animSlideLeftToRight()
+        )
+    }
+
+    private fun successfulGetProfile(profile: Profile) {
+        showSnackBar(R.string.auth_success_social_network, R.color.success_snackbar)
+        startActivity<HomeScreenActivity>()
     }
 
     private fun getFragmentContext() = (context as SignInActivity)
@@ -217,6 +261,5 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         fun getInstance(): SignInFragment {
             return SignInFragment()
         }
-
     }
 }

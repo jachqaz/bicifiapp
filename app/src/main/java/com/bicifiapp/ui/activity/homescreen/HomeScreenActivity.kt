@@ -1,6 +1,5 @@
 package com.bicifiapp.ui.activity.homescreen
 
-import android.content.Intent
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,13 +8,14 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import co.devhack.androidextensions.ui.startActivity
 import co.devhack.presentation.BaseActivity
 import com.bicifiapp.R
 import com.bicifiapp.databinding.ActivityHomeScreenBinding
 import com.bicifiapp.extensions.empty
 import com.bicifiapp.extensions.getSharedPreferences
 import com.bicifiapp.extensions.userAuth
-import com.bicifiapp.ui.activity.signin.SignInActivity
+import com.bicifiapp.ui.activity.onboarding.OnboardingActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 
@@ -71,8 +71,7 @@ class HomeScreenActivity : BaseActivity() {
             when (menuItem.itemId) {
                 R.id.signOut -> {
                     FirebaseAuth.getInstance().signOut()
-                    val intent = Intent(applicationContext, SignInActivity::class.java)
-                    startActivity(intent)
+                    startActivity<OnboardingActivity>()
                     finish()
                 }
             }

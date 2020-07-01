@@ -4,18 +4,17 @@ import android.content.Intent
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
-import androidx.core.content.edit
 import co.devhack.androidextensions.components.liveDataObserve
 import co.devhack.androidextensions.ui.dialogDate
+import co.devhack.androidextensions.ui.startActivity
 import co.devhack.base.State
 import co.devhack.presentation.BaseFragment
 import com.bicifiapp.R
-import com.bicifiapp.common.Constants
 import com.bicifiapp.databinding.FragmentProfileBinding
 import com.bicifiapp.extensions.activity
-import com.bicifiapp.extensions.getSharedPreferences
 import com.bicifiapp.extensions.userId
 import com.bicifiapp.notificationssettings.repository.Profile
+import com.bicifiapp.ui.activity.homescreen.HomeScreenActivity
 import com.bicifiapp.ui.activity.questions.QuestionActivity
 import com.bicifiapp.ui.dialogs.DialogLoading
 import com.bicifiapp.ui.dialogs.showAnimLoading
@@ -158,11 +157,6 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         }
 
     private fun successful() {
-
-        getSharedPreferences()?.edit {
-            putString(Constants.ONBOARDING_DONE, Constants.ONBOARDING_DONE_VALUE)
-        }
-
         startActivity(
             Intent(activity(), QuestionActivity::class.java).apply {
                 putExtra(REPEAT_QUESTION_TYPE, QuestionTypeEnum.REPEAT_ALL.name)

@@ -33,4 +33,16 @@ class ProfileRepositoryImp(
         } catch (exception: Exception) {
             Either.Left(exception.toCustomExceptions())
         }
+
+    override suspend fun getByUserId(userId: String): Either<Failure, Profile?> =
+        try {
+            when (networkHandler.isConnected) {
+                true -> Either.Right(
+                    dataSourceNotificationSettings.getByUserId(userId)?.toProfile()
+                )
+                else -> Either.Left(Failure.NetworkConnection)
+            }
+        } catch (exception: Exception) {
+            Either.Left(exception.toCustomExceptions())
+        }
 }

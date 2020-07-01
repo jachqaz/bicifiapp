@@ -27,4 +27,16 @@ class DataSourceFirestore : DataSourceNotificationSettings {
                     continuation.resumeWithException(it)
                 }
         }
+
+    override suspend fun getByUserId(userId: String): ProfileEntity? =
+        suspendCoroutine { continuation ->
+            db.collection(USERS_COLLECTION)
+                .document(userId)
+                .get()
+                .addOnSuccessListener {
+                    continuation.resume(it.toObject(ProfileEntity::class.java))
+                }.addOnFailureListener {
+                    continuation.resumeWithException(it)
+                }
+        }
 }

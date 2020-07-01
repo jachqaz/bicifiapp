@@ -66,7 +66,7 @@ object Versions {
     const val workVersion = "2.3.4"
     const val frameworkBase = "0.9.1"
     const val presentation = "0.9.5.1"
-    const val androidExtensions = "0.9.2"
+    const val androidExtensions = "0.9.3.1"
 
     const val mPAndroidChart = "2.2.4"
 
